@@ -1,0 +1,1 @@
+// Lógica y UI para cada decisión crítica
