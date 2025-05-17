@@ -1,0 +1,102 @@
+{
+  "uiMapeo": {
+    "inicio": {
+      "pantalla": {
+        "es": "Dashboard de bienvenida",
+        "en": "Welcome dashboard"
+      },
+      "elementos": [
+        {"es": "Explicación breve del simulador y normativa", "en": "Brief explanation of the simulator and regulations", "prioridad": "MVP"},
+        {"es": "Botón 'Comenzar preparación'", "en": "'Start preparation' button", "prioridad": "MVP"}
+      ]
+    },
+    "preparacion": {
+      "wizard": [
+        {
+          "paso": 1,
+          "titulo": {"es": "Definir objetivos", "en": "Define objectives"},
+          "ui": {"es": "Checkboxes o chips para seleccionar objetivos del simulacro", "en": "Checkboxes or chips to select drill objectives"},
+          "prioridad": "MVP"
+        },
+        {
+          "paso": 2,
+          "titulo": {"es": "Diseñar escenario", "en": "Design scenario"},
+          "ui": {"es": "Formulario minimalista: tipo de derrame, cantidad, localización (mapa), condiciones meteorológicas", "en": "Minimal form: spill type, quantity, location (map), weather conditions"},
+          "prioridad": "MVP"
+        },
+        {
+          "paso": 3,
+          "titulo": {"es": "Elaborar guion", "en": "Draft script"},
+          "ui": {"es": "Resumen editable, posibilidad de añadir eventos o injects (UncertaintyGen)", "en": "Editable summary, possibility to add events or injects (UncertaintyGen)"},
+          "prioridad": "Deseable"
+        },
+        {
+          "paso": 4,
+          "titulo": {"es": "Seleccionar roles y observadores", "en": "Select roles and observers"},
+          "ui": {"es": "Cards con drag & drop o selección simple, visualización de estructura organizativa", "en": "Cards with drag & drop or simple selection, organizational structure visualization"},
+          "prioridad": "MVP"
+        }
+      ]
+    },
+    "estructuraOrganizativa": {
+      "pantalla": {"es": "Visualización de roles activos", "en": "Active roles visualization"},
+      "elementos": [
+        {"es": "Cards de roles con nombre, icono y función", "en": "Role cards with name, icon and function", "prioridad": "MVP"},
+        {"es": "Botón para asumir rol", "en": "Button to assume role", "prioridad": "MVP"},
+        {"es": "Organigrama minimalista", "en": "Minimalist organizational chart", "prioridad": "Deseable"}
+      ]
+    },
+    "simulacion": {
+      "timeline": {"es": "Fases del simulacro (detección, notificación, gestión, coordinación, comunicación, etc.)", "en": "Drill phases (detection, notification, management, coordination, communication, etc.)"},
+      "elementos": [
+        {"es": "Descripción breve del reto en cada fase", "en": "Brief description of the challenge in each phase", "prioridad": "MVP"},
+        {"es": "Opciones de decisión (botones grandes)", "en": "Decision options (large buttons)", "prioridad": "MVP"},
+        {"es": "Feedback inmediato tras cada decisión", "en": "Immediate feedback after each decision", "prioridad": "MVP"},
+        {"es": "Visualización de recursos y estado (iconos, colores)", "en": "Resource and status visualization (icons, colors)", "prioridad": "Deseable"},
+        {"es": "Mapa interactivo con evolución de la mancha y recursos desplegados", "en": "Interactive map with spill evolution and deployed resources", "prioridad": "MVP"},
+        {"es": "Eventos inesperados (injects/UncertaintyGen) como notificaciones o modales", "en": "Unexpected events (injects/UncertaintyGen) as notifications or modals", "prioridad": "Deseable"},
+        {"es": "Panel de comunicaciones para simular mensajes entre roles y organismos", "en": "Communications panel to simulate messages between roles and agencies", "prioridad": "Deseable"},
+        {"es": "Gestión del paso del tiempo: reloj simulado, avance por turnos o tiempo real, afectando a la evolución de la mancha y aparición de riesgos sobrevenidos", "en": "Time management: simulated clock, turn-based or real time, affecting spill evolution and emerging risks", "prioridad": "MVP"}
+      ]
+    },
+    "herramientasApoyo": {
+      "panel": {"es": "Panel lateral o modal de herramientas", "en": "Sidebar or modal tools panel"},
+      "elementos": [
+        {"es": "Mapas de zonas sensibles", "en": "Sensitive area maps", "prioridad": "Deseable"},
+        {"es": "Modelos de dispersión", "en": "Dispersion models", "prioridad": "Deseable"},
+        {"es": "Fichas técnicas de recursos", "en": "Resource technical sheets", "prioridad": "Deseable"}
+      ]
+    },
+    "coordinacionComunicacion": {
+      "panel": {"es": "Panel de comunicaciones", "en": "Communications panel"},
+      "elementos": [
+        {"es": "Timeline de mensajes tipo chat", "en": "Chat-like message timeline", "prioridad": "Deseable"},
+        {"es": "Botón para escalar emergencia o solicitar recursos a niveles superiores", "en": "Button to escalate emergency or request resources to higher levels", "prioridad": "Deseable"},
+        {"es": "Simulación de comunicaciones a organismos según nivel de emergencia", "en": "Simulation of communications to agencies according to emergency level", "prioridad": "Deseable"}
+      ]
+    },
+    "evaluacion": {
+      "pantalla": {"es": "Informe final", "en": "Final report"},
+      "elementos": [
+        {"es": "Resumen visual del desempeño (puntuación, aciertos, áreas de mejora)", "en": "Visual summary of performance (score, successes, areas for improvement)", "prioridad": "MVP"},
+        {"es": "Listado de decisiones tomadas y su impacto", "en": "List of decisions taken and their impact", "prioridad": "MVP"},
+        {"es": "Feedback textual y recomendaciones", "en": "Textual feedback and recommendations", "prioridad": "MVP"},
+        {"es": "Botón para descargar o compartir informe", "en": "Button to download or share report", "prioridad": "Deseable"},
+        {"es": "Opción para añadir observaciones personales o de observadores virtuales", "en": "Option to add personal or virtual observer comments", "prioridad": "Deseable"}
+      ]
+    },
+    "principiosUI": {
+      "minimalismo": {"es": "Espacio en blanco, tipografía clara, iconografía sencilla, paleta limitada", "en": "Whitespace, clear typography, simple icons, limited palette"},
+      "navegacion": {"es": "Wizard/timeline claro, botones grandes, feedback inmediato", "en": "Clear wizard/timeline, large buttons, immediate feedback"},
+      "accesibilidad": {"es": "Contraste alto, textos descriptivos, navegación por teclado", "en": "High contrast, descriptive texts, keyboard navigation"},
+      "consistencia": {"es": "Mismo estilo y estructura en todas las pantallas", "en": "Same style and structure across all screens"}
+    }
+  },
+  "simulacionAvanzada": {
+    "pasoTiempo": {"es": "El simulador debe gestionar el paso del tiempo (turnos o tiempo real)", "en": "The simulator must manage the passage of time (turn-based or real time)"},
+    "evolucionMancha": {"es": "La mancha evoluciona en el mapa según condiciones y decisiones", "en": "The spill evolves on the map according to conditions and decisions"},
+    "incertidumbre": {"es": "UncertaintyGen introduce eventos inesperados (cambios meteorológicos, fallos de recursos, aparición de fauna, etc.)", "en": "UncertaintyGen introduces unexpected events (weather changes, resource failures, wildlife appearance, etc.)"},
+    "comunicaciones": {"es": "El usuario debe decidir cuándo y cómo comunicar a los organismos según el nivel de emergencia, con feedback sobre consecuencias", "en": "The user must decide when and how to communicate with agencies according to the emergency level, with feedback on consequences"},
+    "riesgosSobrevenidos": {"es": "Aparecen riesgos adicionales a lo largo del tiempo, que requieren nuevas decisiones", "en": "Additional risks appear over time, requiring new decisions"}
+  }
+}

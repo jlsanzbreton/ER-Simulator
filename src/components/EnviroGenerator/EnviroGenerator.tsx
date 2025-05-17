@@ -42,6 +42,7 @@ const EnviroGenerator: React.FC<EnviroGeneratorProps> = ({ onGenerated }) => {
   return (
     <div>
       <h1>Condiciones Ambientales del Simulacro</h1>
+      {/* MapCard en modo solo visual: no se pasa onCoordsChange (ver CopilotGuidelines.json, minimalismo y robustez) */}
       <MapCard coords={derrameCoords} />
       <h2>Coordenadas del derrame</h2>
       <p>

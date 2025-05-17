@@ -1,0 +1,226 @@
+{
+  "appInfo": {
+    "nombreApp": "ER Simulator",
+    "descripcionApp": "Aplicación para asistir en la planificación y ejecución de simulacros de respuesta a emergencias por derrames de hidrocarburos, basada en la normativa vigente.",
+    "fecha_actualizacion": "2025-05-16"
+  },
+  "referenciasOficiales": [
+    {
+      "titulo": "Ley 42/2007 del Patrimonio Natural y de la Biodiversidad",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-21490"
+    },
+    {
+      "titulo": "Plan Nacional de Contingencia (MITECO)",
+      "url": "https://www.miteco.gob.es/es/costas/temas/proteccion-medio-marino/contingencia-vertidos/default.aspx"
+    },
+    {
+      "titulo": "Plan Territorial de Emergencias de Andalucía (PTEAnd)",
+      "url": "https://www.juntadeandalucia.es/organismos/presidenciaadministracionpublicaeinterior/areas/proteccion-civil/planes-emergencia/paginas/pteand.html"
+    },
+    {
+      "titulo": "PECLA Andalucía",
+      "url": "https://www.juntadeandalucia.es/medioambiente/servtc5/pecla/pecla.htm"
+    },
+    {
+      "titulo": "Orden de 16 de abril de 2008",
+      "url": "https://www.juntadeandalucia.es/boja/2008/81/2"
+    }
+  ],
+  "zonasGrises": {
+    "definicion": "Áreas, actividades o interfaces entre equipos/sistemas que suelen ser ignoradas por ser repetitivas, conocidas, de otros departamentos o aparentemente poco peligrosas. Son focos habituales de siniestros y deben ser identificadas y gestionadas en el simulacro.",
+    "ejemplo": "Un punto de transferencia entre el equipo de operaciones y el de mantenimiento donde nadie asume la responsabilidad directa ante una anomalía."
+  },
+  "guiaSimulacro": {
+    "tituloGeneral": "Guía para la Preparación de un Simulacro de Derrame de Hidrocarburos en el Litoral Andaluz Conforme a la Normativa Vigente",
+    "introduccionGeneral": "Un simulacro de derrame de hidrocarburos es un ejercicio práctico fundamental para evaluar la eficacia de los planes de autoprotección y la coordinación entre los distintos actores implicados. Para que este simulacro sea realista y útil, debe diseñarse teniendo en cuenta el complejo marco normativo que regula estas emergencias en Andalucía. A continuación, se destila el conocimiento de la normativa aportada para guiar la preparación de dicho simulacro.",
+    "marcoNormativo": {
+      "tituloSeccion": "I. Marco Normativo de Referencia",
+      "introduccionSeccion": "Es crucial entender que la respuesta a un derrame de hidrocarburos se articula a través de una jerarquía de planes y normativas que deben estar coordinados.",
+      "niveles": [
+        {
+          "nombre": "Nivel Estatal",
+          "instrumentos": [
+            {
+              "nombre": "Ley 42/2007 del Patrimonio Natural y de la Biodiversidad",
+              "descripcion": "Establece la obligación de las Administraciones Públicas de diseñar medidas de conservación y protección frente a riesgos ambientales, como los vertidos. Un simulacro debe contemplar la protección de estos valores."
+            },
+            {
+              "nombre": "Planes Nacionales de Contingencia (MITECO)",
+              "descripcion": "Proporcionan directrices técnicas, protocolos de actuación y mecanismos de coordinación interadministrativa. El simulacro debe reflejar estos protocolos, especialmente en cuanto a la gestión del incidente y la comunicación con las autoridades estatales."
+            }
+          ]
+        },
+        {
+          "nombre": "Nivel Autonómico (Andalucía)",
+          "instrumentos": [
+            {
+              "nombre": "Plan Territorial de Emergencias de Andalucía (PTEAnd)",
+              "descripcion": "Es el marco general que integra todos los planes de emergencia, incluidos los de autoprotección. El simulacro debe considerar cómo se activa y se integra el plan de autoprotección específico dentro del PTEAnd."
+            },
+            {
+              "nombre": "Plan de Emergencia ante el Riesgo de Contaminación del Litoral en Andalucía (PECLA)",
+              "descripcion": "Este es el plan regional específico. Exige la elaboración de planes de actuación local y la coordinación con los planes de autoprotección de espacios protegidos y puertos. El simulacro debe poner a prueba esta coordinación y la aplicación de las directrices del PECLA."
+            },
+            {
+              "nombre": "Orden de 16 de abril de 2008",
+              "descripcion": "Regula el procedimiento para la elaboración, aprobación y registro de los planes de autoprotección. Aunque se refiere a la elaboración, sus principios sobre contenido y estructura son relevantes para el diseño del simulacro, ya que este debe probar lo establecido en el plan."
+            }
+          ]
+        },
+        {
+          "nombre": "Nivel Local y Sectorial",
+          "instrumentos": [
+            {
+              "nombre": "Planes de Actuación Local",
+              "descripcion": "Adaptan las directrices del PECLA a la realidad municipal. El simulacro, si se realiza en un ámbito municipal o afecta a un municipio concreto, debe testar la estructura organizativa y los procedimientos de actuación definidos en este plan."
+            },
+            {
+              "nombre": "Planes de Autoprotección (Puertos, Espacios Naturales Protegidos, Instalaciones)",
+              "descripcion": "Son el núcleo de la respuesta inmediata. El simulacro debe centrarse en validar la efectividad de estos planes específicos, incluyendo todos sus componentes."
+            }
+          ]
+        }
+      ]
+    },
+    "elementosClave": {
+      "tituloSeccion": "II. Elementos Clave a Incorporar en el Simulacro (Conocimiento Destilado de la Normativa)",
+      "introduccionSeccion": "Para que el simulacro sea exhaustivo y cumpla con las exigencias normativas, debe contemplar y poner a prueba los siguientes aspectos, derivados del contenido obligatorio de los planes de autoprotección y las directrices de los planes de ámbito superior:",
+      "aspectos": [
+        {
+          "titulo": "Activación del Plan y Estructura Organizativa",
+          "puntosClave": [
+            "Simular la detección del derrame y el proceso de notificación interna y externa (a autoridades locales, autonómicas y, si procede, estatales).",
+            {
+              "descripcionPrincipal": "Poner a prueba la activación de la estructura organizativa definida en el Plan de Autoprotección:",
+              "rolesOrganizativos": [
+                {
+                  "rol": "Director del Plan",
+                  "accion": "Debe asumir su rol, tomar decisiones y coordinar las acciones."
+                },
+                {
+                  "rol": "Comité Asesor (si aplica)",
+                  "accion": "Simular su convocatoria y función de asesoramiento."
+                },
+                {
+                  "rol": "Grupos de Intervención",
+                  "accion": "Movilizar (simuladamente) a los equipos encargados de las tareas de contención, limpieza, etc."
+                },
+                {
+                  "rol": "Grupos de Apoyo Técnico/Logístico",
+                  "accion": "Probar su capacidad para proveer información, equipos y suministros."
+                }
+              ]
+            },
+            "Verificar la integración del gestor del espacio (si es un espacio natural protegido o una instalación específica) en el dispositivo de emergencia."
+          ]
+        },
+        {
+          "titulo": "Análisis de Riesgos y Escenario del Simulacro",
+          "puntosClave": [
+            "El escenario del simulacro debe basarse en los riesgos específicos identificados para el espacio o instalación en su Plan de Autoprotección.",
+            "Debe ser un escenario plausible que permita probar las medidas de actuación específicas ante vertidos (ej. derrame en tierra, derrame en mar, tipo de hidrocarburo)."
+          ]
+        },
+        {
+          "titulo": "Criterios de Priorización y Herramientas de Apoyo",
+          "puntosClave": [
+            "Durante el simulacro, se deben aplicar los criterios de priorización establecidos (ej. protección de zonas sensibles, seguridad de personas).",
+            "Probar el uso de herramientas de apoyo para la intervención (ej. modelos de dispersión de vertidos, cartografía de zonas vulnerables)."
+          ]
+        },
+        {
+          "titulo": "Medios y Recursos",
+          "puntosClave": [
+            "Verificar la disponibilidad y estado de los medios y recursos catalogados en el plan (ej. barreras de contención, skimmers, equipos de protección individual).",
+            "Simular la movilización y despliegue de estos recursos.",
+            "Evaluar la adecuación de los recursos al escenario planteado."
+          ]
+        },
+        {
+          "titulo": "Coordinación Interadministrativa e Integración en Planes Superiores",
+          "puntosClave": [
+            {
+              "descripcionPrincipal": "Simular la comunicación y coordinación con los diferentes niveles administrativos según lo establecido en el PECLA y los Planes Nacionales:",
+              "detallesComunicacion": [
+                "Comunicación con el CECOP (Centro de Coordinación Operativa) correspondiente.",
+                "Solicitud de medios o activación de niveles superiores de respuesta si el simulacro escala."
+              ]
+            },
+            "Asegurar que las acciones del simulacro son coherentes con el PTEAnd y el PECLA."
+          ]
+        },
+        {
+          "titulo": "Medidas de Actuación Específicas",
+          "puntosClave": [
+            "Poner en práctica los protocolos de actuación definidos para el tipo de derrame simulado: contención, recogida, limpieza, gestión de residuos, protección de fauna, etc. El simulacro debe enfocarse no solo en la ejecución de estas tareas, sino también en la toma de decisiones para seleccionar y priorizar las medidas más adecuadas y eficientes en función de la evolución del escenario simulado y los recursos disponibles."
+          ]
+        },
+        {
+          "titulo": "Evaluación del Simulacro y Lecciones Aprendidas",
+          "puntosClave": [
+            "Aunque el simulacro prueba la operatividad, también sirve para evaluar la efectividad del plan y detectar necesidades de actualización.",
+            "Establecer un sistema de observación y evaluación del simulacro para identificar puntos fuertes y débiles."
+          ]
+        }
+      ]
+    },
+    "pasosPreparacion": {
+      "tituloSeccion": "III. Pasos para la Preparación del Simulacro",
+      "pasos": [
+        {
+          "numero": 1,
+          "descripcion": "Definir Objetivos Claros: ¿Qué se quiere probar específicamente con este simulacro? (ej. tiempo de respuesta, eficacia de la comunicación, despliegue de barreras)."
+        },
+        {
+          "numero": 2,
+          "descripcion": "Diseñar el Escenario: Basado en el análisis de riesgos del Plan de Autoprotección. Definir tipo de hidrocarburo, cantidad, localización, condiciones meteorológicas simuladas, etc. Asegurando que el escenario ponga a prueba las vulnerabilidades más significativas identificadas en dicho análisis de riesgos y los objetivos de protección prioritarios."
+        },
+        {
+          "numero": 3,
+          "descripcion": "Elaborar un Guion del Simulacro: Detallar la secuencia de eventos, las acciones esperadas de cada participante y los tiempos estimados."
+        },
+        {
+          "numero": 4,
+          "descripcion": "Designar Participantes y Observadores:",
+          "detallesParticipantesObservadores": {
+            "participantes": "Personal propio, empresas subcontratadas (si aplica), y potencialmente representantes de las administraciones (para probar la coordinación).",
+            "observadoresEvaluadores": "Personas con conocimiento de los planes y procedimientos que registrarán el desarrollo del simulacro y evaluarán su efectividad."
+          }
+        },
+        {
+          "numero": 5,
+          "descripcion": "Preparar los Recursos (Reales o Simulados): Asegurar que los equipos que se van a 'utilizar' estén disponibles. Para aquellos que no puedan desplegarse físicamente por razones de coste, seguridad o logística durante el simulacro, su disponibilidad y proceso de movilización pueden ser 'representados' mediante el uso de fotografías de los equipos, presentación de fichas técnicas, confirmaciones de disponibilidad por parte de proveedores (simuladas), o discusiones detalladas sobre su despliegue y tiempos estimados (mediante 'injects' o supuestos dentro del guion del simulacro)."
+        },
+        {
+          "numero": 6,
+          "descripcion": "Establecer Canales de Comunicación: Definir cómo se realizarán las comunicaciones durante el simulacro (radios, teléfonos dedicados, etc.), asegurándose de que no interfieran con emergencias reales. Indicar claramente que se trata de un simulacro en todas las comunicaciones."
+        },
+        {
+          "numero": 7,
+          "descripcion": "Seguridad: Garantizar la seguridad de todos los participantes durante el ejercicio."
+        },
+        {
+          "numero": 8,
+          "descripcion": "Reunión Previa (Briefing): Informar a todos los participantes sobre los objetivos, el escenario (sin desvelar todos los detalles si se quiere probar la capacidad de improvisación), roles y medidas de seguridad."
+        },
+        { "numero": 9, "descripcion": "Ejecución del Simulacro." },
+        {
+          "numero": 10,
+          "descripcion": "Reunión Posterior (Debriefing): Recoger las impresiones de los participantes y observadores."
+        },
+        {
+          "numero": 11,
+          "descripcion": "Elaborar un Informe de Evaluación: Documentar el desarrollo del simulacro, los puntos fuertes, las áreas de mejora detectadas y las acciones correctoras propuestas."
+        },
+        {
+          "numero": 12,
+          "descripcion": "Actualizar el Plan de Autoprotección: Incorporar las lecciones aprendidas y las acciones correctoras en el Plan y en los procedimientos operativos."
+        }
+      ]
+    },
+    "conclusionGuia": {
+      "tituloSeccion": "IV. Conclusión",
+      "texto": "La preparación de un simulacro de derrame de hidrocarburos, teniendo en cuenta la normativa estatal (Ley 42/2007, Planes Nacionales), autonómica (PTEAnd, PECLA, Orden 16/04/2008) y local/sectorial (Planes de Actuación Local, Planes de Autoprotección específicos), es un ejercicio complejo pero esencial. Asegura no solo el cumplimiento normativo, sino también una capacidad de respuesta real y efectiva ante una emergencia, minimizando el impacto sobre el medio ambiente y la seguridad de las personas. La clave está en la coordinación, la prueba exhaustiva de los propios planes y la mejora continua. Es fundamental recordar que el simulacro es una herramienta de aprendizaje; fomentar un entorno donde se puedan identificar errores y áreas de mejora sin temor a represalias es crucial para optimizar la preparación real ante una emergencia."
+    }
+  }
+}

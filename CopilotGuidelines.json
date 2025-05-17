@@ -1,0 +1,46 @@
+{
+  "ai_coding_instructions": {
+    "umbral_confianza_implementacion": 0.95,
+    "accion_si_bajo_umbral": "preguntar_usuario_para_clarificacion",
+    "requisitos_clarificacion": {
+      "detalles_a_clarificar": ["que_hacer", "como_hacerlo", "por_que_hacerlo"],
+      "estrategia": "seguir_preguntando_hasta_completa_claridad"
+    },
+    "prioridades_desarrollo_nucleo": [
+      "seguridad",
+      "funcionalidad",
+      "minimalismo_ui",
+      "experiencia_usuario"
+    ],
+    "prioridades_son_bases_fundamentales": true,
+    "ejemplos_buenas_practicas": [
+      "Priorizar la seguridad sobre la funcionalidad si un cambio afecta a varios componentes críticos (por ejemplo, contextos globales, lógica de autenticación, etc.)",
+      "Antes de refactorizar componentes básicos, planificar y documentar cada paso para minimizar errores y pérdida de tiempo.",
+      "Si una tarea requiere modificar más de 3 archivos o componentes a la vez, dividir el trabajo en subtareas y validar cada una antes de continuar.",
+      "Si surge una duda sobre el impacto de un cambio, preguntar al usuario y documentar la decisión antes de implementarla."
+    ],
+    "ejemplos_malas_practicas": [
+      "Hacer cambios masivos sin planificación ni comunicación previa.",
+      "Ignorar errores de seguridad o accesibilidad por priorizar velocidad de desarrollo.",
+      "Introducir nuevas dependencias sin evaluar su impacto en el proyecto.",
+      "No documentar decisiones importantes o cambios estructurales."
+    ],
+    "control_horas": {
+      "horas_estimadas_ia": 0,
+      "horas_estimadas_usuario": 0,
+      "horas_invertidas_ia": 0,
+      "horas_invertidas_usuario": 0,
+      "recomendacion_revision": "Si el porcentaje de tiempo dedicado a bugs supera el 80% respecto a mejoras, revisar la estrategia y priorizar estabilidad."
+    },
+    "trazabilidad_documentacion": {
+      "instrucciones": "Documentar cada cambio relevante: motivo, fecha, responsable, impacto esperado. Mantener un changelog o registro de decisiones clave.",
+      "ejemplo": {
+        "motivo": "Refactorización de contexto global para mejorar seguridad.",
+        "fecha": "2025-05-16",
+        "responsable": "GitHub Copilot / Usuario",
+        "impacto_esperado": "Mejorar la robustez y trazabilidad del estado global."
+      }
+    },
+    "resumen_instrucciones": "Implementar cambios solo si la confianza en la implementación es >= 95%. Si la confianza es menor, preguntar al usuario para clarificar qué se debe hacer, cómo se debe hacer y por qué se necesita ese cambio. Continuar preguntando hasta que los detalles estén completamente claros. Priorizar siempre y en todo momento la seguridad, la funcionalidad, el minimalismo de la interfaz de usuario y la experiencia del usuario como bases fundamentales del desarrollo."
+  }
+}

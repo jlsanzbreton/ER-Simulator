@@ -2,19 +2,22 @@
 import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import { DerrameCoords } from "../../types/simulacro";
+import { LeafletMouseEvent } from "leaflet"; // Importación explícita para tipado
 
-const centerZoom = [37.3876, -5.9924]; // Centro aproximado de Andalucía
+const centerZoom: [number, number] = [37.3876, -5.9924]; // Centro aproximado de Andalucía
 const zoom = 8;
 
+// Componente para seleccionar coordenadas en modo interactivo
 const ClickableMarker = ({
   onSelect,
 }: {
-  onSelect: (coords: DerrameCoords) => void;
+  onSelect?: (coords: DerrameCoords) => void;
 }) => {
   const [marker, setMarker] = useState<DerrameCoords | null>(null);
 
   useMapEvents({
-    click(e) {
+    click(e: LeafletMouseEvent) {
+      if (!onSelect) return;
       const { lat, lng } = e.latlng;
       setMarker({ lat, lng });
       onSelect({ lat, lng });
@@ -24,13 +27,20 @@ const ClickableMarker = ({
   return marker ? <Marker position={[marker.lat, marker.lng]} /> : null;
 };
 
+/**
+ * MapCard
+ * Muestra un mapa con marcador fijo o permite seleccionar coordenadas si onCoordsChange está presente.
+ * Trazabilidad: onCoordsChange es opcional para permitir modo solo visual (ver CopilotGuidelines.json, minimalismo y robustez).
+ */
 const MapCard: React.FC<{
   coords: DerrameCoords | null;
-  onCoordsChange: (coords: DerrameCoords) => void;
+  onCoordsChange?: (coords: DerrameCoords) => void;
 }> = ({ coords, onCoordsChange }) => {
   return (
     <div className="card card-max card-centered map-card-outer">
-      <h3>Haz clic en el mapa para seleccionar la ubicación del derrame</h3>
+      {onCoordsChange && (
+        <h3>Haz clic en el mapa para seleccionar la ubicación del derrame</h3>
+      )}
       <MapContainer
         center={coords ? [coords.lat, coords.lng] : centerZoom}
         zoom={zoom}
@@ -38,11 +48,14 @@ const MapCard: React.FC<{
         scrollWheelZoom={false}
       >
         <TileLayer
-          attribution="&copy; OpenStreetMap"
+          attribution="&copy; OpenStreetMap contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <ClickableMarker onSelect={onCoordsChange} />
-        {coords && <Marker position={[coords.lat, coords.lng]} />}
+        {onCoordsChange ? (
+          <ClickableMarker onSelect={onCoordsChange} />
+        ) : coords ? (
+          <Marker position={[coords.lat, coords.lng]} />
+        ) : null}
       </MapContainer>
       {coords && (
         <div className="mt-1">

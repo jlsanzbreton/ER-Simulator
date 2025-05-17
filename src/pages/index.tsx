@@ -20,8 +20,8 @@ export default function LandingSimulacro() {
     condiciones,
     setCondiciones,
     resetSimulacro,
-    derrameCoords,
     setDerrameCoords, // <-- asegúrate de tener esto
+    derrameCoords,
   } = useSimulacro();
 
   // Nuevos estados para el flujo
@@ -82,8 +82,10 @@ export default function LandingSimulacro() {
           <button
             className="btn-accent"
             onClick={() => {
-              setRol(role); // actualiza en contexto
-              setStep("enviro");
+              if (role) {
+                setRol(role.code); // Solo pasar el código del rol si existe
+                setStep("enviro");
+              }
             }}
             disabled={!role}
           >
@@ -101,13 +103,13 @@ export default function LandingSimulacro() {
           }}
         />
       )}
-
       {/* Paso 4: Simulación principal */}
-      {step === "sim" && rolSeleccionado && condiciones && (
+      {step === "sim" && rolSeleccionado && condiciones && derrameCoords && (
         <SimulacionMain
           rol={rolSeleccionado}
           condiciones={condiciones}
           onReset={handleReset}
+          derramaCoords={derrameCoords}
         />
       )}
     </div>

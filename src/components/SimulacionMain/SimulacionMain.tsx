@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { SimulacionMainProps } from "../../types/simulacro";
 import Fase from "./Fase";
 import Feedback from "./Feedback";
+import SimMap from "../UI/SimMap";
 
 // Si tienes los tipos FaseSimulacro definidos en types/simulacro, úsalo. Si no, usa string para MVP.
 const FASES = [
@@ -22,11 +23,24 @@ interface SimulacionMainExtendedProps extends SimulacionMainProps {
 const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
   rol,
   condiciones,
+  derramaCoords, // <-- Añadido: coordenadas del derrame
   onReset,
 }) => {
   const [faseActual, setFaseActual] = useState<FaseSimulacro>("deteccion");
   const [decisiones, setDecisiones] = useState<Record<string, string>>({});
   const [feedback, setFeedback] = useState<string | null>(null);
+
+  // Mostrar cabecera con rol y condiciones
+  const CabeceraSimulacion = () => (
+    <div className="card card-full flex-center flex-column mb-2">
+      <div className="role-title mb-1">
+        Rol activo: <span className="rol-activo">{rol}</span>
+      </div>
+      <div className="role-desc mb-1">
+        Condiciones ambientales: {condiciones.resumen}
+      </div>
+    </div>
+  );
 
   // Al pulsar decisión, actualiza decisiones y muestra feedback breve
   const handleDecision = (fase: string, decision: string, feedback: string) => {
@@ -46,13 +60,7 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
     return (
       <div className="card flex-center flex-column">
         <h2>¡Simulación completada!</h2>
-        <div className="mt-2 mb-2">
-          <b>Rol:{rol.displayName}</b>
-        </div>
-        <div className="card mb-2">
-          <b>Condiciones ambientales:</b>
-          <div>{condiciones.resumen}</div>
-        </div>
+        <CabeceraSimulacion />
         <ul className="list-unstyled mt-2 mb-2">
           {Object.entries(decisiones).map(([fase, dec]) => (
             <li key={fase}>
@@ -69,19 +77,27 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
 
   return (
     <div>
-      <h1>Simulación: {rol.displayName}</h1>
-      <div className="mt-2 mb-2">
-        <b>Condiciones ambientales:</b>
-        <div className="card mt-1 mb-1">{condiciones.resumen}</div>
-      </div>
-      <Fase
-        fase={faseActual}
-        rol={rol}
+      <SimMap
+        coords={derramaCoords}
         condiciones={condiciones}
-        onDecision={handleDecision}
-        isBlocked={!!feedback}
+        fase={faseActual}
       />
-      {feedback && <Feedback texto={feedback} />}
+      <CabeceraSimulacion />
+      <div className="card card-max card-centered mt-2">
+        <Fase
+          fase={faseActual}
+          rol={rol}
+          condiciones={condiciones}
+          onDecision={handleDecision}
+          isBlocked={!!feedback}
+        />
+        {feedback && <Feedback texto={feedback} />}
+      </div>
+      {/* Checklist de Cumplimiento (activar cuando esté listo y según permisos)
+      {permisosRol?.puedeMarcarChecks && (
+        <ChecklistCumplimiento ... />
+      )}
+      */}
     </div>
   );
 };

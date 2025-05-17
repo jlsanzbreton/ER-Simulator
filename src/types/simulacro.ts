@@ -71,6 +71,7 @@ export interface EnviroGeneratorProps {
 export interface SimulacionMainProps {
   rol: RolSimulacro;
   condiciones: SimulacroCondicionesAmbientales;
+  derramaCoords: { lat: number; lng: number }; // Añadido: coordenadas del derrame
 }
 // Coordenadas geográficas simples (latitud/longitud)
 export interface DerrameCoords {
@@ -97,7 +98,7 @@ export interface DerrameInfo {
   lecciones: string; // Lecciones aprendidas
   recomendaciones: string; // Recomendaciones para el futuro
   // Información adicional
-  [key: string]: any; // Permite agregar información adicional
+  [key: string]: unknown; // Permite agregar información adicional
 }
 // Información sobre el simulacro
 export interface SimulacroInfo {
@@ -107,9 +108,9 @@ export interface SimulacroInfo {
   condiciones: SimulacroCondicionesAmbientales; // Condiciones ambientales del simulacro
   derrames: DerrameInfo[]; // Lista de derrames simulados
   resultados: {
-    [key: string]: any; // Resultados del simulacro
+    [key: string]: unknown; // Resultados del simulacro
   };
   feedback: string; // Feedback del simulacro
   // Información adicional
-  [key: string]: any; // Permite agregar información adicional
+  [key: string]: unknown; // Permite agregar información adicional
 }

@@ -6,6 +6,7 @@ import {
   SimulacroState,
   DerrameCoords,
 } from "../types/simulacro";
+import { ROLES_PERMISOS, PermisosRol } from "../utils/rolesPermisos";
 
 interface SimulacroContextType extends SimulacroState {
   setRol: (rol: RolSimulacro) => void;
@@ -13,6 +14,7 @@ interface SimulacroContextType extends SimulacroState {
   resetSimulacro: () => void;
   derrameCoords: DerrameCoords | null;
   setDerrameCoords: (coords: DerrameCoords | null) => void;
+  permisosRol: PermisosRol | null;
 }
 
 const SimulacroContext = createContext<SimulacroContextType | undefined>(
@@ -29,11 +31,16 @@ export const SimulacroProvider = ({ children }: { children: ReactNode }) => {
   const [derrameCoords, setDerrameCoords] = useState<DerrameCoords | null>(
     null
   );
+  // Nuevo: permisos del rol seleccionado
+  const permisosRol = rolSeleccionado
+    ? ROLES_PERMISOS[rolSeleccionado] || null
+    : null;
 
   const resetSimulacro = () => {
     setRolSeleccionado(undefined);
     setCondiciones(undefined);
     setDerrameCoords(null); // <--- reinicia coordenadas
+    // No es necesario resetear permisosRol, se recalcula automáticamente
   };
 
   return (
@@ -46,6 +53,7 @@ export const SimulacroProvider = ({ children }: { children: ReactNode }) => {
         resetSimulacro,
         derrameCoords,
         setDerrameCoords,
+        permisosRol, // Nuevo: expone permisos actuales
       }}
     >
       {children}

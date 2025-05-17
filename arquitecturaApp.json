@@ -1,0 +1,53 @@
+{
+  "modulos": [
+    {
+      "nombre": "Entrenamiento",
+      "descripcion": "Modo para practicar roles, fases y toma de decisiones en simulacros virtuales. Permite al usuario experimentar distintos escenarios y recibir feedback inmediato.",
+      "color": "azul",
+      "icono": "graduation-cap",
+      "flujo": [
+        "Pantalla de selección de modo (Entrenamiento/Simulacro real)",
+        "Selección de rol operativo",
+        "Wizard de preparación (objetivos, escenario, guion, roles)",
+        "Simulación guiada por fases",
+        "Feedback y evaluación final"
+      ],
+      "restricciones": [
+        "El usuario mantiene el mismo rol durante toda la simulación"
+      ]
+    },
+    {
+      "nombre": "Simulacro real",
+      "descripcion": "Modo para gestionar y documentar un simulacro real, permitiendo a organizadores y observadores hacer seguimiento, tomar notas y generar informes colaborativos.",
+      "color": "naranja",
+      "icono": "warning-triangle",
+      "flujo": [
+        "Pantalla de selección de modo (Entrenamiento/Simulacro real)",
+        "Login/registro de usuario (acceso protegido)",
+        "Selección/creación de simulacro real",
+        "Asignación de roles operativos y de seguimiento (observadores, organizadores)",
+        "Panel de control del simulacro (seguimiento en tiempo real, anotaciones, checklist, chat privado)",
+        "Generación y envío de informe final"
+      ],
+      "restricciones": [
+        "El usuario mantiene el mismo rol durante todo el simulacro",
+        "Solo usuarios autorizados pueden acceder a este modo"
+      ]
+    }
+  ],
+  "baseDatosCompartida": true,
+  "diferenciacionVisual": {
+    "entrenamiento": {
+      "color": "azul",
+      "icono": "graduation-cap"
+    },
+    "simulacroReal": {
+      "color": "naranja",
+      "icono": "warning-triangle"
+    }
+  },
+  "plantillasSimulacro": {
+    "descripcion": "Permite crear y guardar plantillas de simulacros para reutilizarlas en el futuro, tanto en entrenamiento como en simulacro real.",
+    "estado": "Deseable"
+  }
+}
