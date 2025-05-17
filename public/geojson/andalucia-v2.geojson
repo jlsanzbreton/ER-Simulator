@@ -1,0 +1,164 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Costa andaluza",
+        "layer": "costa",
+        "color": "#2e7d32"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-6.0, 36.0],
+          [-5.8, 36.1],
+          [-5.6, 36.2],
+          [-5.3, 36.25],
+          [-5.0, 36.3]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Relieve costero",
+        "layer": "relieve",
+        "color": "#8bc34a",
+        "fillColor": "#c5e1a5",
+        "fillOpacity": 0.2
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-6.1, 35.95],
+            [-4.9, 35.95],
+            [-4.9, 36.4],
+            [-6.1, 36.4],
+            [-6.1, 35.95]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Is\u00f3bata 10m",
+        "layer": "batimetr\u00eda",
+        "color": "#0288d1",
+        "dash": "4,2"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-6.1, 35.98],
+          [-5.0, 36.15]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Is\u00f3bata 50m",
+        "layer": "batimetr\u00eda",
+        "color": "#01579b",
+        "dash": "4,2"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-6.1, 35.9],
+          [-5.0, 36.0]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Línea de costa andaluza",
+        "layer": "costa",
+        "color": "#2e7d32"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-7.4, 37.2],
+          [-7.0, 37.2],
+          [-6.6, 37.2],
+          [-6.4, 37.2],
+          [-6.1, 36.9],
+          [-6.3, 36.5]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Zona terrestre costera",
+        "layer": "relieve",
+        "color": "#8bc34a",
+        "fillColor": "#c5e1a5",
+        "fillOpacity": 0.2
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-7.5, 37.4],
+            [-5.8, 37.4],
+            [-5.8, 36.3],
+            [-7.5, 36.3],
+            [-7.5, 37.4]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Isóbata 10m",
+        "layer": "batimetría",
+        "color": "#0288d1",
+        "dash": "4,2"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-7.4, 37.1],
+          [-6.3, 36.8],
+          [-6.0, 36.6]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Isóbata 50m",
+        "layer": "batimetría",
+        "color": "#01579b",
+        "dash": "4,2"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-7.6, 36.9],
+          [-6.5, 36.5],
+          [-6.2, 36.3]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Puerto de Huelva",
+        "layer": "puerto",
+        "markerColor": "#f57c00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.95, 37.18]
+      }
+    }
+  ]
+}

@@ -8,6 +8,10 @@ import { useSimulacro } from "@/context/SimulacroContext";
 import Timeline from "./Timeline";
 import ChecklistCumplimiento from "./ChecklistCumplimiento";
 import { SimulacroCheck } from "@/types/checks";
+import { ROLES_INFO_MAP } from "@/utils/rolesData";
+import { FaWind, FaTemperatureHigh, FaClock } from "react-icons/fa";
+import Image from "next/image";
+import { SimulacroCondicionesAmbientales } from "@/types/simulacro";
 
 const SimMap = dynamic(() => import("@/components/UI/SimMap"), {
   ssr: false,
@@ -61,18 +65,6 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
   ]);
   const { permisosRol, rolSeleccionado } = useSimulacro();
 
-  // Mostrar cabecera con rol y condiciones
-  const CabeceraSimulacion = () => (
-    <div className="card card-full flex-center flex-column mb-2">
-      <div className="role-title mb-1">
-        Rol activo: <span className="rol-activo">{rol}</span>
-      </div>
-      <div className="role-desc mb-1">
-        Condiciones ambientales: {condiciones.resumen}
-      </div>
-    </div>
-  );
-
   // Al pulsar decisión, actualiza decisiones y muestra feedback breve
   const handleDecision = (fase: string, decision: string, feedback: string) => {
     setDecisiones((prev) => ({ ...prev, [fase]: decision }));
@@ -107,7 +99,11 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
     return (
       <div className="card flex-center flex-column">
         <h2>¡Simulación completada!</h2>
-        <CabeceraSimulacion />
+        <CabeceraSimulacion
+          rol={rol}
+          condiciones={condiciones}
+          fase={faseActual}
+        />
         <ul className="list-unstyled mt-2 mb-2">
           {Object.entries(decisiones).map(([fase, dec]) => (
             <li key={fase}>
@@ -125,12 +121,16 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
   return (
     <div>
       <Timeline fases={FASES as unknown as string[]} actual={faseActual} />
+      <CabeceraSimulacion
+        rol={rol}
+        condiciones={condiciones}
+        fase={faseActual}
+      />
       <SimMap
         coords={derramaCoords}
         condiciones={condiciones}
         fase={faseActual}
       />
-      <CabeceraSimulacion />
       <div className="card card-max card-centered mt-2">
         <Fase
           fase={faseActual}
@@ -150,6 +150,43 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
           faseActual={faseActual}
         />
       )}
+    </div>
+  );
+};
+
+// Refactorizo la cabecera de simulación para mostrar icono y nombre del rol, condiciones ambientales con iconos y la fase actual destacada. Todo accesible y visualmente atractivo.
+const CabeceraSimulacion: React.FC<{
+  rol: string;
+  condiciones: SimulacroCondicionesAmbientales;
+  fase: string;
+}> = ({ rol, condiciones }) => {
+  const rolInfo = ROLES_INFO_MAP[rol];
+  return (
+    <div className="cabecera-simulacion-marco cabecera-simulacion-dos">
+      <div className="cabecera-simulacion-tarjeta cabecera-rol">
+        {rolInfo?.icon && (
+          <Image
+            src={rolInfo.icon}
+            alt={rolInfo.displayName}
+            className="rol-icon-badge"
+            width={36}
+            height={36}
+          />
+        )}
+        <span className="rol-badge">{rolInfo?.displayName || rol}</span>
+      </div>
+      <div className="cabecera-simulacion-tarjeta cabecera-condiciones">
+        <span className="cond-badge">
+          <FaWind /> {condiciones.viento.direccion} {condiciones.viento.fuerza}{" "}
+          kt
+        </span>
+        <span className="cond-badge">
+          <FaTemperatureHigh /> {condiciones.temperatura}ºC
+        </span>
+        <span className="cond-badge">
+          <FaClock /> {condiciones.hora}
+        </span>
+      </div>
     </div>
   );
 };

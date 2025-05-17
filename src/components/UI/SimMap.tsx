@@ -7,6 +7,7 @@ import {
   Circle,
   Marker,
   GeoJSON,
+  useMap,
 } from "react-leaflet";
 import {
   DerrameCoords,
@@ -47,12 +48,15 @@ const desplazamientoPorDireccion: Record<string, [number, number]> = {
 };
 
 // Puedes sustituir esta URL por un GeoJSON local o más detallado si lo prefieres
-const ANDALUCIA_COAST_GEOJSON_URL = "/geojson/andalucia.geojson";
+const ANDALUCIA_COAST_GEOJSON_URL = "/geojson/andalucia-v2.geojson";
 
 const SimMap: React.FC<SimMapProps> = ({ coords, condiciones, fase }) => {
   const [mancha, setMancha] = useState<DerrameCoords>(coords);
   const [radio, setRadio] = useState(350); // metros
   const [coastData, setCoastData] = useState<FeatureCollection | null>(null);
+
+  // Historial de posiciones para rastro visual (opcional, MVP)
+  const [historial, setHistorial] = useState<DerrameCoords[]>([]);
 
   // Cargar la costa de Andalucía (GeoJSON) de forma segura
   useEffect(() => {
@@ -72,18 +76,67 @@ const SimMap: React.FC<SimMapProps> = ({ coords, condiciones, fase }) => {
     if (!condiciones) return;
     const dir = condiciones.viento.direccion;
     const [dLat, dLng] = desplazamientoPorDireccion[dir] || [0, 0];
-    setMancha((prev) => ({
-      lat: prev.lat + dLat * condiciones.viento.fuerza * 0.1,
-      lng: prev.lng + dLng * condiciones.viento.fuerza * 0.1,
-    }));
+    setMancha((prev) => {
+      const nueva = {
+        lat: prev.lat + dLat * condiciones.viento.fuerza * 0.1,
+        lng: prev.lng + dLng * condiciones.viento.fuerza * 0.1,
+      };
+      setHistorial((h) => [...h, nueva]);
+      return nueva;
+    });
     setRadio((r) => r + 50); // la mancha crece un poco cada fase
   }, [fase, condiciones]);
+
+  // Animación suave de la mancha (transición de posición y radio)
+  useEffect(() => {
+    let anim: number;
+    let frame = 0;
+    const steps = 20;
+    const start = mancha;
+    const end = historial.length > 0 ? historial[historial.length - 1] : mancha;
+    if (start.lat !== end.lat || start.lng !== end.lng) {
+      const animate = () => {
+        frame++;
+        const t = frame / steps;
+        setMancha({
+          lat: start.lat + (end.lat - start.lat) * t,
+          lng: start.lng + (end.lng - start.lng) * t,
+        });
+        if (frame < steps) anim = requestAnimationFrame(animate);
+      };
+      animate();
+    }
+    return () => cancelAnimationFrame(anim);
+  }, [historial, mancha]);
+
+  // Hook para centrar y ajustar el zoom dinámicamente
+  function DynamicMapView({
+    center,
+    radio,
+  }: {
+    center: [number, number];
+    radio: number;
+  }) {
+    const map = useMap();
+    useEffect(() => {
+      let zoom = 12.5; // zoom por defecto
+      if (radio > 1200) zoom = 11.5;
+      if (radio > 2500) zoom = 10.5;
+      if (radio > 4000) zoom = 9.5;
+      if (radio > 6000) zoom = 8.5;
+      if (radio > 8000) zoom = 7.5;
+      if (radio > 10000) zoom = 6.5;
+      if (radio > 12000) zoom = 5.5;
+      map.setView(center, zoom, { animate: true });
+    }, [center, radio, map]);
+    return null;
+  }
 
   return (
     <div className="card card-max card-centered map-card-outer mb-2">
       <MapContainer
         center={[mancha.lat, mancha.lng]}
-        zoom={8}
+        zoom={14}
         className="sim-map-container"
         scrollWheelZoom={false}
         dragging={false}
@@ -91,18 +144,53 @@ const SimMap: React.FC<SimMapProps> = ({ coords, condiciones, fase }) => {
         zoomControl={false}
         attributionControl={false}
       >
+        <DynamicMapView center={[mancha.lat, mancha.lng]} radio={radio} />
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {/* Capa de costa de Andalucía */}
         {coastData && (
           <GeoJSON
             data={coastData}
-            style={{
-              color: "#388e3c",
-              weight: 2,
-              fillOpacity: 0.1,
+            style={(feature) => {
+              const props = feature?.properties || {};
+              return {
+                color: props.color || "#388e3c",
+                fillColor: props.fillColor || undefined,
+                fillOpacity: props.fillOpacity || 0,
+                dashArray: props.dash || undefined,
+                weight: 2,
+              };
             }}
           />
         )}
+        {/* Mancha con gradiente visual (círculos concéntricos y resplandor animado) */}
+        <Circle
+          center={[mancha.lat, mancha.lng]}
+          radius={radio * 1.7}
+          pathOptions={{
+            color: undefined,
+            fillColor: "#0277bd",
+            fillOpacity: 0.07,
+          }}
+          className="mancha-glow"
+        />
+        <Circle
+          center={[mancha.lat, mancha.lng]}
+          radius={radio * 1.4}
+          pathOptions={{
+            color: undefined,
+            fillColor: "#0277bd",
+            fillOpacity: 0.13,
+          }}
+        />
+        <Circle
+          center={[mancha.lat, mancha.lng]}
+          radius={radio * 1.15}
+          pathOptions={{
+            color: undefined,
+            fillColor: "#0277bd",
+            fillOpacity: 0.18,
+          }}
+        />
         <Circle
           center={[mancha.lat, mancha.lng]}
           radius={radio}
@@ -112,11 +200,21 @@ const SimMap: React.FC<SimMapProps> = ({ coords, condiciones, fase }) => {
             fillOpacity: 0.35,
           }}
         />
+        {/* Rastro de la mancha (opcional, MVP) */}
+        {historial.slice(-5, -1).map((pos, i) => (
+          <Circle
+            key={i}
+            center={[pos.lat, pos.lng]}
+            radius={radio * 0.7}
+            pathOptions={{
+              color: undefined,
+              fillColor: "#81d4fa",
+              fillOpacity: 0.1,
+            }}
+          />
+        ))}
         {markerIcon && <Marker position={coords} icon={markerIcon} />}
       </MapContainer>
-      <div className="mt-1 role-desc text-center">
-        Mancha simulada (evoluciona según viento y fase)
-      </div>
     </div>
   );
 };
