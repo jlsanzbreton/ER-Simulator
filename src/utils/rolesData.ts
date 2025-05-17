@@ -98,6 +98,30 @@ export const ROLES_INFO: RolInfo[] = [
       "Responsable de la gestión de emergencias 112, activación de planes internos, comunicación con el capitán y autoridades, y coordinación en el lugar del incidente.",
     icon: "/icons/emergencias112.svg",
   },
+  {
+    id: 13,
+    code: "ORGANIZADOR",
+    displayName: "Organizador",
+    description:
+      "Responsable de la organización y supervisión del simulacro. Puede marcar checks de cumplimiento y gestionar roles.",
+    icon: "/icons/organizador.svg",
+  },
+  {
+    id: 14,
+    code: "OBSERVADOR",
+    displayName: "Observador",
+    description:
+      "Observador independiente encargado de registrar el desarrollo y cumplimiento del simulacro. Puede marcar checks de cumplimiento.",
+    icon: "/icons/observador.svg",
+  },
+  {
+    id: 15,
+    code: "LIDER_SIMULACRO",
+    displayName: "Líder del Simulacro",
+    description:
+      "Líder general del simulacro, con capacidad de supervisión, gestión de roles y marcado de checks.",
+    icon: "/icons/lider.svg",
+  },
 ];
 export const ROLES_INFO_MAP: Record<string, RolInfo> = ROLES_INFO.reduce(
   (acc, rol) => {

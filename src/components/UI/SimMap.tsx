@@ -1,12 +1,32 @@
 // src/components/UI/SimMap.tsx
 // Mapa persistente y dinámico para la simulación
 import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Circle, Marker, GeoJSON } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Circle,
+  Marker,
+  GeoJSON,
+} from "react-leaflet";
 import {
   DerrameCoords,
   SimulacroCondicionesAmbientales,
 } from "../../types/simulacro";
 import { FeatureCollection } from "geojson";
+import L from "leaflet";
+
+const markerIcon =
+  typeof window !== "undefined"
+    ? L.icon({
+        iconUrl: "/leaflet/marker-icon.png",
+        iconRetinaUrl: "/leaflet/marker-icon-2x.png",
+        shadowUrl: "/leaflet/marker-shadow.png",
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41],
+      })
+    : undefined;
 
 interface SimMapProps {
   coords: DerrameCoords;
@@ -27,19 +47,24 @@ const desplazamientoPorDireccion: Record<string, [number, number]> = {
 };
 
 // Puedes sustituir esta URL por un GeoJSON local o más detallado si lo prefieres
-const ANDALUCIA_COAST_GEOJSON_URL =
-  "https://raw.githubusercontent.com/datasets/geo-boundaries-world-110m/master/countries/ESP.geojson";
+const ANDALUCIA_COAST_GEOJSON_URL = "/geojson/andalucia.geojson";
 
 const SimMap: React.FC<SimMapProps> = ({ coords, condiciones, fase }) => {
   const [mancha, setMancha] = useState<DerrameCoords>(coords);
   const [radio, setRadio] = useState(350); // metros
   const [coastData, setCoastData] = useState<FeatureCollection | null>(null);
 
-  // Cargar la costa de Andalucía (GeoJSON)
+  // Cargar la costa de Andalucía (GeoJSON) de forma segura
   useEffect(() => {
     fetch(ANDALUCIA_COAST_GEOJSON_URL)
-      .then((res) => res.json())
-      .then((data) => setCoastData(data));
+      .then((res) => {
+        if (!res.ok) throw new Error("GeoJSON fetch failed");
+        return res.json();
+      })
+      .then((data) => setCoastData(data))
+      .catch((err) => {
+        console.error("Error loading GeoJSON:", err);
+      });
   }, []);
 
   // Simula el movimiento de la mancha al cambiar de fase
@@ -87,7 +112,7 @@ const SimMap: React.FC<SimMapProps> = ({ coords, condiciones, fase }) => {
             fillOpacity: 0.35,
           }}
         />
-        <Marker position={[coords.lat, coords.lng]} />
+        {markerIcon && <Marker position={coords} icon={markerIcon} />}
       </MapContainer>
       <div className="mt-1 role-desc text-center">
         Mancha simulada (evoluciona según viento y fase)

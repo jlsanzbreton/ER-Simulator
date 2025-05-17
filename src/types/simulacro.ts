@@ -12,7 +12,10 @@ export type RolSimulacro =
   | "GABINETE_TRADING"
   | "CAPITANIA"
   | "PECLA"
-  | "EMERGENCIAS_112";
+  | "EMERGENCIAS_112"
+  | "ORGANIZADOR"
+  | "OBSERVADOR"
+  | "LIDER_SIMULACRO";
 
 export interface RolInfo {
   id: number;

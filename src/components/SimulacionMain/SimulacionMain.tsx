@@ -3,7 +3,16 @@ import React, { useState } from "react";
 import { SimulacionMainProps } from "../../types/simulacro";
 import Fase from "./Fase";
 import Feedback from "./Feedback";
-import SimMap from "../UI/SimMap";
+import dynamic from "next/dynamic";
+import { useSimulacro } from "@/context/SimulacroContext";
+import Timeline from "./Timeline";
+import ChecklistCumplimiento from "./ChecklistCumplimiento";
+import { SimulacroCheck } from "@/types/checks";
+
+const SimMap = dynamic(() => import("@/components/UI/SimMap"), {
+  ssr: false,
+  loading: () => <p>Cargando mapa...</p>,
+});
 
 // Si tienes los tipos FaseSimulacro definidos en types/simulacro, úsalo. Si no, usa string para MVP.
 const FASES = [
@@ -23,12 +32,34 @@ interface SimulacionMainExtendedProps extends SimulacionMainProps {
 const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
   rol,
   condiciones,
-  derramaCoords, // <-- Añadido: coordenadas del derrame
+  derramaCoords,
   onReset,
 }) => {
   const [faseActual, setFaseActual] = useState<FaseSimulacro>("deteccion");
   const [decisiones, setDecisiones] = useState<Record<string, string>>({});
   const [feedback, setFeedback] = useState<string | null>(null);
+  // Estado para checks de cumplimiento (mock inicial)
+  const [checks, setChecks] = useState<SimulacroCheck[]>([
+    {
+      id: "c1",
+      descripcion: "Notificación a autoridades",
+      fase: "notificacion",
+      obligatorio: true,
+    },
+    {
+      id: "c2",
+      descripcion: "Activación de recursos",
+      fase: "gestion",
+      obligatorio: true,
+    },
+    {
+      id: "c3",
+      descripcion: "Comunicación interna",
+      fase: "comunicacion",
+      obligatorio: false,
+    },
+  ]);
+  const { permisosRol, rolSeleccionado } = useSimulacro();
 
   // Mostrar cabecera con rol y condiciones
   const CabeceraSimulacion = () => (
@@ -55,6 +86,22 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
     }, 1700);
   };
 
+  // Handler para marcar checks
+  const handleCheck = (id: string, observaciones?: string) => {
+    setChecks((prev) =>
+      prev.map((c) =>
+        c.id === id && !c.marcadoPor
+          ? {
+              ...c,
+              marcadoPor: rolSeleccionado || rol,
+              horaMarcado: new Date().toISOString(),
+              observaciones,
+            }
+          : c
+      )
+    );
+  };
+
   // Mostrar resumen y botón de reinicio cuando termina la simulación
   if (faseActual === "conclusion") {
     return (
@@ -77,6 +124,7 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
 
   return (
     <div>
+      <Timeline fases={FASES as unknown as string[]} actual={faseActual} />
       <SimMap
         coords={derramaCoords}
         condiciones={condiciones}
@@ -93,11 +141,15 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
         />
         {feedback && <Feedback texto={feedback} />}
       </div>
-      {/* Checklist de Cumplimiento (activar cuando esté listo y según permisos)
+      {/* Checklist de Cumplimiento visible solo si el rol tiene permiso */}
       {permisosRol?.puedeMarcarChecks && (
-        <ChecklistCumplimiento ... />
+        <ChecklistCumplimiento
+          checks={checks}
+          onCheck={handleCheck}
+          usuario={rolSeleccionado || rol}
+          faseActual={faseActual}
+        />
       )}
-      */}
     </div>
   );
 };

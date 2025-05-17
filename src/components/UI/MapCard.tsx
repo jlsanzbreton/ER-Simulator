@@ -3,6 +3,18 @@ import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import { DerrameCoords } from "../../types/simulacro";
 import { LeafletMouseEvent } from "leaflet"; // Importación explícita para tipado
+import L from "leaflet";
+
+// Icono personalizado para evitar errores de 404
+const markerIcon = L.icon({
+  iconUrl: "/leaflet/marker-icon.png",
+  iconRetinaUrl: "/leaflet/marker-icon-2x.png",
+  shadowUrl: "/leaflet/marker-shadow.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+});
 
 const centerZoom: [number, number] = [37.3876, -5.9924]; // Centro aproximado de Andalucía
 const zoom = 8;
@@ -24,7 +36,9 @@ const ClickableMarker = ({
     },
   });
 
-  return marker ? <Marker position={[marker.lat, marker.lng]} /> : null;
+  return marker ? (
+    <Marker position={[marker.lat, marker.lng]} icon={markerIcon} />
+  ) : null;
 };
 
 /**
@@ -54,7 +68,7 @@ const MapCard: React.FC<{
         {onCoordsChange ? (
           <ClickableMarker onSelect={onCoordsChange} />
         ) : coords ? (
-          <Marker position={[coords.lat, coords.lng]} />
+          <Marker position={[coords.lat, coords.lng]} icon={markerIcon} />
         ) : null}
       </MapContainer>
       {coords && (
