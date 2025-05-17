@@ -6,12 +6,33 @@ import SimulacionMain from "../components/SimulacionMain/SimulacionMain";
 import { ROLES_INFO } from "../utils/rolesData";
 import Dashboard from "../components/Dashboard/Dashboard";
 import RoleDropdown from "../components/RoleSelector/RoleDropdown";
-import { DerrameCoords, RolInfo } from "../types/simulacro";
+import { DerrameCoords, RolInfo, RolSimulacro } from "../types/simulacro";
+import { ModoSimulador } from "../types/dualidad";
 
 // Dynamic import para MapCard (Leaflet, evitar SSR)
 const MapCard = dynamic(() => import("../components/UI/MapCard"), {
   ssr: false,
 });
+
+const ROLES_ENTRENAMIENTO: RolSimulacro[] = [
+  "CAPITAN_BARCO_A",
+  "CAPITAN_BARCO_B",
+  "ARMADOR_A",
+  "ARMADOR_B",
+  "FLETADOR_A",
+  "FLETADOR_B",
+  "TERMINAL_MOEVE",
+  "GABINETE_FABRICA",
+  "GABINETE_TRADING",
+  "CAPITANIA",
+  "PECLA",
+  "EMERGENCIAS_112",
+];
+const ROLES_SIMULACRO: RolSimulacro[] = [
+  "ORGANIZADOR",
+  "OBSERVADOR",
+  "LIDER_SIMULACRO",
+];
 
 export default function LandingSimulacro() {
   const {
@@ -20,22 +41,23 @@ export default function LandingSimulacro() {
     condiciones,
     setCondiciones,
     resetSimulacro,
-    setDerrameCoords, // <-- asegúrate de tener esto
+    setDerrameCoords,
     derrameCoords,
   } = useSimulacro();
 
-  // Nuevos estados para el flujo
   const [showDashboard, setShowDashboard] = useState(true);
   const [derrCoords, setDerrCoords] = useState<DerrameCoords | null>(null);
   const [role, setRole] = useState<RolInfo | null>(null);
   const [step, setStep] = useState<"map" | "role" | "enviro" | "sim">("map");
+  const [modo, setModo] = useState<ModoSimulador | null>(null);
 
-  const handleStart = () => {
+  const handleStart = (modoElegido: ModoSimulador) => {
     setShowDashboard(false);
     resetSimulacro();
     setDerrCoords(null);
     setRole(null);
     setStep("map");
+    setModo(modoElegido);
   };
 
   const handleReset = () => {
@@ -44,12 +66,19 @@ export default function LandingSimulacro() {
     setDerrCoords(null);
     setRole(null);
     setStep("map");
+    setModo(null);
   };
 
   // Renderiza Dashboard si corresponde
   if (showDashboard) {
     return <Dashboard onStart={handleStart} />;
   }
+
+  // Filtrado de roles según modo
+  const rolesFiltrados =
+    modo === "entrenamiento"
+      ? ROLES_INFO.filter((r) => ROLES_ENTRENAMIENTO.includes(r.code))
+      : ROLES_INFO.filter((r) => ROLES_SIMULACRO.includes(r.code));
 
   // Flujo paso a paso
   return (
@@ -75,7 +104,7 @@ export default function LandingSimulacro() {
       {step === "role" && (
         <div>
           <RoleDropdown
-            roles={ROLES_INFO}
+            roles={rolesFiltrados}
             selectedRole={role}
             onChange={setRole}
           />
