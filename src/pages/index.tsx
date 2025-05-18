@@ -133,14 +133,19 @@ export default function LandingSimulacro() {
         />
       )}
       {/* Paso 4: Simulación principal */}
-      {step === "sim" && rolSeleccionado && condiciones && derrameCoords && (
-        <SimulacionMain
-          rol={rolSeleccionado}
-          condiciones={condiciones}
-          onReset={handleReset}
-          derramaCoords={derrameCoords}
-        />
-      )}
+      {step === "sim" &&
+        rolSeleccionado &&
+        condiciones &&
+        derrameCoords &&
+        modo && (
+          <SimulacionMain
+            rol={rolSeleccionado}
+            condiciones={condiciones}
+            onReset={handleReset}
+            derramaCoords={derrameCoords}
+            modo={modo}
+          />
+        )}
     </div>
   );
 }

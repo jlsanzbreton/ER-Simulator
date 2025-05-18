@@ -13,6 +13,8 @@ import type { ReactNode } from "react";
 interface TimelineProps {
   fases: string[];
   actual: string;
+  modo?: "entrenamiento" | "simulacro";
+  onFaseClick?: (fase: string) => void;
 }
 
 const FASES_ICONOS: Record<string, ReactNode> = {
@@ -24,7 +26,12 @@ const FASES_ICONOS: Record<string, ReactNode> = {
   conclusion: <FaFlagCheckered />,
 };
 
-const Timeline: React.FC<TimelineProps> = ({ fases, actual }) => (
+const Timeline: React.FC<TimelineProps> = ({
+  fases,
+  actual,
+  modo,
+  onFaseClick,
+}) => (
   <nav className="timeline-bar mb-2" aria-label="Fases del simulacro">
     <ol className="timeline-list">
       {fases.map((fase, idx) => {
@@ -34,13 +41,33 @@ const Timeline: React.FC<TimelineProps> = ({ fases, actual }) => (
             : idx < fases.indexOf(actual)
             ? "completada"
             : "pendiente";
+        const esSimulacro = modo === "simulacro";
         return (
           <li
             key={fase}
             className={`timeline-step timeline-${estado}`}
             aria-current={fase === actual ? "step" : undefined}
           >
-            <span className={`timeline-icon-bg timeline-${estado}`}>
+            <span
+              className={`timeline-icon-bg timeline-${estado} ${
+                esSimulacro ? "timeline-clickable" : ""
+              }`}
+              {...(esSimulacro
+                ? {
+                    tabIndex: 0,
+                    role: "button",
+                    onClick: () => {
+                      if (onFaseClick) onFaseClick(fase);
+                    },
+                    onKeyDown: (e: React.KeyboardEvent) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        if (onFaseClick) onFaseClick(fase);
+                      }
+                    },
+                    "aria-label": `Abrir checklist de la fase ${fase}`,
+                  }
+                : {})}
+            >
               {FASES_ICONOS[fase] || <FaFlagCheckered />}
             </span>
             <span className={`timeline-label timeline-${estado}`}>

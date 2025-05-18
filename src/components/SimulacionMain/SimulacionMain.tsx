@@ -31,6 +31,7 @@ type FaseSimulacro = (typeof FASES)[number];
 
 interface SimulacionMainExtendedProps extends SimulacionMainProps {
   onReset: () => void;
+  modo: "entrenamiento" | "simulacro";
 }
 
 const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
@@ -38,10 +39,14 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
   condiciones,
   derramaCoords,
   onReset,
+  modo,
 }) => {
   const [faseActual, setFaseActual] = useState<FaseSimulacro>("deteccion");
   const [decisiones, setDecisiones] = useState<Record<string, string>>({});
   const [feedback, setFeedback] = useState<string | null>(null);
+  const [faseChecklistAbierta, setFaseChecklistAbierta] = useState<
+    string | null
+  >(null);
   // Estado para checks de cumplimiento (mock inicial)
   const [checks, setChecks] = useState<SimulacroCheck[]>([
     {
@@ -120,36 +125,73 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
 
   return (
     <div>
-      <Timeline fases={FASES as unknown as string[]} actual={faseActual} />
-      <CabeceraSimulacion
-        rol={rol}
-        condiciones={condiciones}
-        fase={faseActual}
+      <Timeline
+        fases={FASES as unknown as string[]}
+        actual={faseActual}
+        modo={modo}
+        onFaseClick={
+          modo === "simulacro"
+            ? (fase) => setFaseChecklistAbierta(fase)
+            : undefined
+        }
       />
       <SimMap
         coords={derramaCoords}
         condiciones={condiciones}
         fase={faseActual}
       />
-      <div className="card card-max card-centered mt-2">
-        <Fase
-          fase={faseActual}
-          rol={rol}
-          condiciones={condiciones}
-          onDecision={handleDecision}
-          isBlocked={!!feedback}
-        />
-        {feedback && <Feedback texto={feedback} />}
-      </div>
-      {/* Checklist de Cumplimiento visible solo si el rol tiene permiso */}
-      {permisosRol?.puedeMarcarChecks && (
-        <ChecklistCumplimiento
-          checks={checks}
-          onCheck={handleCheck}
-          usuario={rolSeleccionado || rol}
-          faseActual={faseActual}
-        />
+      <CabeceraSimulacion
+        rol={rol}
+        condiciones={condiciones}
+        fase={faseActual}
+      />
+      {/* Modal/card checklist de fase en modo simulacro */}
+      {modo === "simulacro" && faseChecklistAbierta && (
+        <div
+          className="modal-checklist-fase"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Checklist de la fase ${faseChecklistAbierta}`}
+          tabIndex={-1}
+        >
+          <ChecklistCumplimiento
+            checks={checks}
+            onCheck={handleCheck}
+            usuario={rolSeleccionado || rol}
+            faseActual={faseChecklistAbierta}
+          />
+          <button
+            className="btn-mr mt-2"
+            onClick={() => setFaseChecklistAbierta(null)}
+            autoFocus
+          >
+            Cerrar
+          </button>
+        </div>
       )}
+      {/* Solo mostrar la tarjeta de preguntas/decisiones en modo entrenamiento */}
+      {modo === "entrenamiento" && (
+        <div className="card card-max card-centered mt-2">
+          <Fase
+            fase={faseActual}
+            rol={rol}
+            condiciones={condiciones}
+            onDecision={handleDecision}
+            isBlocked={!!feedback}
+          />
+          {feedback && <Feedback texto={feedback} />}
+        </div>
+      )}
+      {/* Checklist de Cumplimiento visible solo si el rol tiene permiso y no hay modal abierto */}
+      {permisosRol?.puedeMarcarChecks &&
+        (!faseChecklistAbierta || modo !== "simulacro") && (
+          <ChecklistCumplimiento
+            checks={checks}
+            onCheck={handleCheck}
+            usuario={rolSeleccionado || rol}
+            faseActual={faseActual}
+          />
+        )}
     </div>
   );
 };
