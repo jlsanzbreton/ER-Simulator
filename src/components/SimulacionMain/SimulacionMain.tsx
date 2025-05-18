@@ -44,9 +44,6 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
   const [faseActual, setFaseActual] = useState<FaseSimulacro>("deteccion");
   const [decisiones, setDecisiones] = useState<Record<string, string>>({});
   const [feedback, setFeedback] = useState<string | null>(null);
-  const [faseChecklistAbierta, setFaseChecklistAbierta] = useState<
-    string | null
-  >(null);
   // Estado para checks de cumplimiento (mock inicial)
   const [checks, setChecks] = useState<SimulacroCheck[]>([
     {
@@ -131,7 +128,7 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
         modo={modo}
         onFaseClick={
           modo === "simulacro"
-            ? (fase) => setFaseChecklistAbierta(fase)
+            ? (fase) => setFaseActual(fase as FaseSimulacro)
             : undefined
         }
       />
@@ -145,29 +142,14 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
         condiciones={condiciones}
         fase={faseActual}
       />
-      {/* Modal/card checklist de fase en modo simulacro */}
-      {modo === "simulacro" && faseChecklistAbierta && (
-        <div
-          className="modal-checklist-fase"
-          role="dialog"
-          aria-modal="true"
-          aria-label={`Checklist de la fase ${faseChecklistAbierta}`}
-          tabIndex={-1}
-        >
-          <ChecklistCumplimiento
-            checks={checks}
-            onCheck={handleCheck}
-            usuario={rolSeleccionado || rol}
-            faseActual={faseChecklistAbierta}
-          />
-          <button
-            className="btn-mr mt-2"
-            onClick={() => setFaseChecklistAbierta(null)}
-            autoFocus
-          >
-            Cerrar
-          </button>
-        </div>
+      {/* Checklist de Cumplimiento SIEMPRE visible para la fase seleccionada */}
+      {permisosRol?.puedeMarcarChecks && (
+        <ChecklistCumplimiento
+          checks={checks}
+          onCheck={handleCheck}
+          usuario={rolSeleccionado || rol}
+          faseActual={faseActual}
+        />
       )}
       {/* Solo mostrar la tarjeta de preguntas/decisiones en modo entrenamiento */}
       {modo === "entrenamiento" && (
@@ -182,16 +164,6 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
           {feedback && <Feedback texto={feedback} />}
         </div>
       )}
-      {/* Checklist de Cumplimiento visible solo si el rol tiene permiso y no hay modal abierto */}
-      {permisosRol?.puedeMarcarChecks &&
-        (!faseChecklistAbierta || modo !== "simulacro") && (
-          <ChecklistCumplimiento
-            checks={checks}
-            onCheck={handleCheck}
-            usuario={rolSeleccionado || rol}
-            faseActual={faseActual}
-          />
-        )}
     </div>
   );
 };

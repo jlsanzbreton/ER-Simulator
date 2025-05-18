@@ -6,8 +6,8 @@ import {
   TileLayer,
   Circle,
   Marker,
-  GeoJSON,
   useMap,
+  Polyline,
 } from "react-leaflet";
 import {
   DerrameCoords,
@@ -15,6 +15,7 @@ import {
 } from "../../types/simulacro";
 import { FeatureCollection } from "geojson";
 import L from "leaflet";
+import { getCoastlineCoords } from "@/utils/extractCoastline";
 
 const markerIcon =
   typeof window !== "undefined"
@@ -50,6 +51,8 @@ const desplazamientoPorDireccion: Record<string, [number, number]> = {
 // Puedes sustituir esta URL por un GeoJSON local o más detallado si lo prefieres
 const ANDALUCIA_COAST_GEOJSON_URL = "/geojson/andalucia-v2.geojson";
 
+// Cargar el GeoJSON de la costa de Andalucía de forma asíncrona y segura
+// y mostrar la línea de costa extraída como Polyline roja para validación
 const SimMap: React.FC<SimMapProps> = ({ coords, condiciones, fase }) => {
   const [mancha, setMancha] = useState<DerrameCoords>(coords);
   const [radio, setRadio] = useState(350); // metros
@@ -132,6 +135,9 @@ const SimMap: React.FC<SimMapProps> = ({ coords, condiciones, fase }) => {
     return null;
   }
 
+  // Visualización de la línea de costa extraída para validación
+  const coastlineCoords = coastData ? getCoastlineCoords(coastData) : null;
+
   return (
     <div className="card card-max card-centered map-card-outer mb-2">
       <MapContainer
@@ -146,20 +152,11 @@ const SimMap: React.FC<SimMapProps> = ({ coords, condiciones, fase }) => {
       >
         <DynamicMapView center={[mancha.lat, mancha.lng]} radio={radio} />
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        {/* Capa de costa de Andalucía */}
-        {coastData && (
-          <GeoJSON
-            data={coastData}
-            style={(feature) => {
-              const props = feature?.properties || {};
-              return {
-                color: props.color || "#388e3c",
-                fillColor: props.fillColor || undefined,
-                fillOpacity: props.fillOpacity || 0,
-                dashArray: props.dash || undefined,
-                weight: 2,
-              };
-            }}
+        {/* LÍNEA DE COSTA EXTRAÍDA (VALIDACIÓN) */}
+        {coastlineCoords && coastlineCoords.length > 1 && (
+          <Polyline
+            positions={coastlineCoords.map(([lng, lat]) => [lat, lng])}
+            pathOptions={{ color: "#e53935", weight: 2, opacity: 0.5 }}
           />
         )}
         {/* Mancha con gradiente visual (círculos concéntricos y resplandor animado) */}
