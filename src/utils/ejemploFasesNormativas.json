@@ -1,0 +1,39 @@
+[
+  {
+    "id": "deteccion",
+    "nombre": "Notificación y Evaluación Inicial",
+    "orden": 2,
+    "checks": [
+      {
+        "id": "check-1",
+        "descripcion": "Notificar inmediatamente el incidente a Capitanía Marítima, Salvamento Marítimo y 112.",
+        "obligatorio": true,
+        "cumplido": false,
+        "rol_responsable": ["coordinador", "capitania", "emergencias112"],
+        "evidencia": "",
+        "timestamp": null
+      },
+      {
+        "id": "check-2",
+        "descripcion": "Evaluar la magnitud del vertido y determinar el nivel de activación según SNR.",
+        "obligatorio": true,
+        "cumplido": false,
+        "rol_responsable": ["coordinador", "observador"],
+        "evidencia": "",
+        "timestamp": null
+      }
+    ],
+    "anotaciones": [
+      {
+        "id": "nota-1",
+        "autor": "observador",
+        "texto": "La notificación a 112 se realizó con 3 minutos de retraso.",
+        "tipo": "incidencia",
+        "timestamp": "2025-05-19T09:15:00Z"
+      }
+    ],
+    "estado": "en curso",
+    "fecha_inicio": "2025-05-19T09:10:00Z",
+    "fecha_fin": null
+  }
+]

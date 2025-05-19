@@ -1088,3 +1088,102 @@ textarea:focus {
 .timeline-clickable:focus {
   box-shadow: 0 0 0 3px #0277bd;
 }
+
+.timeline-icon-bg[data-timeline-color="#43a047"] {
+  background: #43a047 !important;
+  color: #fff !important;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+.timeline-step .timeline-icon-bg[data-timeline-color="#43a047"] svg {
+  color: #fff !important;
+  /* El icono sobre fondo verde, blanco para contraste */
+}
+.timeline-step .timeline-icon-bg svg {
+  color: inherit;
+}
+
+/* Checklist Styles */
+.checklist-item[data-check-cumplido="true"] {
+  background: #f5f5f5;
+  color: #888;
+}
+.checklist-item-done .btn-accent,
+.checklist-item-done textarea {
+  background: #e0e0e0 !important;
+  color: #888 !important;
+  border-color: #bdbdbd !important;
+  cursor: not-allowed;
+}
+.checklist-item-done .btn-accent {
+  opacity: 0.7;
+}
+.checklist-item-oblig .check-obligatorio {
+  color: #d32f2f;
+  font-weight: bold;
+  margin-left: 0.5em;
+}
+.check-marcado {
+  color: #388e3c;
+  font-weight: 500;
+}
+.check-timestamp {
+  font-size: 0.9em;
+  color: #888;
+  margin-left: 0.5em;
+}
+.check-obs {
+  font-size: 0.95em;
+  color: #1976d2;
+  margin-left: 1em;
+}
+.check-obs-vermas {
+  color: #1976d2;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 0.5em;
+  font-size: 0.95em;
+}
+.check-obs-vacio {
+  color: #bdbdbd;
+  font-style: italic;
+}
+/* Toggle edición de evidencia */
+.check-edit-toggle {
+  margin-left: 1em;
+  font-size: 0.9em;
+  color: #1976d2;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.checklist-item-editing {
+  background: #fff !important;
+  color: #222 !important;
+}
+.checklist-item-editing textarea.check-editing {
+  background: #fff !important;
+  color: #222 !important;
+  border-color: #1976d2 !important;
+  cursor: text !important;
+}
+.checklist-item-editing .btn-accent {
+  background: #1976d2 !important;
+  color: #fff !important;
+  border-color: #1976d2 !important;
+  opacity: 1 !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+.checklist-item-editing .btn-accent:disabled {
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+}
+.checklist-item-editing .btn-accent.ml-2 {
+  background: #bdbdbd !important;
+  color: #222 !important;
+  border-color: #bdbdbd !important;
+}
+.check-edit-icon {
+  margin-right: 4px;
+  vertical-align: middle;
+}

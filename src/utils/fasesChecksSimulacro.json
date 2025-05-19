@@ -1,0 +1,244 @@
+[
+  {
+    "id": "deteccion",
+    "nombre": "Detección e Identificación",
+    "orden": 1,
+    "icon": "notification",
+    "checks": [
+      {
+        "id": "check-1",
+        "descripcion": "Detectar el incidente y confirmar la presencia de hidrocarburos o contaminantes.",
+        "obligatorio": true,
+        "cumplido": false,
+        "rol_responsable": ["observador", "operador", "personalInstalacion"],
+        "evidencia": "",
+        "timestamp": null
+      },
+      {
+        "id": "check-2",
+        "descripcion": "Identificar la fuente y el tipo de contaminante (por ejemplo, tipo de hidrocarburo).",
+        "obligatorio": true,
+        "cumplido": false,
+        "rol_responsable": ["observador", "operador"],
+        "evidencia": "",
+        "timestamp": null
+      },
+      {
+        "id": "check-3",
+        "descripcion": "Informar inmediatamente a la autoridad competente y al centro de control interno.",
+        "obligatorio": true,
+        "cumplido": false,
+        "rol_responsable": ["operador", "jefeTurno", "coordinador"],
+        "evidencia": "",
+        "timestamp": null
+      }
+    ],
+    "anotaciones": [],
+    "estado": "pendiente",
+    "fecha_inicio": null,
+    "fecha_fin": null
+  },
+  {
+    "id": "activacion",
+    "nombre": "Activación de Planes y Notificación",
+    "orden": 2,
+    "icon": "containment",
+    "checks": [
+      {
+        "id": "check-4",
+        "descripcion": "Activar el Plan Interior Marítimo (PIM) o el plan local/empresarial correspondiente.",
+        "obligatorio": true,
+        "cumplido": false,
+        "rol_responsable": [
+          "coordinador",
+          "autoridadPortuaria",
+          "responsableInstalacion"
+        ],
+        "evidencia": "",
+        "timestamp": null
+      },
+      {
+        "id": "check-5",
+        "descripcion": "Evaluar el nivel de emergencia según la magnitud del suceso y comunicarlo a todos los organismos implicados (Capitanía Marítima, 112, Autoridad Portuaria, etc.).",
+        "obligatorio": true,
+        "cumplido": false,
+        "rol_responsable": ["coordinador", "emergencias112", "capitania"],
+        "evidencia": "",
+        "timestamp": null
+      },
+      {
+        "id": "check-6",
+        "descripcion": "Activar el Plan Marítimo Nacional (PMN) si el vertido supera la capacidad local, y/o el Plan Ribera si afecta la costa.",
+        "obligatorio": false,
+        "cumplido": false,
+        "rol_responsable": ["capitania", "coordinador"],
+        "evidencia": "",
+        "timestamp": null
+      },
+      {
+        "id": "check-7",
+        "descripcion": "Mantener comunicación fluida y coordinada entre los responsables de cada plan y el Centro de Coordinación de Salvamento.",
+        "obligatorio": true,
+        "cumplido": false,
+        "rol_responsable": ["coordinador", "capitania", "centroSalvamento"],
+        "evidencia": "",
+        "timestamp": null
+      }
+    ],
+    "anotaciones": [],
+    "estado": "pendiente",
+    "fecha_inicio": null,
+    "fecha_fin": null
+  },
+  {
+    "id": "contencion",
+    "nombre": "Respuesta y Contención",
+    "orden": 3,
+    "icon": "recovery",
+    "checks": [
+      {
+        "id": "check-8",
+        "descripcion": "Desplegar barreras de contención y equipos de recogida en el punto del derrame.",
+        "obligatorio": true,
+        "cumplido": false,
+        "rol_responsable": [
+          "autoridadPortuaria",
+          "capitania",
+          "equiposIntervencion"
+        ],
+        "evidencia": "",
+        "timestamp": null
+      },
+      {
+        "id": "check-9",
+        "descripcion": "Aplicar dispersantes químicos si es apropiado y autorizado.",
+        "obligatorio": false,
+        "cumplido": false,
+        "rol_responsable": ["coordinador", "responsableMedioAmbiente"],
+        "evidencia": "",
+        "timestamp": null
+      },
+      {
+        "id": "check-10",
+        "descripcion": "Coordinar con la Armada, Salvamento Marítimo y otros organismos para apoyos especiales.",
+        "obligatorio": false,
+        "cumplido": false,
+        "rol_responsable": ["coordinador", "capitania"],
+        "evidencia": "",
+        "timestamp": null
+      },
+      {
+        "id": "check-11",
+        "descripcion": "Mantener comunicación constante entre todos los centros de mando y los equipos en campo.",
+        "obligatorio": true,
+        "cumplido": false,
+        "rol_responsable": [
+          "coordinador",
+          "jefeIntervencion",
+          "centroSalvamento"
+        ],
+        "evidencia": "",
+        "timestamp": null
+      }
+    ],
+    "anotaciones": [],
+    "estado": "pendiente",
+    "fecha_inicio": null,
+    "fecha_fin": null
+  },
+  {
+    "id": "recuperacion",
+    "nombre": "Recuperación y Limpieza",
+    "orden": 4,
+    "icon": "restoration",
+    "checks": [
+      {
+        "id": "check-12",
+        "descripcion": "Desplegar equipos de limpieza en playas y zonas intermareales afectadas.",
+        "obligatorio": true,
+        "cumplido": false,
+        "rol_responsable": [
+          "autoridadPortuaria",
+          "equiposLimpieza",
+          "coordinador"
+        ],
+        "evidencia": "",
+        "timestamp": null
+      },
+      {
+        "id": "check-13",
+        "descripcion": "Gestionar los residuos recogidos y coordinar su traslado a gestores autorizados.",
+        "obligatorio": true,
+        "cumplido": false,
+        "rol_responsable": ["coordinador", "responsableResiduos"],
+        "evidencia": "",
+        "timestamp": null
+      },
+      {
+        "id": "check-14",
+        "descripcion": "Rescatar y atender fauna afectada bajo coordinación del Ministerio de Transición Ecológica.",
+        "obligatorio": false,
+        "cumplido": false,
+        "rol_responsable": [
+          "coordinador",
+          "responsableMedioAmbiente",
+          "observador"
+        ],
+        "evidencia": "",
+        "timestamp": null
+      },
+      {
+        "id": "check-15",
+        "descripcion": "Mantener la comunicación operativa sobre avances y problemas a la autoridad competente.",
+        "obligatorio": true,
+        "cumplido": false,
+        "rol_responsable": ["coordinador", "jefeIntervencion"],
+        "evidencia": "",
+        "timestamp": null
+      }
+    ],
+    "anotaciones": [],
+    "estado": "pendiente",
+    "fecha_inicio": null,
+    "fecha_fin": null
+  },
+  {
+    "id": "conclusion",
+    "nombre": "Cierre y Evaluación",
+    "orden": 5,
+    "icon": "conclusion",
+    "checks": [
+      {
+        "id": "check-16",
+        "descripcion": "Realizar evaluación y revisión de procedimientos tras la respuesta/simulacro.",
+        "obligatorio": true,
+        "cumplido": false,
+        "rol_responsable": ["observador", "coordinador", "autoridadCompetente"],
+        "evidencia": "",
+        "timestamp": null
+      },
+      {
+        "id": "check-17",
+        "descripcion": "Incorporar mejoras al sistema según los resultados de la evaluación.",
+        "obligatorio": false,
+        "cumplido": false,
+        "rol_responsable": ["coordinador", "comiteCrisis"],
+        "evidencia": "",
+        "timestamp": null
+      },
+      {
+        "id": "check-18",
+        "descripcion": "Comunicar formalmente el cierre del incidente a todas las partes implicadas.",
+        "obligatorio": true,
+        "cumplido": false,
+        "rol_responsable": ["coordinador", "capitania"],
+        "evidencia": "",
+        "timestamp": null
+      }
+    ],
+    "anotaciones": [],
+    "estado": "pendiente",
+    "fecha_inicio": null,
+    "fecha_fin": null
+  }
+]

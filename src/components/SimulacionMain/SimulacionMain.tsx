@@ -3,31 +3,24 @@ import React, { useState } from "react";
 import { SimulacionMainProps } from "../../types/simulacro";
 import Fase from "./Fase";
 import Feedback from "./Feedback";
-import dynamic from "next/dynamic";
 import { useSimulacro } from "@/context/SimulacroContext";
 import Timeline from "./Timeline";
 import ChecklistCumplimiento from "./ChecklistCumplimiento";
-import { SimulacroCheck } from "@/types/checks";
 import { ROLES_INFO_MAP } from "@/utils/rolesData";
 import { FaWind, FaTemperatureHigh, FaClock } from "react-icons/fa";
 import Image from "next/image";
 import { SimulacroCondicionesAmbientales } from "@/types/simulacro";
+// Para importar el JSON tipado correctamente
+import fasesChecksSimulacro from "../../utils/fasesChecksSimulacro.json";
+import { FaseSimulacro, CheckNormativo } from "../../types/checks";
+import dynamic from "next/dynamic";
+// Elimina la importación directa de SimMap y usa import dinámico para evitar errores SSR
+const SimMap = dynamic(() => import("../UI/SimMap"), { ssr: false });
 
-const SimMap = dynamic(() => import("@/components/UI/SimMap"), {
-  ssr: false,
-  loading: () => <p>Cargando mapa...</p>,
-});
-
-// Si tienes los tipos FaseSimulacro definidos en types/simulacro, úsalo. Si no, usa string para MVP.
-const FASES = [
-  "deteccion",
-  "notificacion",
-  "gestion",
-  "coordinacion",
-  "comunicacion",
-  "conclusion",
-] as const;
-type FaseSimulacro = (typeof FASES)[number];
+// Deriva las fases desde el JSON, tipado correctamente
+const FASES: FaseSimulacro[] = fasesChecksSimulacro as FaseSimulacro[];
+const FASES_IDS = FASES.map((f) => f.id);
+type FaseSimulacroId = (typeof FASES_IDS)[number];
 
 interface SimulacionMainExtendedProps extends SimulacionMainProps {
   onReset: () => void;
@@ -41,31 +34,36 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
   onReset,
   modo,
 }) => {
-  const [faseActual, setFaseActual] = useState<FaseSimulacro>("deteccion");
+  // Cambiar el tipo de useState para faseActual a string, y asegurar el tipado correcto en el callback de Timeline
+  const [faseActual, setFaseActual] = useState<string>(FASES_IDS[0]);
   const [decisiones, setDecisiones] = useState<Record<string, string>>({});
   const [feedback, setFeedback] = useState<string | null>(null);
-  // Estado para checks de cumplimiento (mock inicial)
-  const [checks, setChecks] = useState<SimulacroCheck[]>([
-    {
-      id: "c1",
-      descripcion: "Notificación a autoridades",
-      fase: "notificacion",
-      obligatorio: true,
-    },
-    {
-      id: "c2",
-      descripcion: "Activación de recursos",
-      fase: "gestion",
-      obligatorio: true,
-    },
-    {
-      id: "c3",
-      descripcion: "Comunicación interna",
-      fase: "comunicacion",
-      obligatorio: false,
-    },
-  ]);
   const { permisosRol, rolSeleccionado } = useSimulacro();
+
+  // Estado global de checks para todas las fases
+  const [checksPorFase, setChecksPorFase] = useState<{
+    [faseId: string]: CheckNormativo[];
+  }>(() => {
+    const res: { [faseId: string]: CheckNormativo[] } = {};
+    FASES.forEach((fase) => {
+      res[fase.id] = fase.checks.map((c) => ({ ...c }));
+    });
+    return res;
+  });
+
+  // Resumen de checks por fase para Timeline
+  const checksPorFaseResumen: Record<
+    string,
+    { obligatorias: number; cumplidas: number }
+  > = {};
+  Object.entries(checksPorFase).forEach(([faseId, checks]) => {
+    const obligatorias = checks.filter((c) => c.obligatorio).length;
+    const cumplidas = checks.filter((c) => c.obligatorio && c.cumplido).length;
+    checksPorFaseResumen[faseId] = { obligatorias, cumplidas };
+  });
+
+  // Adaptar la obtención de la fase actual y los checks:
+  const checksActuales = checksPorFase[faseActual] || [];
 
   // Al pulsar decisión, actualiza decisiones y muestra feedback breve
   const handleDecision = (fase: string, decision: string, feedback: string) => {
@@ -73,31 +71,37 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
     setFeedback(feedback);
     setTimeout(() => {
       setFeedback(null);
-      const idx = FASES.indexOf(fase as FaseSimulacro);
-      if (idx < FASES.length - 1) {
-        setFaseActual(FASES[idx + 1]);
+      const idx = FASES_IDS.indexOf(fase as FaseSimulacroId);
+      if (idx < FASES_IDS.length - 1) {
+        setFaseActual(FASES_IDS[idx + 1]);
       }
     }, 1700);
   };
 
-  // Handler para marcar checks
+  // Handler para marcar checks (reactivo y global)
   const handleCheck = (id: string, observaciones?: string) => {
-    setChecks((prev) =>
-      prev.map((c) =>
-        c.id === id && !c.marcadoPor
+    setChecksPorFase((prev) => {
+      const nuevos = { ...prev };
+      nuevos[faseActual] = nuevos[faseActual].map((c) =>
+        c.id === id && !c.cumplido
           ? {
               ...c,
-              marcadoPor: rolSeleccionado || rol,
-              horaMarcado: new Date().toISOString(),
-              observaciones,
+              cumplido: true,
+              evidencia: observaciones || "",
+              timestamp: new Date().toISOString(),
             }
           : c
-      )
-    );
+      );
+      return nuevos;
+    });
   };
 
-  // Mostrar resumen y botón de reinicio cuando termina la simulación
-  if (faseActual === "conclusion") {
+  // Mostrar botón "Cerrar simulacro" sólo si estamos en la fase conclusión y todas las checks obligatorias de todas las fases están cumplidas
+  const todasObligatoriasCumplidas = Object.values(checksPorFase).every((arr) =>
+    arr.filter((c) => c.obligatorio).every((c) => c.cumplido)
+  );
+
+  if (faseActual === "conclusion" && todasObligatoriasCumplidas) {
     return (
       <div className="card flex-center flex-column">
         <h2>¡Simulación completada!</h2>
@@ -113,8 +117,8 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
             </li>
           ))}
         </ul>
-        <button className="mt-2" onClick={onReset}>
-          Volver a empezar
+        <button className="mt-2 btn-accent" onClick={onReset}>
+          Cerrar simulacro
         </button>
       </div>
     );
@@ -123,14 +127,15 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
   return (
     <div>
       <Timeline
-        fases={FASES as unknown as string[]}
+        fases={FASES}
         actual={faseActual}
         modo={modo}
         onFaseClick={
           modo === "simulacro"
-            ? (fase) => setFaseActual(fase as FaseSimulacro)
+            ? (fase: string) => setFaseActual(fase)
             : undefined
         }
+        checksPorFase={checksPorFaseResumen}
       />
       <SimMap
         coords={derramaCoords}
@@ -143,9 +148,9 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
         fase={faseActual}
       />
       {/* Checklist de Cumplimiento SIEMPRE visible para la fase seleccionada */}
-      {permisosRol?.puedeMarcarChecks && (
+      {permisosRol?.puedeMarcarChecks && modo === "simulacro" && (
         <ChecklistCumplimiento
-          checks={checks}
+          checks={checksActuales}
           onCheck={handleCheck}
           usuario={rolSeleccionado || rol}
           faseActual={faseActual}

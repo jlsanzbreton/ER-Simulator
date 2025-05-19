@@ -1,0 +1,270 @@
+[
+  {
+    "nombre_completo": "Sistema Nacional de Respuesta ante la Contaminación Marina Accidental",
+    "nivel_territorial": "Nacional",
+    "marco_legal": {
+      "norma": "Real Decreto 1695/2012, de 21 de diciembre",
+      "descripcion": "Aprueba el Sistema Nacional de Respuesta ante la contaminación marina",
+      "url_oficial": "https://www.boe.es/eli/es/rd/2012/12/21/1695"
+    },
+    "objetivos": "Establecer un marco integrado de preparación y respuesta rápida y eficaz ante cualquier suceso de contaminación marina (hidrocarburos o sustancias nocivas), cumpliendo con el Convenio OPRC 90 y su Protocolo HNS 2000. El SNR abarca todos los niveles de emergencia en aguas bajo soberanía o jurisdicción española y en el litoral, garantizando la coordinación entre administraciones públicas.",
+    "niveles_activacion": "Define cuatro situaciones de emergencia (0 a 3) según la magnitud del suceso. Situación 0: incidente menor controlable localmente (se activa solo el plan interior correspondiente). Situación 1: incidente medio; se activan planes territoriales autonómicos y, si el vertido ocurre en el mar abierto, el Plan Marítimo Nacional. Situación 2: incidente grave o en zona vulnerable; se activan todos los planes implicados (locales, autonómico, PMN) y puede movilizarse apoyo estatal adicional (medios del Plan Ribera). Situación 3: incidente muy grave de gran magnitud; implica la activación conjunta del Plan Marítimo Nacional y del Plan Estatal Ribera, con coordinación nacional completa e incluso petición de ayuda internacional.",
+    "autoridades_responsables": "En el subsistema marítimo, la autoridad dirigente es la Dirección General de la Marina Mercante (Ministerio de Transportes), a través de las Capitanías Marítimas y Salvamento Marítimo. En el subsistema costero, la autoridad principal recae en la Dirección General de Sostenibilidad de la Costa y del Mar (Ministerio para la Transición Ecológica), en coordinación con Protección Civil (Ministerio del Interior) para la protección de personas y bienes. La Comisión Nacional de Protección Civil supervisa la homologación de los planes territoriales autonómicos e interviene en la coordinación en emergencias de nivel 3.",
+    "procedimientos_principales": "El SNR establece la integración de los planes de contingencia de distintos ámbitos: planes interiores marítimos (instalaciones, puertos) manejan los incidentes iniciales; si se sobrepasan, el Plan Marítimo Nacional asume el control en el mar, y si la contaminación llega a la costa se activa el Plan Ribera estatal en apoyo de los planes autonómicos. Se definen protocolos de comunicación inmediatos (entre capitanías, Centro Nacional de Coordinación de Salvamento y centros 112 autonómicos) y la estructura de mando en caso de emergencia (órganos de dirección, comités de crisis). También especifica un sistema escalonado de avisos e informes de situación a medida que evoluciona el incidente.",
+    "recursos_y_medios": "El Sistema Nacional de Respuesta moviliza los recursos materiales y humanos adecuados en cada nivel: en el mar, los medios de Salvamento Marítimo (remolcadores, buques anticontaminación, aeronaves de vigilancia) y, si es necesario, medios de la Armada Española; en costa, los medios de las Comunidades Autónomas (brigadas de limpieza, equipos de litoral) complementados por los recursos estatales del Plan Ribera (equipos de limpieza costera estratégicos). El SNR contempla también la cooperación internacional vía convenios (como el mecanismo comunitario de Protección Civil de la UE o acuerdos regionales) para solicitar recursos externos en incidentes de gran escala.",
+    "elementos_simulacros": "Prevé la formación continua y realización de simulacros conjuntos a todos los niveles. Las autoridades (DG Marina Mercante, SASEMAR, DG Protección Civil, etc.) desarrollan programas de entrenamiento para el personal técnico y de los operativos, con cursos específicos según niveles de responsabilidad. Se llevan a cabo ejercicios prácticos regulares, incluyendo simulaciones de activación del Plan Marítimo Nacional y del Plan Ribera conjuntamente con comunidades autónomas, para evaluar la coordinación interadministrativa. Tras cada simulacro, se realiza una evaluación y revisión de procedimientos, incorporando mejoras al sistema."
+  },
+  {
+    "nombre_completo": "Plan Marítimo Nacional de respuesta ante la contaminación del medio marino (PMN)",
+    "nivel_territorial": "Nacional (Subsistema Marítimo)",
+    "marco_legal": {
+      "norma": "Orden FOM/1793/2014, de 22 de septiembre",
+      "descripcion": "Aprueba el Plan Marítimo Nacional, según lo previsto en el RD 1695/2012",
+      "url_oficial": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2014-10063"
+    },
+    "objetivos": "Coordinar y articular la respuesta a los incidentes de contaminación en las aguas marinas españolas. El PMN busca asegurar una actuación rápida en el mar para controlar vertidos antes de que alcancen la costa, integrando los medios de Salvamento Marítimo y otros recursos estatales, y minimizando el impacto al medio marino. Incluye análisis de riesgos en las zonas marítimas, identificación de áreas especialmente vulnerables en el mar y define las estrategias de lucha contra la contaminación en aguas abiertas.",
+    "niveles_activacion": "El Plan Marítimo Nacional se activa cuando un vertido afecta a aguas marinas fuera del ámbito de un plan interior o supera la capacidad de este. Siguiendo las situaciones definidas en el SNR: en Situación 1 (vertido de magnitud moderada en mar abierto), el PMN puede activarse para reforzar la respuesta junto con el plan interior de la instalación origen; en Situación 2 (vertido grave) y Situación 3 (vertido catastrófico), el PMN se activa plenamente. En todos los casos, se coordina con los PIM locales y puede implicar la movilización escalonada de recursos según el grado de respuesta necesario.",
+    "autoridades_responsables": "La Dirección General de la Marina Mercante (DGMM) del Ministerio de Transportes es la autoridad que dirige y coordina el PMN. El Capitán Marítimo de la zona afectada suele actuar como Director de la Emergencia en las primeras situaciones, bajo la supervisión de la DGMM. SASEMAR (Sociedad de Salvamento y Seguridad Marítima) es el principal operador técnico: su Centro Nacional de Coordinación en Madrid (CNCS) y los Centros de Coordinación de Salvamento (CCS) regionales gestionan los medios en el mar. En incidentes mayores, el Director General de Marina Mercante asume directamente la dirección del operativo, pudiendo activar el Comité Estatal de Coordinación establecido en el Plan.",
+    "procedimientos_principales": "El PMN detalla procedimientos desde la detección del vertido (alertas vía aviones o satélites, avisos de buques) hasta la finalización de la respuesta en el mar. Incluye: procedimientos de notificación inmediata del suceso a los CCS y a la DGMM; evaluación inicial de la situación (tipo de sustancia, condiciones oceanográficas); despliegue de barreras y equipos de recogida en el punto del derrame; aplicación de dispersantes químicos si es apropiado y autorizado; coordinación con la Armada y otros organismos para apoyos especiales (por ejemplo, respuesta a vertidos de sustancias radiactivas con apoyo del CSN). También regula la integración con planes interiores marítimos: si un PIM de una instalación o puerto se activa, la Capitanía Marítima puede decidir activar el PMN en prevención, como prevé el artículo 8 del SNR, para poner en alerta medios nacionales incluso antes de que se desborde la capacidad local.",
+    "recursos_y_medios": "Para ejecutar el PMN, se dispone de los medios nacionales en el mar: los buques de Salvamento Marítimo equipados con capacidad anticontaminación (remolcadores polivalentes, buques específicos como el \"Clara Campoamor\", \"Luz de Mar\", etc., con skimmers, brazos y tanques a bordo), aeronaves de vigilancia marítima (aviones CASA y helicópteros Helimer con sensores de hidrocarburos) para detectar y monitorizar las manchas, equipos móviles (kits) de lucha contra la contaminación desplegables en buques o puertos, y personal técnico especializado (técnicos en contaminación marina de SASEMAR y expertos de apoyo del Ministerio de Medio Ambiente para temas de biodiversidad). El plan también prevé el posible apoyo de medios privados (contratados por el armador responsable, por ejemplo, empresas especializadas) bajo coordinación de la autoridad, y la activación de convenios internacionales de asistencia mutua en caso de gran siniestro en el mar.",
+    "elementos_simulacros": "El Plan Marítimo Nacional establece un programa continuo de formación y adiestramiento: personal de SASEMAR, funcionarios de Capitanías Marítimas y otros actores realizan cursos específicos (incluidos programas europeos y de la OMI) sobre técnicas de lucha contra vertidos, uso de nuevas tecnologías y mantenimiento de equipos. Anualmente se organizan simulacros de distinto alcance: ejercicios locales de mesa (simulaciones teóricas en los CCS para practicar la toma de decisiones), simulacros nacionales con despliegue real de medios (por ejemplo, ejercicios combinados de varios buques anticontaminación frente a la costa), y ejercicios conjuntos con comunidades autónomas cuando la emergencia simula llegar a costa. En estos simulacros se prueban las comunicaciones, la coordinación entre el director del PMN y los directores de los planes autonómicos, y la eficacia de las tácticas de contención y recogida en el mar."
+  },
+  {
+    "nombre_completo": "Plan Estatal de Protección de la Ribera del Mar contra la Contaminación (Plan RIBERA)",
+    "nivel_territorial": "Nacional (Subsistema Costero)",
+    "marco_legal": {
+      "norma": "Orden AAA/702/2014, de 28 de abril",
+      "descripcion": "Aprueba el Plan Estatal de Protección de la Ribera del Mar contra la Contaminación",
+      "url_oficial": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2014-4651"
+    },
+    "objetivos": "Asegurar la protección del dominio público marítimo-terrestre (costa) frente a la contaminación marina grave, garantizando una respuesta eficaz y coordinada en el litoral español. El Plan Ribera complementa los planes territoriales de las comunidades autónomas con litoral, interviniendo especialmente cuando un suceso de contaminación costera supera el ámbito autonómico (afecta a varias regiones) o requiere la movilización de medios estatales extraordinarios. Incluye la planificación preventiva (atlas de sensibilidad costera, análisis de vulnerabilidad) para priorizar la protección de las zonas más frágiles (espacios naturales protegidos, estuarios, playas de alto valor) en caso de vertido.",
+    "niveles_activacion": "El Plan Ribera se activa según criterios de necesidad de apoyo estatal: generalmente cuando la contaminación costera causada por un vertido accidental tiene carácter supraautonómico (afecta o amenaza a más de una comunidad autónoma) o en casos de especial gravedad donde los recursos de la comunidad afectada son insuficientes o existe peligro inminente de daños irreparables al medio costero. También puede activarse a solicitud de una Comunidad Autónoma litoral que, ante un incidente concreto, requiera medios estatales adicionales para afrontarlo. La activación puede ser parcial (aportando ciertos medios o asesoramiento técnico) o total (asunción de la dirección de la emergencia costera por la Administración General del Estado) dependiendo de la situación. Este plan suele entrar en juego en niveles altos de emergencia (equivalente a Situación 2 o 3 del SNR en ámbito costero).",
+    "autoridades_responsables": "La dirección del Plan Ribera corresponde al Ministerio para la Transición Ecológica (antes Ministerio de Agricultura, Alimentación y Medio Ambiente) a través de la Dirección General de Sostenibilidad de la Costa y del Mar. Esta Dirección General actúa como Órgano Director cuando el plan se activa, en coordinación estrecha con la Dirección General de Protección Civil y Emergencias (Ministerio del Interior) si hay implicación de protección de personas/bienes. A nivel operativo, se establece un Comité Estatal de Coordinación de la Emergencia en costa, presidido por un representante del Gobierno central (por ejemplo, el Delegado del Gobierno en la CCAA afectada junto con un representante de Costas) e integrado por los responsables autonómicos de los planes territoriales afectados, SASEMAR (en caso de operaciones mixtas costa-mar), la UME (si se despliega) y otros organismos competentes (Sanidad, Seprona de Guardia Civil, etc.).",
+    "procedimientos_principales": "El Plan Ribera articula la llegada de recursos estatales de refuerzo y la asunción progresiva de la coordinación en costa. Sus procedimientos incluyen: envío de técnicos evaluadores al terreno para valorar daños y necesidades; establecimiento de un Puesto de Mando Avanzado conjunto con la comunidad afectada; despliegue de equipos estatales de limpieza y contención en playas y zonas intermareales; rescate y atención de fauna afectada (centros de rescate de fauna marina) bajo coordinación con el Ministerio de Transición Ecológica; gestión de residuos recogidos (almacenamiento temporal y traslado a gestores autorizados); y comunicación pública unificada sobre la evolución del suceso. El plan también detalla la interacción con el Plan Marítimo Nacional: por ejemplo, si el vertido sigue activo en el mar, las operaciones de costa se sincronizan con las de mar mediante un Centro de Coordinación Conjunto. Además, están previstos protocolos para solicitar ayuda internacional (equipos de otros países, Mecanismo Europeo de Protección Civil) cuando la capacidad nacional resulte sobrepasada.",
+    "recursos_y_medios": "El Plan Ribera dispone de recursos materiales específicos gestionados por la Administración General del Estado: lotes de equipos de limpieza de costas preposicionados en distintos puntos de España (barreras absorbentes para costas y estuarios, skimmers y bombas de succión para hidrocarburos en costa, vehículos todoterreno, cisternas de almacenamiento, herramientas manuales para limpieza fina, EPIs para operarios, etc.). Estos medios suelen estar asignados a empresas públicas como TRAGSA, que actúa habitualmente como medio propio del Estado en estas emergencias proporcionando personal entrenado y logística (camiones, maquinaria pesada para retirada de arenas contaminadas). Igualmente, el plan puede movilizar a la Unidad Militar de Emergencias (UME) con sus batallones de intervención NBQ para labores de limpieza masiva en litoral. También incluye convenios con Cruz Roja y ONG ambientales para canalizar voluntarios entrenados en limpieza de playas de forma segura. Los medios del Plan Ribera se integran con los autonómicos: por ejemplo, el Estado puede aportar barreras de gran tamaño para proteger una desembocadura de ría, mientras la comunidad aporta brigadas de voluntarios para recoger residuos en la línea de costa.",
+    "elementos_simulacros": "La operatividad del Plan Ribera se comprueba mediante simulacros periódicos en distintos puntos de la costa. El Ministerio (a través de Costas) ha organizado ejercicios de gabinete y de campo junto a varias comunidades; por ejemplo, en 2019 se realizó un simulacro en la playa de Plentzia (Bizkaia) en el que se activó conjuntamente el Plan Ribera estatal y el plan vasco ITSASERTZA, desplegando barreras y cuadrillas de limpieza en la costa [oai_citation:0‡miteco.gob.es](https://www.miteco.gob.es/en/prensa/ultimas-noticias/2019/11/simulacro_de_luchacontralacontaminacionmarinaaccidentalenlaplaya.html#:~:text=correspondencia%20con%20un%20tanque%20de,carga). Asimismo, se han hecho simulacros en Andalucía y Galicia tras la aprobación del plan (2014) para entrenar la integración de medios estatales con los autonómicos. Estos ejercicios permiten identificar mejoras en la logística (transporte de equipos desde los almacenes centrales), en las comunicaciones (enlace entre la Dirección del Plan Ribera y los Centros 112 regionales) y en los protocolos de mando conjunto. También se promueve la participación de personal del Plan Ribera en simulacros internacionales (por ejemplo, ejercicios del Plan RAMOGEPOL en el Mediterráneo Occidental) para intercambiar experiencias."
+  },
+  {
+    "nombre_completo": "Plan Interior Marítimo del Puerto de Huelva (Zona I)",
+    "nivel_territorial": "Local (Autoridad Portuaria de Huelva)",
+    "marco_legal": {
+      "norma": "Plan Interior Marítimo aprobado por DG Marina Mercante (MITMA)",
+      "descripcion": "Elaborado por la Autoridad Portuaria de Huelva según art. 4.7 del RD 1695/2012",
+      "url_oficial": ""
+    },
+    "objetivos": "Gestionar de forma rápida y coordinada la respuesta a emergencias por contaminación dentro de las aguas portuarias de Huelva (Zona I, interior de la ría del Odiel y zonas de servicio portuarias). El PIM del puerto busca contener y controlar cualquier vertido de hidrocarburos u otras sustancias ocurridos en la zona portuaria, evitando que se propaguen mar adentro o alcancen la costa adyacente, y protegiendo tanto las instalaciones portuarias como el entorno natural inmediato (marismas, ría).",
+    "niveles_activacion": "El plan distingue niveles de emergencia en función de la gravedad del vertido: un incidente menor (derrame reducido confinado junto a un muelle) se atiende con medios propios del puerto en Nivel 1; si el vertido es más importante o afecta varias instalaciones, se declara un Nivel 2 en el que se activan recursos adicionales y se alerta a Salvamento Marítimo. En caso extremo en que el derrame supere claramente la capacidad portuaria, se pasaría a Nivel 3, solicitándose la activación del Plan Marítimo Nacional (para apoyo en aguas exteriores) y, de amenazar el litoral fuera del puerto, del Plan Ribera (Protección de Costa). En ejercicios recientes, ante un derrame simulado, el puerto activó su PIM simultáneamente con el Plan Marítimo Nacional en situación 1, demostrando esa coordinación escalonada [oai_citation:1‡elfocodehuelva.com](https://elfocodehuelva.com/el-puerto-de-huelva-acoge-hoy-un-simulacro/#:~:text=Seg%C3%BAn%20la%20Capitan%C3%ADa%20Mar%C3%ADtima%2C%20este,y%20el%20PIM%20de%20Decal).",
+    "autoridades_responsables": "La responsabilidad recae en la Autoridad Portuaria de Huelva. El Presidente de la Autoridad Portuaria es la máxima autoridad en la gestión de la emergencia portuaria, delegando la dirección operativa en el Jefe de División de Seguridad, Medio Ambiente o el responsable designado del Plan. El Capitán Marítimo de Huelva (representante de la DG Marina Mercante) es notificado inmediatamente y colabora en la coordinación, especialmente si el incidente puede extenderse fuera del ámbito portuario. Asimismo, el plan involucra a los jefes de emergencia de cada industria o concesión dentro del puerto, a la Guardia Civil del Mar y Policía Portuaria para control de accesos, y al Centro 112 de Andalucía en caso de necesidad de apoyo externo o alerta a población.",
+    "procedimientos_principales": "Al detectarse un vertido (p.ej. rotura de manguera de carga, sobrellenado de tanque, fuga en monoboya), la secuencia es: notificación inmediata al Centro de Control del Puerto y a Capitanía Marítima; activación del personal de emergencia portuaria (equipos de lucha contra incendios/contaminación del puerto); cierre de válvulas o interrupción de operaciones en la instalación implicada; despliegue rápido de barreras de contención alrededor del punto de derrame para confinarlo; y uso de skimmers portátiles o medios de recogida para retirar el hidrocarburo del agua. El plan contempla la comunicación constante con Salvamento Marítimo, de modo que un remolcador de SASEMAR pueda asistir si el derrame amenaza salir de la zona I. También están definidos los protocolos de coordinación con el Plan Interior Marítimo de la Zona II (fuera del puerto) en caso de que el vertido trascienda la bocana, y con el Plan de Emergencia en playas del Ayuntamiento local si llegara a costa. Tras controlar la fuga, se procede a la limpieza de infraestructuras (muelles, pilotes) y a gestionar los residuos recogidos (agua oleosa, arenas contaminadas) según normativa.",
+    "recursos_y_medios": "El Puerto de Huelva dispone de una dotación propia de medios anticontaminación: varias barreras de contención de diferentes longitudes y calados almacenadas estratégicamente en muelles; skimmers (separadores) de aceite portátiles para recogida de hidrocarburo en superficie; mantas y paños absorbentes; equipos de bombeo y tanques móviles para almacenar el producto recuperado; y vehículos y embarcaciones menores. Además, cuenta con remolcadores contratados que han sido equipados con brazos de despliegue de barreras y estanques para recuperación de vertidos. La Autoridad Portuaria tiene contratados servicios especializados que pueden aportar más equipos o personal en caso de vertido de gran volumen. En tierra, los servicios de bomberos del puerto y personal de medio ambiente participan en la limpieza de orillas de la ría si fuera necesario. Este puerto, en particular, ha mejorado sus medios tras ejercicios y experiencias, incluyendo la construcción de una nave específica para almacenar equipos de lucha contra la contaminación en el Muelle Sur [oai_citation:2‡rutapesquera.com](https://www.rutapesquera.com/huelva-mejora-la-disponibilidad-de-medios-para-la-lucha-contra-la-contaminacion/#:~:text=Huelva%20mejora%20la%20disponibilidad%20de,al%20almacenamiento%20de%20materiales).",
+    "elementos_simulacros": "El Puerto de Huelva realiza simulacros de vertido de manera habitual en colaboración con otras entidades. Por ejemplo, en octubre de 2024 organizó un simulacro en el que se simuló el fallo de un brazo de carga en un pantalán, provocando un derrame de fuel-oil pesado: se activó su Plan Interior Marítimo conjuntamente con el de una empresa privada (Decal) y con el Plan Marítimo Nacional en situación 1 [oai_citation:3‡elfocodehuelva.com](https://elfocodehuelva.com/el-puerto-de-huelva-acoge-hoy-un-simulacro/#:~:text=Seg%C3%BAn%20la%20Capitan%C3%ADa%20Mar%C3%ADtima%2C%20este,y%20el%20PIM%20de%20Decal). En tales ejercicios, se despliegan barreras y medios reales, permitiendo evaluar tiempos de respuesta y la coordinación entre Capitanía Marítima, Autoridad Portuaria y empresas. Asimismo, periódicamente se hacen simulacros menores internos para entrenar al personal (como prácticas de colocación de barreras en la lámina de agua de la ría) y simulacros de comunicaciones para asegurar que ante una emergencia real todos los intervinientes conocen los protocolos."
+  },
+  {
+    "nombre_completo": "Plan Interior Marítimo de la terminal MOEVE (monoboya de descarga en Huelva)",
+    "nivel_territorial": "Privado (Instalación Marítima - Industria petrolera)",
+    "marco_legal": {
+      "norma": "Plan Interior Marítimo aprobado por Capitanía Marítima de Huelva",
+      "descripcion": "Elaborado por Cepsa (Moeve) para su monoboya, según art. 4.6 RD 1695/2012",
+      "url_oficial": ""
+    },
+    "objetivos": "Establecer los procedimientos de emergencia específicos en la instalación marítima de MOEVE (empresa energética antes conocida como Cepsa) situada en Palos de la Frontera, para responder de inmediato ante cualquier derrame de hidrocarburos durante sus operaciones de carga/descarga en la monoboya o en sus pantalanes. El plan busca controlar el vertido en su fase inicial, limitar su extensión en el agua dentro del entorno próximo a la monoboya, y proteger tanto las aguas portuarias contiguas como el medio marino cercano (marismas del Tinto-Odiel). A la vez, garantiza la notificación rápida a las autoridades competentes para facilitar apoyos externos si fueran necesarios.",
+    "niveles_activacion": "El PIM de MOEVE se activa tan pronto se detecta un incidente de contaminación en las operaciones de la terminal. Internamente, el plan suele manejar niveles (Tier 1, 2, 3) análogos: un incidente pequeño (Tier 1) es manejado con recursos propios de la terminal; un incidente mayor que excede esos recursos (Tier 2) implica pedir apoyo a la Autoridad Portuaria (activando su PIM de puerto) y a Salvamento Marítimo; y en un escenario extremo (Tier 3, derrame muy grande), se declara emergencia general involucrando al Plan Marítimo Nacional y, si procede, al Plan Ribera para reforzar la respuesta. En la práctica, ante un derrame significativo la Capitanía Marítima declararía Situación 1 o 2 del SNR, haciendo que el Plan de MOEVE enlace con los planes públicos correspondientes.",
+    "autoridades_responsables": "La activación y ejecución inicial del plan corresponde a MOEVE: su Jefe de Emergencias (p. ej., el responsable de medio ambiente o de operaciones de la terminal) asume la Dirección del incidente en primera instancia. Paralelamente, la Capitanía Marítima de Huelva es informada de inmediato y ejerce supervisión regulatoria; si la situación escala, la dirección pasará a las autoridades públicas (Autoridad Portuaria para la zona interior, o DGMM si trasciende al mar abierto). Durante la respuesta inicial, el personal de la empresa conforma los equipos de intervención (equipo de contención en mar, equipo de control en planta), mientras que los organismos externos (Capitanía, Salvamento Marítimo, 112 Andalucía) se mantienen en comunicación para asumir la coordinación tan pronto sea necesario.",
+    "procedimientos_principales": "Ante un derrame, se activa la alarma interna en la instalación y se siguen una serie de pasos: detener inmediatamente las operaciones (cese de bombeo de crudo por la monoboya o cerrar válvulas implicadas), aislar la fuente de fuga si es posible, y notificar el incidente al Centro de Control de la Refinería La Rábida y al Centro 112. Seguidamente, el plan prevé desplegar las barreras de contención flotantes alrededor de la monoboya (o del buque tanque en operaciones) para cercar el hidrocarburo derramado en el agua. Tras la contención inicial, se utilizan los skimmers o bombas portátiles para extraer el hidrocarburo del mar y trasvasarlo a tanques disponibles. El personal en tierra asegura que los sistemas de drenaje pluvial de la planta queden cerrados para evitar contaminación secundaria. A la par, se establece comunicación continua con la Autoridad Portuaria y Salvamento Marítimo por radio VHF y teléfono, proporcionando actualizaciones de la situación. El plan define roles: un responsable de comunicaciones se encarga de todos los avisos (Autoridad Portuaria, Capitanía, SEPRONA si hay fauna afectada, etc.), mientras los equipos tácticos se enfocan en el control del derrame. Si la situación lo requiere, el plan dispone la evacuación de personal no esencial y la concentración de los recursos en las zonas críticas, y solicita formalmente ayuda externa (remolcadores del puerto con más barreras, etc.).",
+    "recursos_y_medios": "La terminal MOEVE cuenta con equipamiento propio de lucha contra la contaminación marina: tiene barreras de contención de emergencia almacenadas cerca del punto de embarque, dimensionadas para rodear buques tanque; dispone de al menos un skimmer (recuperador) portátil con mangueras y bomba para succión de hidrocarburo del agua; varias decenas de metros de material absorbente (barriles con mantas oleofílicas, cordones absorbentes) para uso tanto en el agua como en muelles; y tanques móviles o flexitanques para almacenar el hidrocarburo recogido. Asimismo, MOEVE tiene contratada una empresa especializada en respuesta a derrames (con base en la zona) que puede proveer medios adicionales en corto tiempo, como lanchas auxiliares, más longitud de barreras o dispersantes aprobados. Durante la emergencia, se aprovechan los remolcadores del puerto (generalmente ya presentes durante la operación de buques) para posicionar y sujetar las barreras. Todo el personal operativo de la monoboya recibe equipos de protección individual para manipular materiales peligrosos durante la limpieza.",
+    "elementos_simulacros": "MOEVE (Cepsa) realiza numerosos simulacros cada año para mantener la efectividad de su Plan Interior Marítimo. En 2015, por ejemplo, sus instalaciones de Huelva llevaron a cabo 10 simulacros específicos del PIM en la monoboya y pantalán [oai_citation:4‡moeve.es](https://www.moeve.es/stfls/CepsaCom/Coorp_Comp/Nuestros_centros/Ficheros_Nuestros_centros/2016/Cepsa%20realizo-mas-de-250-simulacros-en-Huelva-2015.pdf#:~:text=En%20Petronuba%2C%20la%20filial%20de,simulacros%20del%20Plan%20Interior%20Mar%C3%ADtimo), donde se practicó el despliegue real de barreras anticontaminación en el agua y la coordinación operativa con la Autoridad Portuaria de Huelva. Estos ejercicios permiten que toda la plantilla conozca a fondo el Plan de Emergencia Interior y sus funciones en caso de derrame [oai_citation:5‡moeve.es](https://www.moeve.es/stfls/CepsaCom/Coorp_Comp/Nuestros_centros/Ficheros_Nuestros_centros/2016/Cepsa%20realizo-mas-de-250-simulacros-en-Huelva-2015.pdf#:~:text=personal%20de%20operaciones%2C%20quienes%20ensayan,controlar%20la%20respuesta%20ante%20un) [oai_citation:6‡moeve.es](https://www.moeve.es/stfls/CepsaCom/Coorp_Comp/Nuestros_centros/Ficheros_Nuestros_centros/2016/Cepsa%20realizo-mas-de-250-simulacros-en-Huelva-2015.pdf#:~:text=R%C3%A1bida%2C%20la%20Planta%20Qu%C3%ADmica%20de,e%20identificar%20%C3%A1reas%20de%20mejora). Además de simulacros internos, la empresa participa en simulacros conjuntos con el puerto y Capitanía (como simulacros generales donde se simula un gran incendio o vertido, implicando a todos los empleados y a servicios externos como Bomberos de Huelva [oai_citation:7‡moeve.es](https://www.moeve.es/stfls/CepsaCom/Coorp_Comp/Nuestros_centros/Ficheros_Nuestros_centros/2016/Cepsa%20realizo-mas-de-250-simulacros-en-Huelva-2015.pdf#:~:text=2015%20A%20lo%20largo%20del,con%20lo%20que%20ser%C3%ADa%20una)). Gracias a estas prácticas periódicas, se identifican áreas de mejora y se afinan los protocolos de comunicación y coordinación con las autoridades, logrando que en situaciones reales la respuesta sea rápida y bien coordinada."
+  },
+  {
+    "nombre_completo": "Plan SOPEP del buque tanque “STROMBOLI M” (Shipboard Oil Pollution Emergency Plan)",
+    "nivel_territorial": "Privado (Buque mercante, normativa internacional)",
+    "marco_legal": {
+      "norma": "Regla 37 del Anexo I del Convenio MARPOL 73/78",
+      "descripcion": "Obliga a buques tanque ≥150 GT y demás buques ≥400 GT a llevar un Plan SOPEP aprobado",
+      "url_oficial": "https://wwwcdn.imo.org/localresources/en/OurWork/Environment/Documents/MSC-MEPC.6-Circ.23.pdf"
+    },
+    "objetivos": "Disponer a bordo de un plan de contingencia que permita a la tripulación responder rápidamente ante una contaminación por hidrocarburos originada por el propio buque. El SOPEP del “Stromboli M” establece las acciones inmediatas que el capitán y la tripulación deben tomar en caso de derrame (para controlar y reducir la fuga), y los procedimientos de notificación rápida a las autoridades costeras y armador. El objetivo principal es minimizar el impacto del vertido en el mar y en la costa, protegiendo la vida humana, el buque y el medio ambiente, cumpliendo los estándares internacionales de la OMI.",
+    "niveles_activacion": "El plan se activa en cuanto ocurre un incidente que produzca (o amenace con producir) un derrame de hidrocarburo desde el buque, ya sea durante operaciones de carga/descarga, bunkering, colisión, varada o cualquier avería. No establece “niveles” escalonados como los planes de tierra, sino una respuesta inmediata proporcional al tamaño del derrame: la tripulación aborda primero los derrames pequeños con medios propios; si el derrame es grande o incontrolable, tras las acciones iniciales se pasa a solicitar ayuda externa a las autoridades costeras e iniciar medidas de emergencia mayores (como maniobras del buque para alejarse de la costa, etc.). El SOPEP permanece activo hasta que el derrame se controle completamente o hasta que las autoridades asuman el mando externo de las operaciones.",
+    "autoridades_responsables": "A bordo, el Capitán del “Stromboli M” es la autoridad responsable de implementar el SOPEP. Él designa roles a los oficiales (por ejemplo, un Oficial de Control de Daños para evaluar la avería, un Oficial de Comunicaciones para detecciones, equipos de cubierta para despliegue de material). En el exterior, las autoridades costeras involucradas incluyen a la Capitanía Marítima del puerto o zona más cercana, los Centros de Coordinación de Salvamento Marítimo (en España) y la autoridad portuaria local si el incidente ocurre en puerto. El capitán debe mantener comunicación frecuente con estas autoridades, seguir sus instrucciones de asistencia y entregar información sobre la situación. El armador/operador del buque también es notificado de inmediato según el plan, para activar sus recursos (por ejemplo, contratar equipos especializados de respuesta si se requiere) y su representante se coordina con las autoridades.",
+    "procedimientos_principales": "El SOPEP detalla: 1) Procedimientos de notificación: ante un derrame, el capitán debe contactar inmediatamente a la autoridad costera competente (por radio VHF o otros medios, informando posición, tipo y cantidad de hidrocarburo vertido, medidas tomadas y ayuda requerida) y a la compañía naviera. El plan proporciona una lista de contactos de emergencia (Autoridades Marítimas del país costero, Agencia Estatal de Salvamento Marítimo, etc.) [oai_citation:8‡wwwcdn.imo.org](https://wwwcdn.imo.org/localresources/en/OurWork/Circulars/Documents/MSC-MEPC.6-Circ.23%20-%20Annex%20-%20as%20at%2031%20January%202025.pdf#:~:text=MARPOL%20Annex%20I%20which%2C%20inter,list%20of%20authorities%20or). 2) Acciones de mitigación a bordo: detener transferencias de combustible, cerrar válvulas, activar sistemas de bombeo para trasvasar carga desde tanques dañados a otros intactos, adrizar o lastrar el buque para minimizar la salida de hidrocarburo, y desplegar a bordo materiales absorbentes o obturadores para taponar escapes. 3) Medidas de colaboración externa: el buque debe estar listo para facilitar el acceso a remolcadores de asistencia, lanchas con barreras, etc. El SOPEP incorpora diagramas del buque indicando puntos críticos (por ejemplo, válvulas de aislamiento, tomas de fondo) para ayudar a equipos externos de salvamento. 4) Protección personal: incluye instrucciones para que la tripulación use equipos de protección si se expone a hidrocarburos y para evitar incendios (p.ej. eliminar fuentes de ignición). A lo largo de la emergencia, el capitán debe enviar “situational reports” periódicos a las autoridades (resúmenes de evolución y acciones) conforme a formatos estándar del anexo del plan.",
+    "recursos_y_medios": "El buque “Stromboli M” lleva a bordo un equipo SOPEP básico: kits de absorción de hidrocarburos (almohadillas oleofílicas, rollos absorbentes), barreras de contención portátiles de pequeña escala que se pueden lanzar desde cubierta al agua alrededor del barco (útiles sobre todo en puerto o aguas tranquilas), tapones cónicos de madera o material sintético para obturar fugas en caso de avería en casco o tuberías, herramientas para reparación de emergencia y bombas portátiles de achique para trasiego de líquidos. Adicionalmente, el plan lista los medios contra incendios que también pueden ser usados en caso de derrame (p.ej. espuma contraincendios para cubrir un derrame y reducir vapores inflamables). Estos recursos son limitados y orientados al control inicial; el plan contempla que la respuesta completa requerirá medios externos (barreras de mayor tamaño, skimmers profesionales, etc.), por lo que enfatiza la pronta solicitud de ayuda. En puerto, se cuenta con la ventaja de que suelen existir convenios con las propias terminales portuarias que tienen más equipos - el capitán debe coordinarse con ellos según el plan.",
+    "elementos_simulacros": "La tripulación del “Stromboli M” recibe entrenamiento periódico en el contenido del SOPEP. Se realizan simulacros a bordo para asegurar que cada tripulante conoce su rol: por ejemplo, un ejercicio típico es simular una fuga en un tanque de combustible durante una maniobra, donde se practica el taponamiento de la vía de agua, la comunicación de emergencia al puerto y la colocación de materiales absorbentes en cubierta y sobre el agua. También se ensayan las comunicaciones de reporte siguiendo los formatos MARPOL (formularios de reporte de derrames). Estos ejercicios se documentan en el Diario de a bordo. Asimismo, durante inspecciones estatutarias o inspecciones de Port State Control, se suele verificar la existencia y vigencia del SOPEP, y ocasionalmente se evalúa mediante preguntas o pequeños drills a la tripulación. Todo esto garantiza que, en caso real, el plan no sea simplemente un documento, sino una guía operacional familiar para la dotación."
+  },
+  {
+    "nombre_completo": "Plan de Emergencia ante el Riesgo de Contaminación del Litoral en Andalucía (PECLA)",
+    "nivel_territorial": "Autonómico (Andalucía)",
+    "marco_legal": {
+      "norma": "Acuerdo de 10 de junio de 2008 (Consejo de Gobierno de Andalucía)",
+      "descripcion": "Aprueba el PECLA (publicado en BOJA n.º 130, de 2 de julio de 2008)",
+      "url_oficial": "http://juntadeandalucia.es/boja/2008/130/1"
+    },
+    "objetivos": "Establecer la estructura organizativa y los procedimientos de actuación para una respuesta adecuada ante emergencias por contaminación del litoral andaluz [oai_citation:9‡juntadeandalucia.es](https://www.juntadeandalucia.es/organismos/transparencia/planificacion-evaluacion-estadistica/planes/detalle/11668.html#:~:text=El%20objeto%20fundamental%20del%20Plan,los%20medios%20y%20recursos%20disponibles) [oai_citation:10‡juntadeandalucia.es](https://www.juntadeandalucia.es/organismos/transparencia/planificacion-evaluacion-estadistica/planes/detalle/11668.html#:~:text=El%20objeto%20fundamental%20del%20PECLA,los%20medios%20y%20recursos%20disponibles). El PECLA busca asegurar la eficacia y coordinación en la intervención de los medios y recursos disponibles en Andalucía, protegiendo sus 800 km de costa (Atlántica y Mediterránea) y minimizando el impacto sobre la población, los ecosistemas litorales (como Doñana, el Estrecho) y las actividades económicas costeras (pesca, turismo). Cubre tanto contaminación originada desde el mar (vertidos de buques, plataformas) como desde tierra en zonas costeras.",
+    "niveles_activacion": "El plan distingue situaciones en función del alcance del incidente: una emergencia local (vertido que afecta solo a un término municipal costero) activa inicialmente el Plan de Actuación Local (PAL) del municipio, bajo supervisión del 112 y del PECLA en nivel de pre-emergencia; si el impacto abarca varios municipios o requiere mayor coordinación, la Junta de Andalucía declara la Emergencia Nivel 1 del PECLA (ámbito provincial, coordinación desde la Delegación del Gobierno de la Junta en la provincia); en caso de contaminación grave extendida por gran parte del litoral o varias provincias, se declara Emergencia Nivel 2 (ámbito autonómico), asumiendo la dirección la Comunidad Autónoma e involucrando al Estado (posible activación del Plan Ribera). Así mismo, el PECLA puede entrar en fase de alerta preventiva si hay noticia de un vertido significativo en el mar que pudiera alcanzar la costa andaluza en días u horas.",
+    "autoridades_responsables": "La dirección del PECLA recae en la Consejería competente en emergencias (actualmente la Consejería de la Presidencia, Interior, Diálogo Social y Simplificación Administrativa). Operativamente, el plan es gestionado a través del Centro de Coordinación de Emergencias (CECEM) de la Junta (112 Andalucía) en cada provincia afectada. En Emergencia Nivel 2, se constituye un Centro de Coordinación Operativa (CECOP) a nivel autonómico presidido por el Consejero de Interior o un Director del Plan designado, con representación de todas las consejerías involucradas (Medio Ambiente, Salud, Puertos de Andalucía, etc.) y de la Administración General del Estado (un enlace de Delegación del Gobierno y un representante de Protección Civil estatal). La Comisión de Protección Civil de Andalucía participa en la homologación y actualización del plan. En nivel local, los alcaldes de municipios afectados actúan como directores de las emergencias locales (integrados bajo el paraguas del PECLA cuando éste se activa).",
+    "procedimientos_principales": "Al activarse el PECLA, el 112 Andalucía asume la recepción de avisos y despliega un técnico de enlace a la zona afectada. Se identifica el tipo de contaminante y el tramo de costa afectado mediante inspecciones sobre el terreno y vuelos (helicópteros de INFOCA adaptados con observadores). El plan prevé el establecimiento de un perímetro de seguridad en las zonas de playa contaminadas y la restricción de acceso del público. Se movilizan equipos de intervención: brigadas del Plan Infoca y del Grupo de Emergencias de Andalucía (GREA) adaptadas para trabajos de retirada de contaminantes en costa, apoyo de la Unidad del Cuerpo Nacional de Policía Adscrita a la Junta para control y posibles evacuaciones, y voluntarios de Protección Civil capacitados. El PECLA define la coordinación con Salvamento Marítimo: si el vertido aún está en el mar próximo, las tareas de contención en agua las lidera Salvamento (Plan Marítimo Nacional) y la Junta complementa con barreras en bocanas de puertos o desembocaduras. También se incluye un protocolo de comunicación a la población a través de medios locales."
+  },
+  {
+    "nombre_completo": "Sistema Nacional de Respuesta ante la Contaminación Marina Accidental (SNR)",
+    "nivel_territorial": "Nacional",
+    "marco_legal": {
+      "norma": "Real Decreto 1695/2012, de 21 de diciembre",
+      "descripcion": "Aprueba el Sistema Nacional de Respuesta ante la contaminación marina",
+      "url_oficial": "https://www.boe.es/eli/es/rd/2012/12/21/1695"
+    },
+    "objetivos": "Marco integrado que coordina todos los planes marítimos, costeros y territoriales para prevenir y responder a vertidos en aguas españolas y en el litoral.",
+    "niveles_activacion": "Situaciones 0-3, escaladas según magnitud y área afectada.",
+    "autoridades_responsables": "Dirección General de la Marina Mercante (subsistema marítimo) y Dirección General de Sostenibilidad de la Costa y del Mar (subsistema costero).",
+    "procedimientos_principales": "Integración progresiva de planes interiores, territoriales y estatales; flujos de notificación, órganos de dirección y comités de crisis.",
+    "recursos_y_medios": "Buques y aeronaves de Salvamento Marítimo, medios de la Armada y lotes estatales de limpieza costera.",
+    "elementos_simulacros": "Obligatoriedad de ejercicios anuales combinados entre Administración General del Estado y CCAA."
+  },
+  {
+    "nombre_completo": "Plan Marítimo Nacional de respuesta ante la contaminación del medio marino (PMN)",
+    "nivel_territorial": "Nacional (subsistema marítimo)",
+    "marco_legal": {
+      "norma": "Orden FOM/1793/2014, de 22 de septiembre",
+      "descripcion": "Aprueba el Plan Marítimo Nacional conforme al SNR",
+      "url_oficial": "https://www.boe.es/buscar/doc.php?id=BOE-A-2014-10063"
+    },
+    "objetivos": "Contener y recuperar vertidos en aguas abiertas españolas antes de que alcancen la costa.",
+    "niveles_activacion": "Se activa cuando un vertido supera la capacidad de un plan interior marítimo o amenaza zonas vulnerables (Situaciones 1-3 del SNR).",
+    "autoridades_responsables": "Dirección General de la Marina Mercante; operativa: Salvamento Marítimo (SASEMAR).",
+    "procedimientos_principales": "Evaluación inicial, despliegue de barreras, uso de dispersantes, enlace con Capitanías y Armada.",
+    "recursos_y_medios": "Remolcadores polivalentes (Clara Campoamor, Luz de Mar, etc.), aviones de vigilancia, kits móviles anticontaminación.",
+    "elementos_simulacros": "Ejercicios nacionales en mar abierto y simulacros integrados con CCAA costeras."
+  },
+  {
+    "nombre_completo": "Plan Estatal de Protección de la Ribera del Mar contra la Contaminación (Plan RIBERA)",
+    "nivel_territorial": "Nacional (subsistema costero)",
+    "marco_legal": {
+      "norma": "Orden AAA/702/2014, de 28 de abril",
+      "descripcion": "Aprueba el Plan RIBERA para emergencias en costa",
+      "url_oficial": "https://www.boe.es/buscar/doc.php?id=BOE-A-2014-4651"
+    },
+    "objetivos": "Proteger el dominio público marítimo-terrestre frente a vertidos que superan los recursos autonómicos.",
+    "niveles_activacion": "Apoyo estatal parcial o total cuando la contaminación afecta a varias CCAA o desborda capacidades regionales.",
+    "autoridades_responsables": "Dirección General de Sostenibilidad de la Costa y del Mar.",
+    "procedimientos_principales": "Evaluación en costa, despliegue de brigadas, coordinación con PMN y CCAA, gestión de residuos y fauna.",
+    "recursos_y_medios": "Equipos de limpieza TRAGSA, barreras costeras de gran calado, posible despliegue UME.",
+    "elementos_simulacros": "Simulacros en playas (ej. Barcelona 2023) con participación de varias administraciones."
+  },
+  {
+    "nombre_completo": "Plan Interior Marítimo del Puerto de Huelva (Zona I)",
+    "nivel_territorial": "Local (Autoridad Portuaria)",
+    "marco_legal": {
+      "norma": "Plan Interior Marítimo aprobado por DGMM",
+      "descripcion": "Obligatorio según art. 69 TR-Ley de Puertos y art. 4 RD 1695/2012",
+      "url_oficial": ""
+    },
+    "objetivos": "Contener vertidos dentro de las aguas portuarias y proteger la ría del Odiel.",
+    "niveles_activacion": "Nivel 1 (propios), Nivel 2 (apoyo externo), Nivel 3 (PMN y Plan RIBERA).",
+    "autoridades_responsables": "Autoridad Portuaria de Huelva; coordinación con Capitanía Marítima.",
+    "procedimientos_principales": "Parada de operaciones, despliegue de barreras portátiles, comunicación VHF 6 con SASEMAR.",
+    "recursos_y_medios": "Barreras, skimmers, remolcadores portuarios adaptados.",
+    "elementos_simulacros": "Ejercicios anuales de derrame en pantalán Reina Sofía con empresas concesionarias."
+  },
+  {
+    "nombre_completo": "Plan Interior Marítimo de la terminal MOEVE (Cepsa-Palos de la Frontera)",
+    "nivel_territorial": "Privado (instalación)",
+    "marco_legal": {
+      "norma": "Plan Interior Marítimo aprobado por Capitanía Marítima",
+      "descripcion": "Ex art. 4.6 RD 1695/2012",
+      "url_oficial": ""
+    },
+    "objetivos": "Respuesta inmediata a vertidos durante carga/descarga en la monoboya.",
+    "niveles_activacion": "Tier 1-3, enlazados al PIM del Puerto y al PMN.",
+    "autoridades_responsables": "Jefe de Emergencias MOEVE; supervisión Capitanía Marítima.",
+    "procedimientos_principales": "Cese de bombeo, confinamiento con barreras, avisos a 112 y SASEMAR.",
+    "recursos_y_medios": "Barreras flotantes, skimmer portátil, absorbentes y tanques flexibles.",
+    "elementos_simulacros": "10 simulacros/año más ejercicios conjuntos con Puerto de Huelva."
+  },
+  {
+    "nombre_completo": "Plan SOPEP del buque tanque “STROMBOLI M”",
+    "nivel_territorial": "Privado (buque)",
+    "marco_legal": {
+      "norma": "Regla 37 Anexo I MARPOL 73/78",
+      "descripcion": "Obliga a portar un SOPEP aprobado",
+      "url_oficial": "https://wwwcdn.imo.org/localresources/en/OurWork/Environment/Documents/MSC-MEPC.6-Circ.23.pdf"
+    },
+    "objetivos": "Guiar a la tripulación para controlar un derrame propio y notificarlo.",
+    "niveles_activacion": "Activación inmediata ante cualquier fuga de hidrocarburo.",
+    "autoridades_responsables": "Capitán del buque; enlace con Capitanía Marítima y SASEMAR.",
+    "procedimientos_principales": "Detener trasiego, contener fuga, reportar formato POLREP.",
+    "recursos_y_medios": "Kit absorbentes, pequeñas barreras, tapones de emergencia.",
+    "elementos_simulacros": "Drills incluidos en inspecciones estatutarias y PSC."
+  },
+  {
+    "nombre_completo": "Plan de Emergencia ante el Riesgo de Contaminación del Litoral en Andalucía (PECLA)",
+    "nivel_territorial": "Autonómico (Andalucía)",
+    "marco_legal": {
+      "norma": "Acuerdo de 10 de junio de 2008 (Consejo de Gobierno)",
+      "descripcion": "Publicado en BOJA n.º 130, 02/07/2008",
+      "url_oficial": "https://www.juntadeandalucia.es/boja/2008/130/1"
+    },
+    "objetivos": "Coordinar medios autonómicos y locales para proteger el litoral andaluz ante vertidos.",
+    "niveles_activacion": "Pre-emergencia, Emergencia Nivel 1 (provincial) y Nivel 2 (autonómico).",
+    "autoridades_responsables": "Consejería de Presidencia - 112 Andalucía; alcaldías en fase local.",
+    "procedimientos_principales": "Recepción de avisos en 112, establecimiento de CECOP, cierre de playas y despliegue de brigadas INFOCA; comunicación continua a ciudadanía.",
+    "recursos_y_medios": "Brigadas GREA-INFOCA, helicópteros de observación, voluntariado de Protección Civil.",
+    "elementos_simulacros": "Simulacros provinciales periódicos; activación real en vertidos (Algeciras 2019)."
+  },
+  {
+    "nombre_completo": "Plan Territorial de Contingencias por Contaminación Marina Accidental de Galicia (CAMGAL)",
+    "nivel_territorial": "Autonómico (Galicia)",
+    "marco_legal": {
+      "norma": "Decreto 135/2016, de 6 de octubre",
+      "descripcion": "Regula la estructura y organización del CAMGAL",
+      "url_oficial": "https://www.xunta.gal/dog/Publicados/2016/20161025/AnuncioG0244-181016-0001_es.html"
+    },
+    "objetivos": "Respuesta ágil y coordinada a vertidos que afecten al litoral gallego.",
+    "niveles_activacion": "Alerta, Emergencia Nivel 1 (provincial), Nivel 2 (autonómico).",
+    "autoridades_responsables": "Axencia Galega de Emerxencias (AXEGA) y Gardacostas de Galicia.",
+    "procedimientos_principales": "Activación del 112, despliegue de medios en rías, enlace con PMN y Plan RIBERA.",
+    "recursos_y_medios": "Barcos anticontaminación propios, barreras para rías, centro logístico en A Coruña.",
+    "elementos_simulacros": "Ejercicio anual CAMGAL-Gardacostas; activado en vertido Ferrol 2025."
+  },
+  {
+    "nombre_completo": "Plan Especial de Emergencias de Euskadi ante la Contaminación de la Ribera del Mar (ITSASERTZA)",
+    "nivel_territorial": "Autonómico (País Vasco)",
+    "marco_legal": {
+      "norma": "Acuerdo de Consejo de Gobierno de 9 de abril 2019",
+      "descripcion": "Publicado en BOPV n.º 76, 23/04/2019",
+      "url_oficial": "https://www.euskadi.eus/contenidos/informacion/itsasertza/es_def/adjuntos/Plan%20ITSASERTZA-es.pdf"
+    },
+    "objetivos": "Gestionar emergencias costeras en Bizkaia y Gipuzkoa por vertidos o llegada de residuos.",
+    "niveles_activacion": "Fase de Alerta, Emergencia Parcial, Emergencia General.",
+    "autoridades_responsables": "Dirección de Atención de Emergencias y Meteorología (DAEM) – Gobierno Vasco.",
+    "procedimientos_principales": "Monitoreo litoral, aviso al 112 SOS Deiak, coordinación con Salvamento Marítimo.",
+    "recursos_y_medios": "Brigadas de limpieza litoral de Ihobe, Ertzaintza para control de accesos, contratos con empresas de residuos.",
+    "elementos_simulacros": "Activación enero 2024 por llegada de pellets; ejercicios anuales con Diputaciones."
+  },
+  {
+    "nombre_completo": "Plan especial de emergencias por contaminación de las aguas marinas de Cataluña (CAMCAT)",
+    "nivel_territorial": "Autonómico (Cataluña)",
+    "marco_legal": {
+      "norma": "Acuerdo GOV/15/2015, de 10 de febrero",
+      "descripcion": "Revisión del CAMCAT 2003",
+      "url_oficial": "https://interior.gencat.cat/ca/el_departament/normativa/proteccio_civil/#GOV15_2015"
+    },
+    "objetivos": "Planificar la respuesta a vertidos que afecten la costa y aguas interiores catalanas.",
+    "niveles_activacion": "Pre-alerta, Alerta, Emergencia Nivel 1 (provincial), Nivel 2 (autonómico).",
+    "autoridades_responsables": "Direcció General de Protecció Civil – Departament d’Interior.",
+    "procedimientos_principales": "Mando desde CECAT, despliegue de bombers GRAF y personal de Agència de l’Aigua; enlace con PMN en mar.",
+    "recursos_y_medios": "Equipos de la Generalitat preposicionados en Barcelona, Tarragona y Girona.",
+    "elementos_simulacros": "Simulacro Barça-Nov 2023 con Plan RIBERA y PMN."
+  },
+  {
+    "nombre_completo": "Plan Específico de Contingencias por Contaminación Marina Accidental de Canarias (PECMAR)",
+    "nivel_territorial": "Autonómico (Canarias)",
+    "marco_legal": {
+      "norma": "Decreto 20/2006, de 20 de julio",
+      "descripcion": "Aprueba el PECMAR",
+      "url_oficial": "https://www.gobiernodecanarias.org/boc/2008/107/001.html"
+    },
+    "objetivos": "Organizar y coordinar la respuesta a vertidos en el archipiélago canario.",
+    "niveles_activacion": "Alerta, Emergencia Nivel 1 (insular), Nivel 2 (autonómico).",
+    "autoridades_responsables": "Dirección General de Seguridad y Emergencias del Gobierno de Canarias.",
+    "procedimientos_principales": "Comité Director PECMAR, despliegue de barreras, coordinación con Capitanías.",
+    "recursos_y_medios": "Bases logísticas en Las Palmas y Santa Cruz, helicópteros del GES, apoyo de la Armada.",
+    "elementos_simulacros": "Activación real 2015 (hundimiento Oleg Naydenov), simulacros insulares anuales."
+  }
+]

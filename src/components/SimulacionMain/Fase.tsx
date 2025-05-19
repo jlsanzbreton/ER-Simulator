@@ -5,7 +5,7 @@ import { FaseSimulacroProps } from "../../types/simulacro";
 const DESCRIPCIONES: Record<string, string> = {
   deteccion:
     "¿Detectas el derrame a tiempo, o tardas por confusión o presión ambiental?",
-  notificacion:
+  deteccion:
     "¿Notificas inmediatamente a las autoridades, o primero tratas de controlar la situación?",
   gestion: "¿Activarás el plan de emergencia/contención, o esperas refuerzos?",
   coordinacion: "¿Coordinarás activamente con otros roles implicados?",
@@ -26,7 +26,7 @@ const OPCIONES: Record<string, { texto: string; feedback: string }[]> = {
         "Cuidado, el retraso puede aumentar el daño ambiental y complicar la respuesta.",
     },
   ],
-  notificacion: [
+  deteccion: [
     {
       texto: "Notifico de inmediato a todos los implicados",
       feedback:

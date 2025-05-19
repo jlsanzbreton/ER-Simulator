@@ -4,10 +4,11 @@
 // Trazabilidad: ver CopilotGuidelines.json, DrillGuide.json
 
 import React, { useState } from "react";
-import { SimulacroChecksLog } from "../../types/checks";
+import { CheckNormativo } from "../../types/checks";
+import { FaEdit } from "react-icons/fa";
 
 interface ChecklistCumplimientoProps {
-  checks: SimulacroChecksLog;
+  checks: CheckNormativo[];
   onCheck: (id: string, observaciones?: string) => void;
   usuario: string; // id o nombre del usuario/rol que marca
   faseActual?: string; // opcional, para filtrar por fase
@@ -19,10 +20,11 @@ const ChecklistCumplimiento: React.FC<ChecklistCumplimientoProps> = ({
   faseActual,
 }) => {
   const [obs, setObs] = useState<Record<string, string>>({});
+  const [editando, setEditando] = useState<Record<string, boolean>>({});
 
   // Filtra por fase si se indica
   const checksFiltrados = faseActual
-    ? checks.filter((c) => c.fase === faseActual)
+    ? checks // los checks ya vienen filtrados por fase en el flujo actual
     : checks;
 
   return (
@@ -30,45 +32,117 @@ const ChecklistCumplimiento: React.FC<ChecklistCumplimientoProps> = ({
       <h2>Checklist de Cumplimiento</h2>
       <ul className="list-unstyled">
         {checksFiltrados.map((check) => (
-          <li key={check.id} className="mb-1">
-            <div>
+          <li
+            key={check.id}
+            className={`mb-1 checklist-item${
+              check.cumplido ? " checklist-item-done" : ""
+            }${check.obligatorio ? " checklist-item-oblig" : ""}${
+              check.cumplido && editando[check.id]
+                ? " checklist-item-editing"
+                : ""
+            }`}
+            data-check-cumplido={check.cumplido ? "true" : undefined}
+          >
+            <div className="check-desc-row">
               <b>{check.descripcion}</b>
               {check.obligatorio && (
-                <span className="check-obligatorio">*</span>
+                <span className="check-obligatorio" title="Obligatorio">
+                  *
+                </span>
+              )}
+              {check.cumplido && (
+                <span className="check-timestamp">
+                  {check.timestamp
+                    ? new Date(check.timestamp).toLocaleString()
+                    : ""}
+                </span>
               )}
             </div>
-            {check.marcadoPor ? (
-              <div className="mt-1">
-                <span className="check-marcado">
-                  ✔ Marcado por {check.marcadoPor}
-                </span>
-                {check.horaMarcado && (
-                  <span className="check-hora">
-                    ({new Date(check.horaMarcado).toLocaleString()})
+            {check.cumplido && !editando[check.id] ? (
+              <div className="mt-1 check-marcado">
+                ✔ Cumplido
+                {typeof check.evidencia === "string" &&
+                check.evidencia.trim() !== "" ? (
+                  <span className="check-obs ml-2">{check.evidencia}</span>
+                ) : (
+                  <span className="check-obs ml-2 check-obs-vacio">
+                    (Sin anotación)
                   </span>
                 )}
-                {check.observaciones && (
-                  <div className="check-obs mt-1">
-                    Obs: {check.observaciones}
-                  </div>
-                )}
+                <span
+                  className="check-edit-toggle"
+                  onClick={() => {
+                    setEditando((prev) => ({ ...prev, [check.id]: true }));
+                    setObs((prev) => ({
+                      ...prev,
+                      [check.id]:
+                        prev[check.id] !== undefined
+                          ? prev[check.id]
+                          : check.evidencia || "",
+                    }));
+                  }}
+                  tabIndex={0}
+                  role="button"
+                  aria-label="Editar evidencia"
+                >
+                  <FaEdit className="check-edit-icon" />
+                  Editar
+                </span>
               </div>
             ) : (
               <div className="mt-1">
                 <textarea
                   placeholder="Observaciones (opcional)"
-                  value={obs[check.id] || ""}
+                  value={
+                    obs[check.id] !== undefined
+                      ? obs[check.id]
+                      : check.evidencia || ""
+                  }
                   onChange={(e) =>
                     setObs({ ...obs, [check.id]: e.target.value })
                   }
                   rows={2}
+                  disabled={check.cumplido && !editando[check.id]}
+                  className={
+                    check.cumplido && editando[check.id]
+                      ? "check-editing"
+                      : undefined
+                  }
                 />
                 <button
-                  className="btn-accent"
-                  onClick={() => onCheck(check.id, obs[check.id])}
+                  className={`btn-accent${
+                    check.cumplido && !editando[check.id] ? " btn-disabled" : ""
+                  }`}
+                  onClick={() => {
+                    onCheck(check.id, obs[check.id]);
+                    setEditando((prev) => ({ ...prev, [check.id]: false }));
+                    setObs((prev) => {
+                      const nuevo = { ...prev };
+                      delete nuevo[check.id];
+                      return nuevo;
+                    });
+                  }}
+                  disabled={check.cumplido && !editando[check.id]}
                 >
-                  Marcar como cumplido
+                  {check.cumplido && editando[check.id]
+                    ? "Actualizar nota"
+                    : "Marcar como cumplido"}
                 </button>
+                {check.cumplido && editando[check.id] && (
+                  <button
+                    className="btn-accent ml-2"
+                    onClick={() => {
+                      setEditando((prev) => ({ ...prev, [check.id]: false }));
+                      setObs((prev) => {
+                        const nuevo = { ...prev };
+                        delete nuevo[check.id];
+                        return nuevo;
+                      });
+                    }}
+                  >
+                    Cancelar
+                  </button>
+                )}
               </div>
             )}
           </li>
