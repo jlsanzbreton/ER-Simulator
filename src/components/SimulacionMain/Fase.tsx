@@ -5,12 +5,14 @@ import { FaseSimulacroProps } from "../../types/simulacro";
 const DESCRIPCIONES: Record<string, string> = {
   deteccion:
     "¿Detectas el derrame a tiempo, o tardas por confusión o presión ambiental?",
-  deteccion:
-    "¿Notificas inmediatamente a las autoridades, o primero tratas de controlar la situación?",
-  gestion: "¿Activarás el plan de emergencia/contención, o esperas refuerzos?",
-  coordinacion: "¿Coordinarás activamente con otros roles implicados?",
-  comunicacion:
-    "¿Comunicas rápido a tu organización/fletador/armador/terminal/medios?",
+  activacion:
+    "¿Activas los planes y notificas inmediatamente a las autoridades pertinentes, o primero tratas de controlar la situación?",
+  contencion:
+    "¿Inicias las acciones de contención y respuesta según el plan, o esperas refuerzos/instrucciones adicionales?",
+  recuperacion:
+    "¿Coordinas las labores de recuperación y limpieza de manera efectiva con todas las partes implicadas?",
+  conclusion:
+    "¿Documentas y comunicas las lecciones aprendidas y cierras formalmente el incidente?",
 };
 
 const OPCIONES: Record<string, { texto: string; feedback: string }[]> = {
@@ -26,48 +28,53 @@ const OPCIONES: Record<string, { texto: string; feedback: string }[]> = {
         "Cuidado, el retraso puede aumentar el daño ambiental y complicar la respuesta.",
     },
   ],
-  deteccion: [
+  activacion: [
     {
-      texto: "Notifico de inmediato a todos los implicados",
+      texto: "Activo planes y notifico de inmediato a todos los implicados",
       feedback:
-        "Correcto: la normativa exige notificación temprana (RD 1695/2012).",
+        "Correcto: la activación temprana de planes y la notificación son cruciales (RD 1695/2012).",
     },
     {
-      texto: "Intento controlar primero y demoro el aviso",
+      texto: "Intento controlar primero y demoro la activación/notificación",
       feedback:
-        "¡Ojo! Demorar la notificación puede conllevar sanciones y empeorar la crisis.",
+        "¡Ojo! Demorar la activación de planes y la notificación puede conllevar sanciones y empeorar la crisis.",
     },
   ],
-  gestion: [
+  contencion: [
     {
-      texto: "Activo todos los recursos y planes internos",
+      texto: "Inicio acciones de contención con recursos disponibles",
       feedback:
-        "¡Perfecto! La coordinación y previsión salvan tiempo y reputación.",
+        "¡Perfecto! Una respuesta rápida y decidida en la contención es vital.",
     },
     {
-      texto: "Espero instrucciones o refuerzos externos",
+      texto: "Espero instrucciones o refuerzos externos antes de actuar",
       feedback:
-        "Puede ser prudente, pero perder tiempo puede aumentar el alcance del derrame.",
+        "Puede ser prudente en ciertos casos, pero perder tiempo en la contención puede aumentar el alcance del derrame.",
     },
   ],
-  coordinacion: [
+  recuperacion: [
     {
-      texto: "Coordino activamente con otros implicados",
-      feedback: "¡Eso marca la diferencia en emergencias reales!",
+      texto: "Coordino activamente la recuperación y limpieza",
+      feedback:
+        "¡La coordinación efectiva en la recuperación marca la diferencia para restaurar la normalidad!",
     },
     {
-      texto: "Trabajo de forma aislada, sin avisar a otros",
-      feedback: "El aislamiento genera duplicidades y puede aumentar el caos.",
+      texto: "Dejo que otros lideren o trabajo de forma aislada",
+      feedback:
+        "La falta de coordinación en la recuperación puede generar ineficiencias y retrasar la limpieza.",
     },
   ],
-  comunicacion: [
+  conclusion: [
     {
-      texto: "Comunico rápido a todos los stakeholders",
-      feedback: "La comunicación ágil reduce rumorología y pánico.",
+      texto: "Documento todo y comunico el cierre y lecciones aprendidas",
+      feedback:
+        "La documentación exhaustiva y la comunicación transparente son clave para la mejora continua.",
     },
     {
-      texto: "Espero a que la situación mejore para informar",
-      feedback: "La opacidad puede ser castigada y genera desconfianza.",
+      texto:
+        "Cierro el incidente sin una revisión formal o comunicación amplia",
+      feedback:
+        "Omitir la fase de conclusión formal impide aprender de la experiencia y mejorar protocolos.",
     },
   ],
 };

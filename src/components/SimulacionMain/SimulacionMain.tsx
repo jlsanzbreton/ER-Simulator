@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { SimulacionMainProps } from "../../types/simulacro";
 import Fase from "./Fase";
-import Feedback from "./Feedback";
+// import Feedback from "./Feedback"; // Comentado temporalmente
 import { useSimulacro } from "@/context/SimulacroContext";
 import Timeline from "./Timeline";
 import ChecklistCumplimiento from "./ChecklistCumplimiento";
@@ -166,7 +166,8 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
             onDecision={handleDecision}
             isBlocked={!!feedback}
           />
-          {feedback && <Feedback texto={feedback} />}
+          {/* {feedback && <Feedback texto={feedback} />} */}
+          {/* Comentado temporalmente */}
         </div>
       )}
     </div>

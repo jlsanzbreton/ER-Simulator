@@ -1840,3 +1840,177 @@ h1,
     height: 16px;
   }
 }
+
+/* Mejoras de contraste modo claro */
+.card,
+.card-wide,
+.card-max,
+.dashboard-hero,
+.feature-card,
+.modal.card,
+.grey-zones-card,
+.legal-links {
+  background: #fff !important;
+  color: #1a2533 !important;
+  border: 1.5px solid #b0c4d6 !important;
+  box-shadow: 0 4px 18px 0 rgba(0, 32, 64, 0.1),
+    0 1.5px 6px 0 rgba(0, 0, 0, 0.08) !important;
+}
+.mode-card,
+.feature-card {
+  background: #f7fafc !important;
+  color: #1a2533 !important;
+  border: 2px solid #b0c4d6 !important;
+  box-shadow: 0 2px 10px 0 rgba(0, 32, 64, 0.1),
+    0 1.5px 6px 0 rgba(0, 0, 0, 0.08) !important;
+}
+.mode-card h3,
+.feature-card h3 {
+  color: #0a2540 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+}
+.mode-card p,
+.feature-card p {
+  color: #3a4a5a !important;
+}
+.features-section h2,
+.process-section h2,
+.grey-zones-card h2,
+.legal-links h3 {
+  color: #0a2540 !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.mode-icon,
+.feature-icon,
+.step-icon--small {
+  background: #0277bd !important;
+  color: #fff !important;
+  box-shadow: 0 0 0 2px #b0c4d6 !important;
+}
+.mode-icon svg,
+.feature-icon svg,
+.step-icon--small svg {
+  color: #fff !important;
+  filter: drop-shadow(0 0 4px #0277bd) brightness(1.1) !important;
+}
+.process-arrow svg {
+  color: #0277bd !important;
+  filter: drop-shadow(0 0 2px #b0c4d6) !important;
+}
+.dashboard-container h1,
+.ocean-header h1 {
+  color: #fff !important;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.22), 0 1px 0 rgba(0, 0, 0, 0.18) !important;
+}
+@media (prefers-color-scheme: dark) {
+  /* No cambiar nada aquí, sólo refuerzo modo claro arriba */
+}
+
+/* Refuerzo de contraste para textos en tarjetas de modo */
+.mode-card h3 {
+  color: #111;
+  font-weight: 800;
+  font-size: 1.13rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+.mode-card p {
+  color: #222;
+  font-size: 1.01rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.mode-card.mode-selected h3,
+.mode-card.mode-selected p {
+  color: #111;
+}
+.mode-card:focus h3,
+.mode-card:hover h3 {
+  color: #0277bd;
+}
+.mode-card:focus p,
+.mode-card:hover p {
+  color: #0277bd;
+}
+
+/* --- MODO OSCURO: Refuerzo de contraste y accesibilidad en tarjetas y textos principales --- */
+@media (prefers-color-scheme: dark) {
+  .card,
+  .card-wide,
+  .card-max,
+  .dashboard-hero,
+  .feature-card,
+  .modal.card,
+  .grey-zones-card,
+  .legal-links {
+    background: var(--card-bg) !important;
+    color: var(--text-main) !important;
+    border: 1.5px solid var(--border) !important;
+    box-shadow: 0 4px 18px 0 #0008, 0 1.5px 6px 0 #0006 !important;
+  }
+  .mode-card,
+  .feature-card {
+    background: var(--background) !important;
+    color: var(--text-main) !important;
+    border: 2px solid var(--border) !important;
+    box-shadow: 0 2px 10px 0 #0008, 0 1.5px 6px 0 #0006 !important;
+  }
+  .mode-card h3,
+  .feature-card h3 {
+    color: #fffbe9 !important;
+    text-shadow: 0 1px 6px #000a;
+  }
+  .mode-card p,
+  .feature-card p {
+    color: #f7fafc !important;
+    text-shadow: 0 1px 4px #000a;
+  }
+  .legal-link {
+    background: var(--background) !important;
+    color: var(--text-main) !important;
+    border: 1px solid var(--border) !important;
+  }
+  .legal-link:hover {
+    box-shadow: 0 2px 10px 0 #0277bd44;
+    border-color: var(--primary-light);
+  }
+  .mode-icon,
+  .feature-icon,
+  .step-icon--small {
+    background: var(--primary) !important;
+    color: #fff !important;
+    box-shadow: 0 0 0 2px #4a5568 !important;
+    filter: drop-shadow(0 0 6px #7ecbff) brightness(1.7) !important;
+  }
+  .mode-icon svg,
+  .feature-icon svg,
+  .step-icon--small svg {
+    color: #fff !important;
+    filter: drop-shadow(0 0 6px #7ecbff) brightness(1.7) !important;
+  }
+  .process-arrow svg {
+    color: #7ecbff !important;
+    filter: drop-shadow(0 0 2px #4a5568) !important;
+  }
+
+  /* Títulos de proceso y subtítulos: refuerzo de contraste */
+  .process-section h2,
+  .features-section h2,
+  .grey-zones-card h2,
+  .legal-links h3 {
+    color: #fff !important;
+    text-shadow: 0 2px 8px #000a !important;
+  }
+  .process-step h4,
+  .process-step .step-label,
+  .feature-card h3,
+  .mode-card h3 {
+    color: #fff !important;
+    text-shadow: 0 1px 6px #000a !important;
+  }
+  .process-step p,
+  .feature-card p,
+  .mode-card p {
+    color: #e2e8f0 !important;
+    text-shadow: 0 1px 4px #000a !important;
+  }
+}
