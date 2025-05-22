@@ -5,16 +5,19 @@ import { DerrameCoords } from "../../types/simulacro";
 import { LeafletMouseEvent } from "leaflet"; // Importación explícita para tipado
 import L from "leaflet";
 
-// Icono personalizado para evitar errores de 404
-const markerIcon = L.icon({
-  iconUrl: "/leaflet/marker-icon.png",
-  iconRetinaUrl: "/leaflet/marker-icon-2x.png",
-  shadowUrl: "/leaflet/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
-});
+// Icono personalizado para evitar errores de 404 (solo en cliente)
+const markerIcon =
+  typeof window !== "undefined"
+    ? L.icon({
+        iconUrl: "/leaflet/marker-icon.png",
+        iconRetinaUrl: "/leaflet/marker-icon-2x.png",
+        shadowUrl: "/leaflet/marker-shadow.png",
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41],
+      })
+    : undefined;
 
 const centerZoom: [number, number] = [37.3876, -5.9924]; // Centro aproximado de Andalucía
 const zoom = 8;
@@ -37,7 +40,9 @@ const ClickableMarker = ({
   });
 
   return marker ? (
-    <Marker position={[marker.lat, marker.lng]} icon={markerIcon} />
+    markerIcon ? (
+      <Marker position={[marker.lat, marker.lng]} icon={markerIcon} />
+    ) : null
   ) : null;
 };
 
@@ -66,8 +71,10 @@ const MapCard: React.FC<{
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {onCoordsChange ? (
-          <ClickableMarker onSelect={onCoordsChange} />
-        ) : coords ? (
+          markerIcon ? (
+            <ClickableMarker onSelect={onCoordsChange} />
+          ) : null
+        ) : coords && markerIcon ? (
           <Marker position={[coords.lat, coords.lng]} icon={markerIcon} />
         ) : null}
       </MapContainer>

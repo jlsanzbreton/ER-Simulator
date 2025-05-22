@@ -1482,7 +1482,7 @@ textarea:focus {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   background: var(--background);
-  text-align: center;
+  text-align: left;
 }
 .modal-actions {
   display: flex;
@@ -2014,3 +2014,6 @@ h1,
     text-shadow: 0 1px 4px #000a !important;
   }
 }
+
+/* Importación de estilos de parámetros editables */
+@import './panelEdicionParametros.css';

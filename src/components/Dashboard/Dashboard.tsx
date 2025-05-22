@@ -1,17 +1,40 @@
 // src/components/Dashboard/Dashboard.tsx
 import React, { useState } from "react";
 import { ModoSimulador } from "../../types/dualidad";
+import {
+  generarRolAleatorio,
+  generarCoordenadasValidas,
+} from "../../utils/generadoresSimulacion";
+import { generarCondicionesAmbientales } from "../../utils/enviroMonteCarlo";
+import {
+  RolInfo,
+  SimulacroCondicionesAmbientales,
+  DerrameCoords,
+} from "../../types/simulacro";
 
-const Dashboard: React.FC<{ onStart: (modo: ModoSimulador) => void }> = ({
-  onStart,
-}) => {
+const Dashboard: React.FC<{
+  onStart: (
+    modo: ModoSimulador,
+    rol: RolInfo,
+    condiciones: SimulacroCondicionesAmbientales,
+    coords: DerrameCoords
+  ) => void;
+}> = ({ onStart }) => {
   const [modal, setModal] = useState<ModoSimulador | null>(null);
 
   const handleSelect = (modo: ModoSimulador) => {
     setModal(modo);
   };
-  const handleConfirm = () => {
-    if (modal) onStart(modal);
+  const handleConfirm = async () => {
+    if (modal) {
+      const rol = generarRolAleatorio(modal);
+      const condiciones = generarCondicionesAmbientales();
+      // Cargar geojson dinámicamente (fetch desde public)
+      const res = await fetch("/geojson/andalucia-v2.geojson");
+      const geojson = await res.json();
+      const coords = generarCoordenadasValidas(geojson);
+      onStart(modal, rol, condiciones, coords);
+    }
     setModal(null);
   };
   const handleCancel = () => setModal(null);
@@ -117,14 +140,34 @@ const Dashboard: React.FC<{ onStart: (modo: ModoSimulador) => void }> = ({
           <div className="modal card">
             <h2>
               ¿Iniciar modo{" "}
-              {modal === "entrenamiento"
-                ? "Entrenamiento"
-                : "Simulacro real / Coordinación"}
-              ?
+              {modal === "entrenamiento" ? "Entrenamiento" : "Simulacro"}?
             </h2>
             <p>
-              Al aceptar, se pondrá en marcha el simulador en el modo
-              seleccionado.
+              Al aceptar, se generarán automáticamente:
+              <ul>
+                <li>
+                  El <b>Rol</b> asignado al azar.
+                </li>
+                <li>
+                  Las <b>Condiciones meteorológicas</b> y de corrientes
+                  aleatorias.
+                </li>
+                <li>
+                  Las <b>Coordenadas del derrame</b> realistas (siempre al sur y
+                  a menos de 20 km de la línea de costa).
+                </li>
+              </ul>
+              {modal === "simulacro" ? (
+                <>
+                  <b>En modo simulacro</b>, podrás editar todos estos parámetros
+                  desde la pantalla principal de la simulación.
+                </>
+              ) : (
+                <>
+                  <b>En modo entrenamiento</b>, sólo podrás cambiar el rol; el
+                  resto de parámetros serán aleatorios y fijos.
+                </>
+              )}
             </p>
             <div className="modal-actions">
               <button className="start-button" onClick={handleConfirm}>
