@@ -14,7 +14,7 @@ import { SimulacroCondicionesAmbientales } from "@/types/simulacro";
 import fasesChecksSimulacro from "../../utils/fasesChecksSimulacro.json";
 import { FaseSimulacro, CheckNormativo } from "../../types/checks";
 import dynamic from "next/dynamic";
-const MapCard = dynamic(() => import("../UI/MapCard"), { ssr: false });
+// const MapCard = dynamic(() => import("../UI/MapCard"), { ssr: false });
 import { RolSimulacro } from "../../types/simulacro";
 // Elimina la importación directa de SimMap y usa import dinámico para evitar errores SSR
 const SimMap = dynamic(() => import("../UI/SimMap"), { ssr: false });
@@ -28,23 +28,46 @@ const FASES: FaseSimulacro[] = fasesChecksSimulacro as FaseSimulacro[];
 const FASES_IDS = FASES.map((f) => f.id);
 type FaseSimulacroId = (typeof FASES_IDS)[number];
 
+// DEBUG: Verificar carga de FASES
+// console.log("FASES cargadas:", FASES);
+// console.log("IDs de FASES:", FASES_IDS);
+
 interface SimulacionMainExtendedProps extends SimulacionMainProps {
   onReset: () => void;
   modo: "entrenamiento" | "simulacro";
 }
 
 const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
-  rol,
+  rol, // Este es el rol inicial pasado como prop
   condiciones,
   derramaCoords,
   onReset,
   modo,
 }) => {
-  // Cambiar el tipo de useState para faseActual a string, y asegurar el tipado correcto en el callback de Timeline
   const [faseActual, setFaseActual] = useState<string>(FASES_IDS[0]);
   const [decisiones, setDecisiones] = useState<Record<string, string>>({});
   const [feedback, setFeedback] = useState<string | null>(null);
-  const { permisosRol, rolSeleccionado } = useSimulacro();
+  const {
+    permisosRol,
+    rolSeleccionado, // Este es el rol del contexto, que puede cambiar
+    setRol: setContextRol, // Función para cambiar el rol en el contexto
+  } = useSimulacro();
+
+  // Estado editable local para parámetros. Inicializado con las props.
+  const [rolEdit, setRolEdit] = useState<RolSimulacro>(rol);
+  const [condicionesEdit, setCondicionesEdit] =
+    useState<SimulacroCondicionesAmbientales>(condiciones);
+  const [coordsEdit, setCoordsEdit] = useState<{ lat: number; lng: number }>(
+    derramaCoords
+  );
+
+  // Sincronizar el rol del contexto si el rolEdit local cambia
+  // Esto es crucial si PanelEdicionParametros modifica rolEdit y esperamos que permisosRol se actualice.
+  React.useEffect(() => {
+    if (rolEdit !== rolSeleccionado) {
+      setContextRol(rolEdit);
+    }
+  }, [rolEdit, rolSeleccionado, setContextRol]);
 
   // Estado global de checks para todas las fases
   const [checksPorFase, setChecksPorFase] = useState<{
@@ -70,6 +93,37 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
 
   // Adaptar la obtención de la fase actual y los checks:
   const checksActuales = checksPorFase[faseActual] || [];
+
+  // DEBUG: Colocar los logs aquí donde todas las variables están en ámbito
+  // console.log("--- DEBUG SimulacionMain RENDER ---");
+  // console.log("Modo actual (prop 'modo'):", modo);
+  // console.log("Rol inicial (prop 'rol'):", rol);
+  // console.log("Rol editable local (rolEdit state):", rolEdit);
+  // console.log(
+  //   "Rol seleccionado en contexto (useSimulacro().rolSeleccionado):",
+  //   rolSeleccionado
+  // );
+  // console.log(
+  //   "Permisos del rol en contexto (useSimulacro().permisosRol):",
+  //   permisosRol
+  // );
+  // console.log("Fase actual (faseActual state):", faseActual);
+  // // console.log("Checks por fase (checksPorFase state):", JSON.stringify(checksPorFase, null, 2)); // Puede ser muy verboso
+  // console.log(
+  //   "Número de checks para la fase actual (checksActuales.length):",
+  //   checksActuales.length
+  // );
+  // console.log(
+  //   "Condición para mostrar Checklist (permisosRol?.puedeMarcarChecks && modo === 'simulacro'):",
+  //   permisosRol?.puedeMarcarChecks && modo === "simulacro"
+  // );
+  // if (permisosRol) {
+  //   console.log(
+  //     "permisosRol.puedeMarcarChecks:",
+  //     permisosRol.puedeMarcarChecks
+  //   );
+  // }
+  // console.log("--- FIN DEBUG SimulacionMain RENDER ---");
 
   // Al pulsar decisión, actualiza decisiones y muestra feedback breve
   const handleDecision = (fase: string, decision: string, feedback: string) => {
@@ -189,22 +243,46 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
           {/* Edición de coordenadas */}
           {modo === "simulacro" && (
             <div className="panel-edicion-coords">
-              <label>Coordenadas del derrame:</label>
-              <MapCard coords={derramaCoords} onCoordsChange={onCoordsChange} />
+              <label htmlFor="lat-input">Latitud:</label>
+              <input
+                type="number"
+                id="lat-input"
+                name="lat-input"
+                value={derramaCoords.lat}
+                onChange={(e) => {
+                  const newLat = parseFloat(e.target.value);
+                  onCoordsChange({
+                    ...derramaCoords,
+                    lat: isNaN(newLat) ? derramaCoords.lat : newLat,
+                  });
+                }}
+                className="input input-small"
+                step="0.00001"
+              />
+              <label htmlFor="lng-input" className="ml-1">
+                Longitud:
+              </label>
+              <input
+                type="number"
+                id="lng-input"
+                name="lng-input"
+                value={derramaCoords.lng}
+                onChange={(e) => {
+                  const newLng = parseFloat(e.target.value);
+                  onCoordsChange({
+                    ...derramaCoords,
+                    lng: isNaN(newLng) ? derramaCoords.lng : newLng,
+                  });
+                }}
+                className="input input-small"
+                step="0.00001"
+              />
             </div>
           )}
         </div>
       </div>
     );
   };
-
-  // Estado editable para parámetros
-  const [rolEdit, setRolEdit] = useState<RolSimulacro>(rol);
-  const [condicionesEdit, setCondicionesEdit] =
-    useState<SimulacroCondicionesAmbientales>(condiciones);
-  const [coordsEdit, setCoordsEdit] = useState<{ lat: number; lng: number }>(
-    derramaCoords
-  );
 
   if (faseActual === "conclusion" && todasObligatoriasCumplidas) {
     return (
@@ -236,7 +314,10 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
         rol={rolEdit}
         condiciones={condicionesEdit}
         derramaCoords={coordsEdit}
-        onRolChange={setRolEdit}
+        onRolChange={(newRol) => {
+          setRolEdit(newRol); // Actualiza el estado local rolEdit
+          // setContextRol(newRol); // También actualiza el rol en el contexto global para que los permisos se recalculen
+        }}
         onCondicionesChange={setCondicionesEdit}
         onCoordsChange={setCoordsEdit}
       />

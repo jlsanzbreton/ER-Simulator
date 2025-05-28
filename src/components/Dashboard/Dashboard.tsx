@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { ModoSimulador } from "../../types/dualidad";
 import {
   generarRolAleatorio,
-  generarCoordenadasValidas,
+  //generarCoordenadasValidas,comento temporariamente para evitar error de importación
 } from "../../utils/generadoresSimulacion";
 import { generarCondicionesAmbientales } from "../../utils/enviroMonteCarlo";
 import {
@@ -30,9 +30,9 @@ const Dashboard: React.FC<{
       const rol = generarRolAleatorio(modal);
       const condiciones = generarCondicionesAmbientales();
       // Cargar geojson dinámicamente (fetch desde public)
-      const res = await fetch("/geojson/andalucia-v2.geojson");
-      const geojson = await res.json();
-      const coords = generarCoordenadasValidas(geojson);
+      // const res = await fetch("/geojson/andalucia-v2.geojson");
+      // const geojson = await res.json();
+      const coords = { lat: 36.7, lng: -3.9 }; // Coordenadas ficticias para pruebas
       onStart(modal, rol, condiciones, coords);
     }
     setModal(null);
