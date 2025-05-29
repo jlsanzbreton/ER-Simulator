@@ -6,8 +6,9 @@ import Fase from "./Fase";
 import { useSimulacro } from "@/context/SimulacroContext";
 import Timeline from "./Timeline";
 import ChecklistCumplimiento from "./ChecklistCumplimiento";
+import ParamModal from "./ParamModal";
 import { ROLES_INFO_MAP } from "@/utils/rolesData";
-import { FaWind, FaTemperatureHigh, FaClock } from "react-icons/fa";
+import { FaWind, FaTemperatureHigh, FaClock, FaCog } from "react-icons/fa";
 import Image from "next/image";
 import { SimulacroCondicionesAmbientales } from "@/types/simulacro";
 // Para importar el JSON tipado correctamente
@@ -47,27 +48,24 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
   const [faseActual, setFaseActual] = useState<string>(FASES_IDS[0]);
   const [decisiones, setDecisiones] = useState<Record<string, string>>({});
   const [feedback, setFeedback] = useState<string | null>(null);
+  // Estado para controlar la visibilidad del modal de parámetros
+  const [showParamModal, setShowParamModal] = useState<boolean>(false);
   const {
     permisosRol,
-    rolSeleccionado, // Este es el rol del contexto, que puede cambiar
-    setRol: setContextRol, // Función para cambiar el rol en el contexto
+    rolSeleccionado,
+    setRol: setContextRol,
+    condiciones: condicionesContexto,
+    derrameCoords: derrameCoordsContexto,
   } = useSimulacro();
 
   // Estado editable local para parámetros. Inicializado con las props.
-  const [rolEdit, setRolEdit] = useState<RolSimulacro>(rol);
-  const [condicionesEdit, setCondicionesEdit] =
-    useState<SimulacroCondicionesAmbientales>(condiciones);
-  const [coordsEdit, setCoordsEdit] = useState<{ lat: number; lng: number }>(
-    derramaCoords
-  );
-
-  // Sincronizar el rol del contexto si el rolEdit local cambia
-  // Esto es crucial si PanelEdicionParametros modifica rolEdit y esperamos que permisosRol se actualice.
+  // Nota: Ya no necesitamos estos estados locales porque usamos el contexto
   React.useEffect(() => {
-    if (rolEdit !== rolSeleccionado) {
-      setContextRol(rolEdit);
+    // Inicializar el contexto con los valores de las props al montar el componente
+    if (rol !== rolSeleccionado) {
+      setContextRol(rol);
     }
-  }, [rolEdit, rolSeleccionado, setContextRol]);
+  }, [rol, rolSeleccionado, setContextRol]);
 
   // Estado global de checks para todas las fases
   const [checksPorFase, setChecksPorFase] = useState<{
@@ -161,129 +159,6 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
     arr.filter((c) => c.obligatorio).every((c) => c.cumplido)
   );
 
-  // Panel de edición de parámetros (cabecera editable)
-  const PanelEdicionParametros: React.FC<{
-    modo: "entrenamiento" | "simulacro";
-    rol: RolSimulacro;
-    condiciones: SimulacroCondicionesAmbientales;
-    derramaCoords: { lat: number; lng: number };
-    onRolChange: (rol: RolSimulacro) => void;
-    onCondicionesChange: (cond: SimulacroCondicionesAmbientales) => void;
-    onCoordsChange: (coords: { lat: number; lng: number }) => void;
-  }> = ({
-    modo,
-    rol,
-    condiciones,
-    derramaCoords,
-    onRolChange,
-    onCondicionesChange,
-    onCoordsChange,
-  }) => {
-    const rolesDisponibles: RolInfo[] =
-      modo === "entrenamiento"
-        ? ROLES_INFO.filter((r) =>
-            [
-              "CAPITAN_BARCO_A",
-              "CAPITAN_BARCO_B",
-              "ARMADOR_A",
-              "ARMADOR_B",
-              "FLETADOR_A",
-              "FLETADOR_B",
-              "TERMINAL_MOEVE",
-              "GABINETE_FABRICA",
-              "GABINETE_TRADING",
-              "CAPITANIA",
-              "PECLA",
-              "EMERGENCIAS_112",
-            ].includes(r.code)
-          )
-        : ROLES_INFO.filter((r) =>
-            ["ORGANIZADOR", "OBSERVADOR", "LIDER_SIMULACRO"].includes(r.code)
-          );
-
-    return (
-      <div className="panel-edicion-parametros card card-max mb-2">
-        <h3>Parámetros de la simulación</h3>
-        <div className="flex-row flex-wrap gap-2">
-          {/* Selector de rol */}
-          <div>
-            <label htmlFor="rol-selector">Rol:</label>
-            <select
-              id="rol-selector"
-              name="rol-selector"
-              value={rol}
-              onChange={(e) => onRolChange(e.target.value as RolSimulacro)}
-              className="input"
-              title="Selecciona el rol para la simulación"
-            >
-              {rolesDisponibles.map((r) => (
-                <option key={r.code} value={r.code}>
-                  {r.displayName}
-                </option>
-              ))}
-            </select>
-          </div>
-          {/* Edición de condiciones */}
-          {modo === "simulacro" && (
-            <div className="panel-edicion-condiciones">
-              <label>Condiciones ambientales:</label>
-              <button
-                className="btn btn-sm ml-1"
-                onClick={() => {
-                  onCondicionesChange(generarCondicionesAmbientales());
-                }}
-              >
-                Regenerar
-              </button>
-              <div>
-                <CondicionCard condiciones={condiciones} />
-              </div>
-            </div>
-          )}
-          {/* Edición de coordenadas */}
-          {modo === "simulacro" && (
-            <div className="panel-edicion-coords">
-              <label htmlFor="lat-input">Latitud:</label>
-              <input
-                type="number"
-                id="lat-input"
-                name="lat-input"
-                value={derramaCoords.lat}
-                onChange={(e) => {
-                  const newLat = parseFloat(e.target.value);
-                  onCoordsChange({
-                    ...derramaCoords,
-                    lat: isNaN(newLat) ? derramaCoords.lat : newLat,
-                  });
-                }}
-                className="input input-small"
-                step="0.00001"
-              />
-              <label htmlFor="lng-input" className="ml-1">
-                Longitud:
-              </label>
-              <input
-                type="number"
-                id="lng-input"
-                name="lng-input"
-                value={derramaCoords.lng}
-                onChange={(e) => {
-                  const newLng = parseFloat(e.target.value);
-                  onCoordsChange({
-                    ...derramaCoords,
-                    lng: isNaN(newLng) ? derramaCoords.lng : newLng,
-                  });
-                }}
-                className="input input-small"
-                step="0.00001"
-              />
-            </div>
-          )}
-        </div>
-      </div>
-    );
-  };
-
   if (faseActual === "conclusion" && todasObligatoriasCumplidas) {
     return (
       <div className="card flex-center flex-column">
@@ -309,17 +184,20 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
 
   return (
     <div>
-      <PanelEdicionParametros
-        modo={modo}
-        rol={rolEdit}
-        condiciones={condicionesEdit}
-        derramaCoords={coordsEdit}
-        onRolChange={(newRol) => {
-          setRolEdit(newRol); // Actualiza el estado local rolEdit
-          // setContextRol(newRol); // También actualiza el rol en el contexto global para que los permisos se recalculen
-        }}
-        onCondicionesChange={setCondicionesEdit}
-        onCoordsChange={setCoordsEdit}
+      <div className="param-button-container">
+        <button
+          className="btn btn-primary param-settings-button"
+          onClick={() => setShowParamModal(true)}
+          aria-label="Configurar parámetros de simulación"
+        >
+          <FaCog /> Configurar Parámetros
+        </button>
+      </div>
+
+      {/* Modal para editar los parámetros */}
+      <ParamModal
+        isOpen={showParamModal}
+        onClose={() => setShowParamModal(false)}
       />
       <Timeline
         fases={FASES}
@@ -333,13 +211,13 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
         checksPorFase={checksPorFaseResumen}
       />
       <SimMap
-        coords={coordsEdit}
-        condiciones={condicionesEdit}
+        coords={derrameCoordsContexto || derramaCoords}
+        condiciones={condicionesContexto || condiciones}
         fase={faseActual}
       />
       <CabeceraSimulacion
-        rol={rolEdit}
-        condiciones={condicionesEdit}
+        rol={rolSeleccionado || rol}
+        condiciones={condicionesContexto || condiciones}
         fase={faseActual}
       />
       {/* Checklist de Cumplimiento SIEMPRE visible para la fase seleccionada */}
@@ -347,7 +225,7 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
         <ChecklistCumplimiento
           checks={checksActuales}
           onCheck={handleCheck}
-          usuario={rolSeleccionado || rolEdit}
+          usuario={rolSeleccionado || rol}
           faseActual={faseActual}
         />
       )}
@@ -356,8 +234,8 @@ const SimulacionMain: React.FC<SimulacionMainExtendedProps> = ({
         <div className="card card-max card-centered mt-2">
           <Fase
             fase={faseActual}
-            rol={rolEdit}
-            condiciones={condicionesEdit}
+            rol={rolSeleccionado || rol}
+            condiciones={condicionesContexto || condiciones}
             onDecision={handleDecision}
             isBlocked={!!feedback}
           />

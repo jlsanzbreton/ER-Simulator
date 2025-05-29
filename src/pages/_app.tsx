@@ -1,5 +1,6 @@
 // Configuración de contexto, PWA, etc.
 import "../styles/globals.css";
+import "../styles/paramModal.css";
 import type { AppProps } from "next/app";
 import { SimulacroProvider } from "../context/SimulacroContext";
 // src/pages/_app.tsx

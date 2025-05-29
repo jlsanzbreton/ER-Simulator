@@ -1,0 +1,119 @@
+/* styles/paramModal.css */
+
+/* Estilos heredados del panel de edición anterior */
+.panel-edicion-condiciones, .panel-edicion-coords {
+  min-width: 220px;
+}
+.param-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0.5rem 1rem;
+  padding: 0.5rem;
+}
+
+.param-settings-button {
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.param-settings-button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.param-settings-button:focus {
+  outline: 2px solid #0070f3;
+  outline-offset: 2px;
+}
+
+/* Estilos adicionales para el modal */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 450px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.coords-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.coord-input {
+  flex: 1;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.button-group button {
+  padding: 0.5rem 1rem;
+  background: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-group button:hover {
+  background: #0056b3;
+}
+
+.button-group button:last-child {
+  background: #f3f3f3;
+  color: #333;
+}
+
+.button-group button:last-child:hover {
+  background: #e5e5e5;
+}
