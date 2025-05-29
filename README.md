@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+{
+"name": "er-simulator",
+"version": "0.1.0",
+"private": true,
+"scripts": {
+"dev": "next dev",
+"build": "next build",
+"start": "next start",
+"lint": "next lint"
+},
+"dependencies": {
+"@turf/turf": "^7.2.0",
+"d3-geo": "^3.1.0",
+"leaflet": "^1.9.4", // Compatible con react-leaflet 4.x
+"next": "13.5.6", // Última versión estable antes de breaking changes en 14+
+"react": "18.2.0", // LTS estable compatible con la mayoría de librerías actuales
+"react-dom": "18.2.0",
+"react-icons": "^5.5.0",
+"react-leaflet": "4.2.1", // Última versión estable compatible con React 18
+"source-map-js": "^1.2.1",
+"styled-jsx": "^5.1.7" // Requerido internamente por Next.js para estilos embebidos
+},
+"devDependencies": {
+"@eslint/eslintrc": "^3",
+"@tailwindcss/postcss": "^4.1.8",
+"@types/leaflet": "^1.9.17",
+"@types/node": "^20",
+"@types/react": "^18", // Alineado con React 18
+"@types/react-dom": "^18",
+"autoprefixer": "^10.4.21",
+"eslint": "^9",
+"eslint-config-next": "13.5.6", // Alineado con Next 13.5.6
+"postcss": "^8.5.3",
+"tailwindcss": "^4.1.8",
+"typescript": "5.8.3"
+}
+}
 
-## Getting Started
+# ER-Simulator 🛟
 
-First, run the development server:
+Simulación interactiva de derrames de hidrocarburos en el litoral andaluz. Esta aplicación permite generar condiciones meteorológicas realistas, simular escenarios con diferentes roles de respuesta y tomar decisiones en tiempo real como parte de ejercicios formativos o de entrenamiento.
+
+---
+
+## 🚀 Stack Tecnológico
+
+Este proyecto utiliza un conjunto de tecnologías estables que han sido seleccionadas para garantizar máxima compatibilidad y facilidad de desarrollo:
+
+- **React 18.2.0**: versión LTS probada y confiable para la mayoría de librerías.
+- **Next.js 13.5.6**: versión previa a los breaking changes de Next 14+.
+- **Leaflet 1.9.4** + **React-Leaflet 4.2.1**: visualización de mapas, compatible con React 18.
+- **Tailwind CSS 4.1.8**: estilos rápidos y responsivos.
+- **Turf.js 7.2.0**: cálculo geoespacial para análisis de derrames.
+- **D3-Geo 3.1.0**: soporte para proyecciones y geometrías geográficas.
+- **TypeScript 5.8.3**: tipado fuerte en todo el proyecto.
+
+---
+
+## 🔧 Scripts disponibles
+
+- `npm run dev`: Ejecuta el servidor de desarrollo en `http://localhost:3000`.
+- `npm run build`: Compila el proyecto para producción.
+- `npm run start`: Lanza el servidor en modo producción.
+- `npm run lint`: Ejecuta ESLint para revisar calidad de código.
+
+---
+
+## 🧪 Entorno Local y Consideraciones
+
+> ⚠️ Importante: Este entorno está optimizado para React 18 y Next 13.5.6. No se recomienda actualizar aún a Next 15 debido a múltiples conflictos con React 19 y Leaflet.
+
+Se han eliminado paquetes no utilizados como `@turf/isobands` y `marchingsquares`, y se restauraron archivos corruptos tras fallos en caché. Este `README.md` y el `package.json` actúan como **snapshot técnico** para volver a este estado si algo se rompe en el futuro.
+
+---
+
+## 🗂️ Restauración del entorno
+
+Si clonas este repositorio y quieres dejarlo operativo:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Eso basta. Todos los paquetes están fijados a versiones estables.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧭 Créditos y mantenimiento
 
-## Learn More
+Este proyecto es mantenido por Jose Sanz Bretón.  
+Para más información o colaboración, contáctame o abre un issue en GitHub.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
