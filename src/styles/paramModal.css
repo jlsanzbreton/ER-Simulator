@@ -1,9 +1,6 @@
 /* styles/paramModal.css */
 
-/* Estilos heredados del panel de edición anterior */
-.panel-edicion-condiciones, .panel-edicion-coords {
-  min-width: 220px;
-}
+/* Botón de configuración en la interfaz principal */
 .param-button-container {
   display: flex;
   justify-content: flex-end;
@@ -19,7 +16,7 @@
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-weight: 500;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -30,6 +27,7 @@
 .param-settings-button:hover {
   background-color: #0056b3;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 .param-settings-button:focus {
@@ -37,83 +35,701 @@
   outline-offset: 2px;
 }
 
-/* Estilos adicionales para el modal */
+/* Modal principal */
 .modal-backdrop {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  -webkit-backdrop-filter: blur(2px); /* Compatibilidad con Safari */
+  backdrop-filter: blur(2px);
+  animation: fadeIn 0.2s ease-out;
 }
 
-.modal {
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-container {
   background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  width: 450px;
+  border-radius: 12px;
+  width: 580px;
+  max-width: 90vw;
   max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease-out;
+  overflow: hidden;
 }
 
-.form-group {
-  margin-bottom: 1rem;
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
+/* Cabecera del modal */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
 }
 
-.form-group input,
-.form-group select {
-  width: 100%;
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #343a40;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.modal-title-icon {
+  color: #0070f3;
+}
+
+.close-button {
+  background: transparent;
+  border: none;
+  color: #6c757d;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
+  border-radius: 50%;
+  transition: all 0.2s;
 }
 
-.coords-container {
+.close-button:hover {
+  background: #f0f0f0;
+  color: #343a40;
+}
+
+/* Contenido del modal */
+.modal-content {
+  padding: 1.5rem;
+  overflow-y: auto;
+  max-height: calc(90vh - 135px);
+}
+
+/* Secciones de parámetros */
+.param-section {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.param-section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.param-section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.param-icon {
+  color: #0070f3;
+  font-size: 1.25rem;
+  margin-right: 0.75rem;
+}
+
+.param-section-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #343a40;
+}
+
+/* Grid para controles de parámetros */
+.params-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+/* Tarjetas de parámetros */
+.param-card {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.param-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.param-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  gap: 0.5rem;
+}
+
+.param-card-header label {
+  font-weight: 500;
+  color: #343a40;
+  margin: 0;
+}
+
+/* Estilos para el selector de rol */
+.role-selector {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.role-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.role-icon {
+  border-radius: 50%;
+  background: white;
+  padding: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.role-description {
+  flex: 1;
+}
+
+.role-description strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #343a40;
+}
+
+.role-description p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.role-dropdown {
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  width: 100%;
+  font-size: 1rem;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* Tooltips */
+.tooltip-container {
+  position: relative;
+  margin-left: auto;
+}
+
+.info-icon {
+  color: #6c757d;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 200px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.5rem;
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 150%;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 0.85rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  right: 10%;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #333 transparent;
+}
+
+/* Estilos para el slider de temperatura */
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.slider-value {
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-top: 0.25rem;
+}
+
+/* Controles de viento */
+.wind-card {
+  grid-column: span 2;
+}
+
+.wind-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wind-direction-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.wind-rose {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.compass-outer {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid #ced4da;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.compass-marker {
+  position: absolute;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #495057;
+}
+
+.compass-marker.north {
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.compass-marker.east {
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.compass-marker.south {
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.compass-marker.west {
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.wind-arrow {
+  color: #0070f3;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.wind-direction-selector {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.direction-select,
+.precipitacion-select,
+.marea-select {
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 0.9rem;
+}
+
+.wind-force {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wind-force-value {
+  font-weight: 600;
+  color: #0077b6;
+}
+
+/* Controles de marea */
+.marea-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.marea-visual {
+  height: 40px;
+  background-color: #e6f7ff;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.marea-high {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.wave {
+  position: absolute;
+  height: 20px;
+  width: 200%;
+  background: rgba(0, 119, 182, 0.3);
+  border-radius: 50%;
+  animation: wave 3s infinite linear;
+}
+
+.wave1 {
+  bottom: -5px;
+  animation-delay: 0s;
+}
+
+.wave2 {
+  bottom: 5px;
+  opacity: 0.5;
+  animation-delay: 1s;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.marea-low {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.wave-low {
+  height: 10px;
+  width: 100%;
+  background: rgba(0, 119, 182, 0.3);
+}
+
+/* Controles de precipitación */
+.precipitacion-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.precipitacion-icon {
+  height: 40px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.precipitation-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.precipitacion-lluvia_ligera .precipitation-effect {
+  background-image: linear-gradient(
+    0deg,
+    rgba(100, 149, 237, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 10px 10px;
+  animation: rain 0.5s linear infinite;
+}
+
+.precipitacion-lluvia_intensa .precipitation-effect {
+  background-image: linear-gradient(
+    0deg,
+    rgba(100, 149, 237, 0.3) 2px,
+    transparent 2px
+  );
+  background-size: 8px 8px;
+  animation: rain 0.3s linear infinite;
+}
+
+.precipitacion-tormenta .precipitation-effect {
+  background-color: rgba(52, 58, 64, 0.2);
+  background-image: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.4) 2px,
+    transparent 2px
+  );
+  background-size: 8px 8px;
+  animation: rain 0.2s linear infinite;
+}
+
+.precipitacion-calima .precipitation-effect {
+  background-color: rgba(233, 196, 106, 0.3);
+}
+
+@keyframes rain {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 10px;
+  }
+}
+
+/* Control de hora */
+.time-input-container {
+  display: flex;
+  justify-content: center;
+}
+
+.time-input {
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+/* Controles de coordenadas */
+.coords-card {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.coords-inputs {
   display: flex;
   gap: 1rem;
 }
 
 .coord-input {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.button-group {
+.coord-input label {
+  font-weight: 500;
+  color: #495057;
+}
+
+.coord-number-input {
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 0.9rem;
+}
+
+.coords-visual {
+  background-color: #e9ecef;
+  border-radius: 4px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.coords-map-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.map-marker {
+  color: #dc3545;
+  font-size: 1.5rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.coords-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #495057;
+}
+
+/* Footer del modal */
+.modal-footer {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
-  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: #f8f9fa;
+  border-top: 1px solid #e9ecef;
 }
 
-.button-group button {
-  padding: 0.5rem 1rem;
-  background: #0070f3;
-  color: white;
-  border: none;
+.btn-primary,
+.btn-secondary {
+  padding: 0.5rem 1.25rem;
   border-radius: 4px;
+  font-weight: 500;
   cursor: pointer;
+  transition: all 0.2s;
+  border: none;
 }
 
-.button-group button:hover {
-  background: #0056b3;
+.btn-primary {
+  background-color: #0070f3;
+  color: white;
 }
 
-.button-group button:last-child {
-  background: #f3f3f3;
-  color: #333;
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.button-group button:last-child:hover {
-  background: #e5e5e5;
+.btn-secondary {
+  background-color: #f8f9fa;
+  color: #495057;
+  border: 1px solid #ced4da;
+}
+
+.btn-secondary:hover {
+  background-color: #e9ecef;
+}
+
+/* Clases para los iconos de temperatura */
+.temp-icon.temp-cold {
+  color: #0077b6;
+}
+.temp-icon.temp-cool {
+  color: #48cae4;
+}
+.temp-icon.temp-warm {
+  color: #fb8500;
+}
+.temp-icon.temp-hot {
+  color: #dc2f02;
+}
+
+/* Clases para los valores de temperatura */
+.slider-value.temp-cold {
+  color: #0077b6;
+}
+.slider-value.temp-cool {
+  color: #48cae4;
+}
+.slider-value.temp-warm {
+  color: #fb8500;
+}
+.slider-value.temp-hot {
+  color: #dc2f02;
+}
+
+/* Clases para las direcciones del viento */
+.wind-dir-N {
+  transform: rotate(0deg);
+}
+.wind-dir-NE {
+  transform: rotate(45deg);
+}
+.wind-dir-E {
+  transform: rotate(90deg);
+}
+.wind-dir-SE {
+  transform: rotate(135deg);
+}
+.wind-dir-S {
+  transform: rotate(180deg);
+}
+.wind-dir-SO {
+  transform: rotate(225deg);
+}
+.wind-dir-O {
+  transform: rotate(270deg);
+}
+.wind-dir-NO {
+  transform: rotate(315deg);
 }
