@@ -12,6 +12,7 @@
 "@turf/turf": "^7.2.0",
 "d3-geo": "^3.1.0",
 "leaflet": "^1.9.4", // Compatible con react-leaflet 4.x
+"topojson-client": "^3.1.0",
 "next": "13.5.6", // Última versión estable antes de breaking changes en 14+
 "react": "18.2.0", // LTS estable compatible con la mayoría de librerías actuales
 "react-dom": "18.2.0",
@@ -53,6 +54,7 @@ Este proyecto utiliza un conjunto de tecnologías estables que han sido seleccio
 - **Turf.js 7.2.0**: cálculo geoespacial para análisis de derrames.
 - **D3-Geo 3.1.0**: soporte para proyecciones y geometrías geográficas.
 - **TypeScript 5.8.3**: tipado fuerte en todo el proyecto.
+- **TopoJSON Client 3.1.0**: requerido por módulos Turf para procesar geometrías topológicas.
 
 ---
 
@@ -69,6 +71,11 @@ Este proyecto utiliza un conjunto de tecnologías estables que han sido seleccio
 
 > ⚠️ Importante: Este entorno está optimizado para React 18 y Next 13.5.6. No se recomienda actualizar aún a Next 15 debido a múltiples conflictos con React 19 y Leaflet.
 
+Se ha restablecido `eslint` a la versión `8.x` para evitar conflictos con `eslint-config-next` y garantizar compatibilidad. Además, se ha instalado `topojson-client` como dependencia requerida por `@turf/concave`.  
+También se ha añadido `topojson-client` como dependencia explícita requerida por algunos módulos Turf.
+
+Se han limpiado conflictos de dependencias reconfigurando ESLint a su versión compatible (v8.x) y eliminando rastros residuales de instalaciones fallidas. El paquete `topojson-client` ha sido instalado correctamente tras restablecer el entorno, y ya puede usarse en el motor de simulación.
+
 Se han eliminado paquetes no utilizados como `@turf/isobands` y `marchingsquares`, y se restauraron archivos corruptos tras fallos en caché. Este `README.md` y el `package.json` actúan como **snapshot técnico** para volver a este estado si algo se rompe en el futuro.
 
 ---
@@ -76,6 +83,8 @@ Se han eliminado paquetes no utilizados como `@turf/isobands` y `marchingsquares
 ## 🗂️ Restauración del entorno
 
 Si clonas este repositorio y quieres dejarlo operativo:
+
+Asegúrate de tener `Node.js` actualizado y luego ejecuta:
 
 ```bash
 npm install
