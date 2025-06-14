@@ -18,9 +18,13 @@ export default function Document() {
           sizes="180x180"
           href="/favicon/apple-touch-icon.png"
         />
+        <link
+          rel="apple-touch-icon-precomposed"
+          href="/favicon/apple-touch-icon-precomposed.png"
+        />
         <meta name="apple-mobile-web-app-title" content="ER-Simulator" />
         <meta name="theme-color" content="#000000" />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
+        <link rel="manifest" href="/manifest.json" /> {/* Changed from /favicon/site.webmanifest */}
       </Head>
       <body>
         <Main />
