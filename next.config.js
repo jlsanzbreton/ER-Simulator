@@ -16,7 +16,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   output: 'export', // Para generar un sitio estático
-  basePath: '/er-simulator', // El nombre de tu repositorio
+  basePath: '/ER-Simulator', // El nombre de tu repositorio (CASE-SENSITIVE)
   images: {
     unoptimized: true, // Necesario para next export con next/image
   },
