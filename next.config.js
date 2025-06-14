@@ -1,11 +1,13 @@
 // next.config.js
-const withPWA = require("next-pwa")({
+import nextPWA from "next-pwa";
+
+const withPWA = nextPWA({
   dest: "public",
   register: true,
   skipWaiting: true,
   disable: process.env.NODE_ENV === "development",
   fallback: {
-    document: "/offline.html",
+    document: "/offline.html", // Asegúrate de que este archivo exista en tu carpeta public
   },
 });
 
@@ -13,6 +15,11 @@ const withPWA = require("next-pwa")({
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  output: 'export', // Para generar un sitio estático
+  basePath: '/er-simulator', // El nombre de tu repositorio
+  images: {
+    unoptimized: true, // Necesario para next export con next/image
+  },
 };
 
 module.exports = withPWA(nextConfig);
