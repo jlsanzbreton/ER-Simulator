@@ -1,32 +1,34 @@
 // src/components/UI/MapCard.tsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; // Added useEffect
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import { DerrameCoords } from "../../types/simulacro";
-import { LeafletMouseEvent } from "leaflet"; // Importación explícita para tipado
+import { LeafletMouseEvent } from "leaflet";
 import L from "leaflet";
+import { useRouter } from "next/router";
 
-// Icono personalizado para evitar errores de 404 (solo en cliente)
-const markerIcon =
-  typeof window !== "undefined"
-    ? L.icon({
-        iconUrl: "/leaflet/marker-icon.png",
-        iconRetinaUrl: "/leaflet/marker-icon-2x.png",
-        shadowUrl: "/leaflet/marker-shadow.png",
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41],
-      })
-    : undefined;
+// Function to create a dynamic marker icon with basePath
+const createMarkerIcon = (basePath: string) => {
+  if (typeof window === "undefined") return undefined;
+  return L.icon({
+    iconUrl: `${basePath}/leaflet/marker-icon.png`,
+    iconRetinaUrl: `${basePath}/leaflet/marker-icon-2x.png`,
+    shadowUrl: `${basePath}/leaflet/marker-shadow.png`,
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41],
+  });
+};
 
-const centerZoom: [number, number] = [37.3876, -5.9924]; // Centro aproximado de Andalucía
+const centerZoom: [number, number] = [37.3876, -5.9924];
 const zoom = 8;
 
-// Componente para seleccionar coordenadas en modo interactivo
 const ClickableMarker = ({
   onSelect,
+  icon, // Added icon prop
 }: {
   onSelect?: (coords: DerrameCoords) => void;
+  icon: L.Icon | L.DivIcon | undefined; // Added icon prop type
 }) => {
   const [marker, setMarker] = useState<DerrameCoords | null>(null);
 
@@ -40,8 +42,8 @@ const ClickableMarker = ({
   });
 
   return marker ? (
-    markerIcon ? (
-      <Marker position={[marker.lat, marker.lng]} icon={markerIcon} />
+    icon ? (
+      <Marker position={[marker.lat, marker.lng]} icon={icon} />
     ) : null
   ) : null;
 };
@@ -55,6 +57,13 @@ const MapCard: React.FC<{
   coords: DerrameCoords | null;
   onCoordsChange?: (coords: DerrameCoords) => void;
 }> = ({ coords, onCoordsChange }) => {
+  const router = useRouter();
+  const [currentMarkerIcon, setCurrentMarkerIcon] = useState<L.Icon | L.DivIcon | undefined>(undefined);
+
+  useEffect(() => {
+    setCurrentMarkerIcon(createMarkerIcon(router.basePath));
+  }, [router.basePath]);
+
   return (
     <div className="card card-max card-centered map-card-outer">
       {onCoordsChange && (
@@ -67,15 +76,15 @@ const MapCard: React.FC<{
         scrollWheelZoom={false}
       >
         <TileLayer
-          attribution="&copy; OpenStreetMap contributors"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {onCoordsChange ? (
-          markerIcon ? (
-            <ClickableMarker onSelect={onCoordsChange} />
+          currentMarkerIcon ? (
+            <ClickableMarker onSelect={onCoordsChange} icon={currentMarkerIcon} />
           ) : null
-        ) : coords && markerIcon ? (
-          <Marker position={[coords.lat, coords.lng]} icon={markerIcon} />
+        ) : coords && currentMarkerIcon ? (
+          <Marker position={[coords.lat, coords.lng]} icon={currentMarkerIcon} />
         ) : null}
       </MapContainer>
       {coords && (

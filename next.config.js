@@ -7,7 +7,7 @@ const withPWA = nextPWA({
   skipWaiting: true,
   disable: process.env.NODE_ENV === "development",
   fallbacks: { // Corregido de fallback a fallbacks
-    document: "/offline.html", // Asegúrate de que este archivo exista en tu carpeta public
+    document: "offline.html", // Asegúrate de que este archivo exista en tu carpeta public. Path made relative.
   },
 });
 

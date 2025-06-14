@@ -5,22 +5,24 @@ export default function Document() {
   return (
     <Html lang="es">
       <Head>
-        <link
-          rel="icon"
-          type="image/png"
-          href="/favicon/favicon-96x96.png"
-          sizes="96x96"
-        />
-        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        {/* Use relative paths for assets when basePath is active */}
+        <link rel="manifest" href="manifest.json" />
         <link
           rel="apple-touch-icon"
-          sizes="180x180"
-          href="/favicon/apple-touch-icon.png"
+          href="favicon/apple-touch-icon.png"
         />
-        <meta name="apple-mobile-web-app-title" content="ER-Simulator" />
+        <link
+          rel="apple-touch-icon-precomposed"
+          href="favicon/apple-touch-icon-precomposed.png"
+        />
+        <link rel="icon" href="favicon.ico" />
+        {/* 
+          Ensure manifest.json is in public/manifest.json
+          Ensure apple-touch-icon.png is in public/favicon/apple-touch-icon.png
+          Ensure apple-touch-icon-precomposed.png is in public/favicon/apple-touch-icon-precomposed.png
+          Ensure favicon.ico is in public/favicon.ico (root of public)
+        */}
         <meta name="theme-color" content="#000000" />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
       <body>
         <Main />
