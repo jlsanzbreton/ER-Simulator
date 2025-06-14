@@ -1,5 +1,5 @@
 // next.config.js
-import nextPWA from "next-pwa";
+const nextPWA = require("next-pwa");
 
 const withPWA = nextPWA({
   dest: "public",
