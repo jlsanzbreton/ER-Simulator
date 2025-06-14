@@ -8,7 +8,7 @@ export const ROLES_INFO: RolInfo[] = [
     displayName: "Capitán del Barco A",
     description:
       "Responsable de la gestión a bordo, activación de planes internos, comunicación con armador y autoridades, y coordinación en el lugar del incidente.",
-    icon: "/icons/barcoA.svg",
+    icon: "icons/barcoA.svg", // Relative path
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ export const ROLES_INFO: RolInfo[] = [
     displayName: "Capitán del Barco B",
     description:
       "Responsable de la gestión a bordo, activación de planes internos, comunicación con armador y autoridades, y coordinación en el lugar del incidente.",
-    icon: "/icons/barcoB.svg",
+    icon: "icons/barcoB.svg", // Relative path
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ export const ROLES_INFO: RolInfo[] = [
     displayName: "Armador A",
     description:
       "Responsable de la gestión del barco A, activación de planes internos, comunicación con el capitán y autoridades, y coordinación en el lugar del incidente.",
-    icon: "/icons/armadorA.svg",
+    icon: "icons/armadorA.svg", // Relative path
   },
   {
     id: 4,
@@ -32,7 +32,7 @@ export const ROLES_INFO: RolInfo[] = [
     displayName: "Armador B",
     description:
       "Responsable de la gestión del barco B, activación de planes internos, comunicación con el capitán y autoridades, y coordinación en el lugar del incidente.",
-    icon: "/icons/armadorB.svg",
+    icon: "icons/armadorB.svg", // Relative path
   },
   {
     id: 5,
@@ -40,7 +40,7 @@ export const ROLES_INFO: RolInfo[] = [
     displayName: "Fletador A",
     description:
       "Responsable de la gestión del fletador A, activación de planes internos, comunicación con el capitán y autoridades, y coordinación en el lugar del incidente.",
-    icon: "/icons/fletadorA.svg",
+    icon: "icons/fletadorA.svg", // Relative path
   },
   {
     id: 6,
@@ -48,7 +48,7 @@ export const ROLES_INFO: RolInfo[] = [
     displayName: "Fletador B",
     description:
       "Responsable de la gestión del fletador B, activación de planes internos, comunicación con el capitán y autoridades, y coordinación en el lugar del incidente.",
-    icon: "/icons/fletadorB.svg",
+    icon: "icons/fletadorB.svg", // Relative path
   },
   {
     id: 7,
@@ -56,7 +56,7 @@ export const ROLES_INFO: RolInfo[] = [
     displayName: "Terminal MOEVE",
     description:
       "Responsable de la gestión de la terminal MOEVE, activación de planes internos, comunicación con el capitán y autoridades, y coordinación en el lugar del incidente.",
-    icon: "/icons/moeve.svg",
+    icon: "icons/moeve.svg", // Relative path
   },
   {
     id: 8,
@@ -64,7 +64,7 @@ export const ROLES_INFO: RolInfo[] = [
     displayName: "Gabinete de la Fábrica",
     description:
       "Responsable de la gestión del gabinete de la fábrica, activación de planes internos, comunicación con el capitán y autoridades, y coordinación en el lugar del incidente.",
-    icon: "/icons/gabineteFabrica.svg",
+    icon: "icons/gabineteFabrica.svg", // Relative path
   },
   {
     id: 9,
@@ -72,7 +72,7 @@ export const ROLES_INFO: RolInfo[] = [
     displayName: "Gabinete Trading",
     description:
       "Responsable de la gestión del gabinete trading, activación de planes internos, comunicación con el capitán y autoridades, y coordinación en el lugar del incidente.",
-    icon: "/icons/gabineteTrading.svg",
+    icon: "icons/gabineteTrading.svg", // Relative path
   },
   {
     id: 10,
@@ -80,7 +80,7 @@ export const ROLES_INFO: RolInfo[] = [
     displayName: "Capitanía",
     description:
       "Responsable de la gestión de la capitanía, activación de planes internos, comunicación con el capitán y autoridades, y coordinación en el lugar del incidente.",
-    icon: "/icons/capitania.svg",
+    icon: "icons/capitania.svg", // Relative path
   },
   {
     id: 11,
@@ -88,7 +88,7 @@ export const ROLES_INFO: RolInfo[] = [
     displayName: "PECLA",
     description:
       "Responsable de la gestión de PECLA, activación de planes internos, comunicación con el capitán y autoridades, y coordinación en el lugar del incidente.",
-    icon: "/icons/pecla.svg",
+    icon: "icons/pecla.svg", // Relative path
   },
   {
     id: 12,
@@ -96,37 +96,37 @@ export const ROLES_INFO: RolInfo[] = [
     displayName: "Emergencias 112",
     description:
       "Responsable de la gestión de emergencias 112, activación de planes internos, comunicación con el capitán y autoridades, y coordinación en el lugar del incidente.",
-    icon: "/icons/emergencias112.svg",
+    icon: "icons/emergencias112.svg", // Relative path
   },
   {
     id: 13,
     code: "ORGANIZADOR",
-    displayName: "Organizador",
+    displayName: "Coordinador de Simulacro",
     description:
-      "Responsable de la organización y supervisión del simulacro. Puede marcar checks de cumplimiento y gestionar roles.",
-    icon: "/icons/organizador.svg",
+      "Define los parámetros iniciales, supervisa el desarrollo general y evalúa los resultados del simulacro.",
+    icon: "icons/organizador.svg", // Relative path
   },
   {
     id: 14,
     code: "OBSERVADOR",
     displayName: "Observador",
     description:
-      "Observador independiente encargado de registrar el desarrollo y cumplimiento del simulacro. Puede marcar checks de cumplimiento.",
-    icon: "/icons/observador.svg",
+      "Sigue el simulacro sin intervenir directamente, tomando notas para la evaluación posterior.",
+    icon: "icons/observador.svg", // Relative path
   },
   {
     id: 15,
     code: "LIDER_SIMULACRO",
     displayName: "Líder del Simulacro",
     description:
-      "Líder general del simulacro, con capacidad de supervisión, gestión de roles y marcado de checks.",
-    icon: "/icons/lider.svg",
+      "Dirige activamente las operaciones y la respuesta durante el simulacro, tomando decisiones clave.",
+    icon: "icons/lider.svg", // Relative path
   },
+  // Puedes añadir más roles según sea necesario
 ];
-export const ROLES_INFO_MAP: Record<string, RolInfo> = ROLES_INFO.reduce(
-  (acc, rol) => {
-    acc[rol.code] = rol;
-    return acc;
-  },
-  {} as Record<string, RolInfo>
-);
+
+// Crear un mapa para búsqueda rápida por código de rol
+export const ROLES_INFO_MAP = new Map<string, RolInfo>();
+ROLES_INFO.forEach((rol) => {
+  ROLES_INFO_MAP.set(rol.code, rol);
+});

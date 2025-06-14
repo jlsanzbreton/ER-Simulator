@@ -6,6 +6,7 @@ import {
   SimulacroCondicionesAmbientales,
 } from "../../types/simulacro";
 import { ROLES_INFO } from "../../utils/rolesData";
+import { useRouter } from "next/router"; // Uncommented
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import {
@@ -37,6 +38,7 @@ const ParamModal = ({
     derrameCoords,
     setDerrameCoords,
   } = useSimulacro();
+  const router = useRouter(); // Added
 
   // Inicializar con valores por defecto compatibles con los tipos correctos
   const [localRol, setLocalRol] = useState<RolSimulacro>(
@@ -141,11 +143,12 @@ const ParamModal = ({
               <div className="role-info">
                 {currentRoleInfo?.icon && (
                   <Image
-                    src={currentRoleInfo.icon}
-                    alt={currentRoleInfo.displayName}
+                    src={`${router.basePath}/${currentRoleInfo.icon}`} // Modified src
+                    alt={currentRoleInfo.displayName || ""}
                     width={40}
                     height={40}
                     className="role-icon"
+                    unoptimized // Recommended for SVGs with next export
                   />
                 )}
                 <div className="role-description">

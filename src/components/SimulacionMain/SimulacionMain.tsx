@@ -251,7 +251,7 @@ const CabeceraSimulacion: React.FC<{
   condiciones: SimulacroCondicionesAmbientales;
   fase: string;
 }> = ({ rol, condiciones }) => {
-  const rolInfo = ROLES_INFO_MAP[rol];
+  const rolInfo = ROLES_INFO_MAP.get(rol);
   return (
     <div className="cabecera-simulacion-marco cabecera-simulacion-dos">
       <div className="cabecera-simulacion-tarjeta cabecera-rol">
