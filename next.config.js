@@ -6,7 +6,7 @@ const withPWA = nextPWA({
   register: true,
   skipWaiting: true,
   disable: process.env.NODE_ENV === "development",
-  fallback: {
+  fallbacks: { // Corregido de fallback a fallbacks
     document: "/offline.html", // Asegúrate de que este archivo exista en tu carpeta public
   },
 });
